@@ -5,7 +5,7 @@
           &#x2630;
         </button>
 
-        <%= link_to 'Shop', root_path, class: 'navbar-brand' %>
+        <%= link_to 'Tengri', root_path, class: 'navbar-brand' %>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -16,19 +16,17 @@
             </ul>
             <div class="navbar-nav ml-auto">
               <div class="navbar-nav ml-auto">
-<% if user_signed_in? %>
-  <div class="nav-item">
-    <span class="navbar-text">
-      Hello, &nbsp;
-    <span>
-  </div>
+                <% if user_signed_in? %>
+                  <div class="nav-item">
+                    <span class="navbar-text">
+                      Hello,
+                    <span>
+                  </div>
 
-  <div class="dropdown show">
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'dropdown-item' %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-    </div>
-  <div>
+                 
+                        <%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'dropdown-item text-white' %>
+                        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item text-white' %>
+                   
                   <% else %>
                       <div class="nav-item">
                          <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
@@ -42,13 +40,4 @@
         </div>
     </div>
 </nav>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
