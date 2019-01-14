@@ -1,12 +1,35 @@
-<% @posts.each do |post| %> 
-    <h2> <%= post.user.phone %> </h2>
-<!-- исправить user.phone на user.nickname -->
-    <h5> <%= post.title %> </h5>
-    <h6> <%= post.description %> </h6>    
-    <p> <small class="text-muted"> <%= post.created_at %></small></p>
-   <% if post.images.attached? %> 
-  <% post.images.each do |image| %>
-  <div>	<%= image_tag image, style: 'width: 340px' %> </div>
-  <% end %> 
+
+<div class="card" style="width: 20rem;">
+	<div class="card-body">
+	<h3> <%= @user.phone %> </h3>
+	</div>
+	<% if current_user == @user %>
+	<div class="card-body">
+	    <a class="btn btn-primary btn-md" <%= link_to 'Добавить новый пост', new_post_path %></a>
+	    <a class="btn btn-primary btn-md" <%= link_to 'Главная', root_path %></a>
+		<% end %>
+
+	</div>
 </div>
-<% end %> 
+
+<div class='container' style=" max-width: 400px">
+	<div class="card" style="width: 18rem;">
+		<% @posts.each do |post| %> 
+	  <img <% if post.images.attached? %> 
+		  		<% post.images.each do |image| %>
+		  		  <div>	<%= image_tag image, style: 'width: 340px' %> </div>
+				<% end %> 
+			<% end %>
+	  <div class="card-body">
+	    <h5 class="card-title"><%= post.title %> </h5>
+	  </div>
+	  <ul class="list-group list-group-flush">
+	    <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
+	  </ul>
+	  <div class="card-body">
+	    <a class="btn btn-primary btn-md" <%= link_to 'изменить', edit_post_path(post)%></a>
+	    <a class="btn btn-primary btn-md" <%= link_to 'удалить', post_path(post), method: :delete %></a>
+	  </div>
+	  <% end %>
+	</div>
+</div>
