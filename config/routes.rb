@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'posts#index'
+  root  'authentication#show_form'
+  post 'authentication/look_for'
   resources :users, only: :show
   resources :posts, only: [:create, :new , :show , :index]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

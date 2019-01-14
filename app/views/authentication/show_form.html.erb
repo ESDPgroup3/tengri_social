@@ -1,0 +1,11 @@
+<% unless @hide_navbar %>
+
+  <%= form_with url: authentication_look_for_path(@phone), local: true do |f| %>
+    <div class="field my-3">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+      <%= f.submit 'Отправить', class: 'btn btn-info my-4' %>
+    <% end %>
+ 
+<% end %>

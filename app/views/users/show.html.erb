@@ -1,5 +1,4 @@
 <% @posts.each do |post| %> 
-<div class="container" style=" max-width: 400px">
     <h2> <%= post.user.phone %> </h2>
 <!-- исправить user.phone на user.nickname -->
     <h5> <%= post.title %> </h5>
@@ -10,5 +9,4 @@
   <div>	<%= image_tag image, style: 'width: 340px' %> </div>
   <% end %> 
 </div>
-<% end %> 
 <% end %> 
