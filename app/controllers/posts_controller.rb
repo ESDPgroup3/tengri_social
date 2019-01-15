@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all 
+    @posts = Post.all.reverse
   end
 
   def update
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.destroy(params[:id])
-    redirect_to user_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private
