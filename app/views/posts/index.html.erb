@@ -1,14 +1,21 @@
-<% @posts.each do |post| %> 
-<div class="container" style=" max-width: 400px">
-    <h2> <%= post.user.phone %> </h2>
-<!-- исправить user.phone на user.nickname -->
-    <h5> <%= post.title %> </h5>
-    <h6> <%= post.description %> </h6>    
-    <p> <small class="text-muted"> <%= post.created_at %></small></p>
-   <% if post.images.attached? %> 
-  <% post.images.each do |image| %>
-  <div>	<%= image_tag image, style: 'width: 340px' %> </div>
-  <% end %> 
+<div class="container" style=" max-width: 500px">
+  <% @posts.each do |post| %> 
+  <div class="mt-5">
+  <h2> <%= post.user.phone %> </h2>
+  <!-- исправить user.phone на user.nickname -->
+  <h5> <%= post.title %> </h5>
+  <p> <%= post.description %> </p>    
+
+  <% if post.picture.attached? %> 
+  <div>  <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
+  <% end %>
+  <p> <small class="text-muted"> <%= post.created_at %></small></p>
+  </div>
+  <div>
+     <% if current_user.id == post.user.id %>
+     <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
+     <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
+    <% end %>
+   </div>
+<% end %> 
 </div>
-<% end %> 
-<% end %> 
