@@ -5,8 +5,8 @@
  </div>
  <% if current_user == @user %>
  <div class="card-body">
-   <a class="btn btn-primary btn-md"> <%= link_to 'Добавить новый пост', new_post_path %></a>
-   <a class="btn btn-primary btn-md"> <%= link_to 'Главная', root_path %></a>
+    <%= link_to 'Добавить новый пост', new_post_path, class: "btn btn-primary btn-md mb-1" %></a>
+    <%= link_to 'Главная', root_path, class: "btn btn-primary btn-md" %></a>
    <% end %>
 
  </div>
@@ -24,8 +24,10 @@
      <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
    </div>
    <div class="card-body">
+     <% if current_user == @user %>
      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
+    <% end %>
    </div>
  </div>
  <% end %>
