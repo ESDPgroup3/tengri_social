@@ -15,10 +15,8 @@
 <div class='container' style=" max-width: 400px">
 	<div class="card" style="width: 18rem;">
 		<% @posts.each do |post| %> 
-	  <img> <% if post.images.attached? %> 
-		  		<% post.images.each do |image| %>
-		  		  <div>	<%= image_tag image, style: 'width: 340px' %> </div>
-				<% end %> 
+	  <img> <% if post.picture.attached? %> 
+		  		  <div>	<%= image_tag post.picture, style: 'width: 340px' %> </div>
 			<% end %>
 	  <div class="card-body">
 	    <h5 class="card-title"><%= post.title %> </h5>
