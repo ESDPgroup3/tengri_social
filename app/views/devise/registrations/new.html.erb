@@ -4,8 +4,7 @@
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :phone %><br />
-        <%= f.text_field :phone %>
+        <%= f.hidden_field :phone, value: params[:phone] %>
       </div>
 
       <div class="field">
