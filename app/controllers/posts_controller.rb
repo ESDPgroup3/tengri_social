@@ -38,9 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.destroy(params[:id])
-    respond_to do |format|
       redirect_back(fallback_location: root_path)
-    end
   end
 
   private
