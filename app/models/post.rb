@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
-  validates :description, presence: true, length: { in: 20..500 }
+  validates :description, presence: true, length: { in: 5..500 }
   # validate :correct_image_type
 
   belongs_to :user

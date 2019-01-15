@@ -11,8 +11,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    upload_picture
     if @post.save 
+      upload_picture
       redirect_to user_path(@post.user)
     else
       render 'new'
@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def update
       if @post.update(post_params)
+        upload_picture
         redirect_to @post
       else
         render :edit
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description ,:user_id, :picture)
+    params.require(:post).permit(:title, :description ,:user_id)
   end
 
   def upload_picture

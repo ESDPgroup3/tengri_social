@@ -1,33 +1,32 @@
 
 <div class="card" style="width: 20rem;">
 	<div class="card-body">
-	<h3> <%= @user.phone %> </h3>
-	</div>
-	<% if current_user == @user %>
-	<div class="card-body">
-	    <a class="btn btn-primary btn-md"> <%= link_to 'Добавить новый пост', new_post_path %></a>
-	    <a class="btn btn-primary btn-md"> <%= link_to 'Главная', root_path %></a>
-		<% end %>
+   <h3> <%= @user.phone %> </h3>
+ </div>
+ <% if current_user == @user %>
+ <div class="card-body">
+   <a class="btn btn-primary btn-md"> <%= link_to 'Добавить новый пост', new_post_path %></a>
+   <a class="btn btn-primary btn-md"> <%= link_to 'Главная', root_path %></a>
+   <% end %>
 
-	</div>
+ </div>
 </div>
 
-<div class='container' style=" max-width: 400px">
-	<div class="card" style="width: 18rem;">
-		<% @posts.each do |post| %> 
-	  <img> <% if post.picture.attached? %> 
-		  		  <div>	<%= image_tag post.picture, style: 'width: 340px' %> </div>
-			<% end %>
-	  <div class="card-body">
-	    <h5 class="card-title"><%= post.title %> </h5>
-	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
-	  </ul>
-	  <div class="card-body">
-	    <a class="btn btn-primary btn-md"> <%= link_to 'изменить', edit_post_path(post)%></a>
-	    <a class="btn btn-primary btn-md"> <%= link_to 'удалить', post_path(post), method: :delete %></a>
-	  </div>
-	  <% end %>
-	</div>
+<div class='container' style=" max-width: 800px">
+
+  <% @posts.each do |post| %> 
+  <div class="card m-4" style="width: 500px;">
+   <% if post.picture.attached? %> 
+   <div>	<%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
+   <% end %>
+   <div class="card-body">
+    <h5 class="card-title"><%= post.title %> </h5>
+     <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
+   </div>
+   <div class="card-body">
+     <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
+     <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
+   </div>
+ </div>
+ <% end %>
 </div>
