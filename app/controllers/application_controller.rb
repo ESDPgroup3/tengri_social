@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def after_sign_in_path_for(resources)
+	user_path(@user[:id])  	
+  end
+
+  def after_inactive_sign_up_path_for(resources)
+  	user_path(@user[:id]) 
+  end
 end
