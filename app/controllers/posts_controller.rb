@@ -24,13 +24,16 @@ class PostsController < ApplicationController
     @posts = Post.all.reverse
   end
 
+  def edit
+
+  end
+
   def update
       if @post.update(post_params)
         upload_picture
-        redirect_to @post
+        redirect_to user_path(@post.user)
       else
         render :edit
-   
       end 
   end
 

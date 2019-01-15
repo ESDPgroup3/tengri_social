@@ -10,7 +10,7 @@
     <% end %>
 
 <% if current_user  %>
-	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
+	<%= form_with model: @post, scope: :post, local: true do |f| %>
 		<%= f.text_field :title %>
 		<%= f.text_field :description %>
 		<%= f.file_field :picture %>
