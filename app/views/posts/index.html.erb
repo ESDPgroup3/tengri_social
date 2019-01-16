@@ -1,7 +1,7 @@
 <div class="container" style=" max-width: 500px">
   <% @posts.each do |post| %> 
   <div class="mt-5">
-  <h2> <%= post.user.phone %> </h2>
+  <h2><%= link_to post.user.phone , user_path(post.user) %></h2>
   <!-- исправить user.phone на user.nickname -->
   <h5> <%= post.title %> </h5>
   <p> <%= post.description %> </p>    
