@@ -1,0 +1,7 @@
+<% @users.each do |user| %> 
+  <div class="card m-4" style="width: 500px;" id="post">
+   <div class="card-body">
+    <%= link_to user.phone , user_path(user) %>
+   </div>
+ </div>
+ <% end %>
