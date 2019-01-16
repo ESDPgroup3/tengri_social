@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       current_user.follows << user
     end
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: posts_path)
   end
 
   def follows
