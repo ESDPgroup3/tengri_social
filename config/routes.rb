@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     end
   end
   resources :posts
+  get 'likes_toggle/:post_id', to: 'users#likes_toggle', as: :likes_toggle
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
 end
