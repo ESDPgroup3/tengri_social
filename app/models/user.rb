@@ -17,6 +17,10 @@ class User < ApplicationRecord
   foreign_key: :follow_id,
   association_foreign_key: :follower_id
 
+  has_and_belongs_to_many :liked_posts,
+  join_table: :likes,
+  class_name: 'Post'
+
   def email_required?
     false
   end

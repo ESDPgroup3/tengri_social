@@ -5,6 +5,10 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_one_attached :picture
+
+   has_and_belongs_to_many :likes,
+  join_table: :likes,
+  class_name: 'User'
   
   private 
 
