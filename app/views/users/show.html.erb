@@ -3,11 +3,11 @@
 	<div class="card-body">
    <h3> <%= @user.phone %> </h3>
  </div>
- <% if current_user == @user %>
-    <div class="ml-4">
-     <%= link_to 'Подписчики', followers_user_path(@user), class: "btn btn-primary btn-md mb-1"  %>
-     <%= link_to 'Подписки', follows_user_path(@user), class: "btn btn-primary btn-md mb-1"  %>
+     <div class="ml-4">
+     <p class="btn btn-outline-info"><%= link_to "#{@user.followers.count} - подписчики", followers_user_path(@user) %> </p>
+     <p class="btn btn-outline-info"><%= link_to "#{@user.follows.count} - подписки", follows_user_path(@user) %> </p>
    </div>
+ <% if current_user == @user %>
  <div class="card-body">
     <%= link_to 'Добавить новый пост', new_post_path, class: "btn btn-primary btn-md mb-1" %>
 
