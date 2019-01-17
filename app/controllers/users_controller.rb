@@ -4,6 +4,7 @@ class UsersController < ApplicationController
    def index
      @users = User.all
    end
+   
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
@@ -27,5 +28,15 @@ class UsersController < ApplicationController
   def followers
     @users = current_user.followers
     render :index
+  end
+
+  private
+
+  def upload_picture
+    @post.picture.attach(uploaded_file) if uploaded_file.present?
+  end
+    
+  def uploaded_file
+    params[:post][:picture]
   end
 end

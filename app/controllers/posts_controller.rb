@@ -50,12 +50,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description ,:user_id)
   end
-
-  def upload_picture
-    @post.picture.attach(uploaded_file) if uploaded_file.present?
-  end
-    
-  def uploaded_file
-    params[:post][:picture]
-  end
 end

@@ -1,6 +1,9 @@
 
 <div class="card" style="width: 20rem;">
 	<div class="card-body">
+    <% if @user.avatar.attached? %> 
+   <div>  <%= image_tag @user.avatar, style: 'width: 500px', class: "text-center"  %> </div>
+   <% end %>
    <h3> <%= @user.phone %> </h3>
  </div>
  <% if current_user == @user %>
