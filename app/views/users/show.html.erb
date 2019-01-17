@@ -2,7 +2,9 @@
 <div class="card" style="width: 20rem;">
 	<div class="card-body">
     <% if @user.avatar.attached? %> 
-   <div>  <%= image_tag @user.avatar, style: 'width: 500px', class: "text-center"  %> </div>
+   <div>  <%= image_tag @user.avatar, style: 'width: 250px', class: "text-center img-circular"  %> </div>
+   <% else %>
+   <%= image_tag("no-foto.png", :alt => "no avatar") %>
    <% end %>
    <h3> <%= @user.phone %> </h3>
  </div>
