@@ -3,6 +3,11 @@
 	<div class="card-body">
     <% if @user.avatar.attached? %> 
    <div>  <%= image_tag @user.avatar, style: 'width: 250px', class: "text-center img-circular"  %> </div>
+   <% if current_user == @user %> 
+   <%= link_to 'Delete avatar', delete_avatar_path(@user.avatar.id),
+                method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+                  <% end %>
    <% else %>
    <%= image_tag("no-foto.png", :alt => "no avatar") %>
    <% end %>

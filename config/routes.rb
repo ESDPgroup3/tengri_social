@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   resources :posts
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
+  delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end
