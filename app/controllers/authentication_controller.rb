@@ -1,8 +1,6 @@
 class AuthenticationController < ApplicationController
-  layout 'authentication'
-
+  layout 'application'
   def login_or_signup
-    
   end
 
 	def show_form

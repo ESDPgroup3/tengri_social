@@ -1,4 +1,5 @@
-<% unless @hide_navbar %>
+<div class="text-center start_page">
+  <h3 class="greeting">Добро пожаловать в Tengri social!</h3>
 
   <%= form_with url: authentication_look_for_path(@phone), local: true do |f| %>
     <div class="field my-3">
@@ -8,4 +9,5 @@
       <%= f.submit 'Отправить', class: 'btn btn-info my-4' %>
     <% end %>
  
-<% end %>
+
+</div>

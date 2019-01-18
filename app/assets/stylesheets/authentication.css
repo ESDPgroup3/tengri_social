@@ -22,3 +22,9 @@
 }
 .button_log_in:hover, .button_sign_up:hover { color: white; text-decoration: none;}
 .button_log_in:active, .button_sign_up:active { color: white; text-decoration: none;} 
+
+.greeting{
+  padding: 60px;
+  font-size: 20px;
+  font-weight: bold;
+}
