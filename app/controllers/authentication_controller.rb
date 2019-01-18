@@ -1,6 +1,12 @@
 class AuthenticationController < ApplicationController
+  layout 'authentication'
+
+  def login_or_signup
+    
+  end
+
 	def show_form
-    end
+  end
 
   def look_for
   	@phone = params[:phone]
