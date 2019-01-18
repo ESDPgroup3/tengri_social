@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root  'authentication#show_form'
+  root  'authentication#login_or_signup'
+  get 'authentication/show_form', as: :show_form_in
   post 'authentication/look_for'
+  resources :comments, only: [:new, :create]
   resources :users, :only => [:index, :show] do
     member do
       get 'follows'

@@ -22,6 +22,14 @@
      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
     <% end %>
-   </div>
-<% end %> 
+  </div>
+
+     <% post.comments.each do |comment| %>
+     <%= comment.user.phone %>
+     <p class='card-text'> <%= comment.body %> </p>
+
+     <% end %>
+
+     <%= render 'comments/form', post: post %>
+  <% end %> 
 </div>

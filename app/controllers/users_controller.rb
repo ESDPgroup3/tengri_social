@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-   before_action :authenticate_user!
+    layout 'authentication'
+   before_action :user_log_in?
 
    def index
      @users = User.all
@@ -21,12 +22,14 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @users = current_user.follows
+    @user = User.find(params[:id])
+    @users = @user.follows
     render :index
   end
 
   def followers
-    @users = current_user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
     render :index
   end
 
