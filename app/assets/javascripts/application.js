@@ -19,3 +19,30 @@
 //= require bootstrap
 //= bootstrap
 //= require_tree .
+
+function myFunction() {
+  var x = document.getElementById("user_password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+$(document).ready(function(){
+
+  $('#show').mousedown(function(event) {
+    event.preventDefault();
+    $('.show-password').hide();
+    $('.hide-password').removeClass('d-none');
+    $('#password').attr('type', 'text');
+  })
+  });
+
+
+  $('#show').mouseup(function(event) {
+    event.preventDefault();
+    $('.show-password').show();
+    $('.hide-password').addClass('d-none');
+    $('#password').attr('type', 'password');
+
+  });
