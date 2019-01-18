@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   has_and_belongs_to_many :likes,
   join_table: :likes,
   class_name: 'User'
+  scope :of_followed_users, -> (following_users) { where user_id: following_users}
+  has_many :comments
   
   private 
 

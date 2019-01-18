@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-   before_action :authenticate_user!
+    layout 'authentication'
+   before_action :user_log_in?
 
    def index
      @users = User.all
    end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
@@ -28,12 +30,20 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @users = current_user.follows
+    @user = User.find(params[:id])
+    @users = @user.follows
     render :index
   end
 
   def followers
-    @users = current_user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
     render :index
+  end
+
+  def delete_avatar
+    @avatar = ActiveStorage::Attachment.find_by(id: params[:upload_id])
+    @avatar.purge
+    redirect_back(fallback_location: posts_path)
   end
 end
