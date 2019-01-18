@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.reverse
+    @posts = Post.of_followed_users(current_user.follows).order('created_at DESC')
   end
 
   def edit
