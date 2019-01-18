@@ -4,7 +4,7 @@
   font-weight: 500;
 }
 .around_button_start_page{
-  margin: 30px
+  margin-top: 30px;
 }
 .button_log_in, .button_sign_up{
   display: inline-block;
