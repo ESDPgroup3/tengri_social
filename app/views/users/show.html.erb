@@ -44,6 +44,8 @@
      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %>
      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md", remote: true %>
     <% end %>
+    <%= post.likes.count %>
+    <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
    </div>
  </div>
  <% end %>

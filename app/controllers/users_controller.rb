@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  def likes_toggle
+    post = Post.find_by(id: params[:post_id])
+
+      current_user.liked_posts << post
+
+    redirect_back(fallback_location: posts_path)
+  end
+
   def follow_toggle
     user = User.find_by(id: params[:user_id])
     if current_user.follows.include?(user)

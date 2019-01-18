@@ -22,6 +22,12 @@
      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
     <% end %>
+   </div>
+   <div class="mt-2">  
+   <%= post.likes.count %>
+  <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
+  </div>
+<% end %> 
   </div>
 
      <% post.comments.each do |comment| %>
