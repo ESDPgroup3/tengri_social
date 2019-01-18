@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  layout 'authentication'
+  before_action :user_log_in?
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def show
