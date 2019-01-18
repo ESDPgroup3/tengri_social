@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :user_log_in?
 	def new
 		
 	end
