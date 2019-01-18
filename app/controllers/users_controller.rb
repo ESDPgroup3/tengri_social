@@ -20,12 +20,14 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @users = current_user.follows
+    @user = User.find(params[:id])
+    @users = @user.follows
     render :index
   end
 
   def followers
-    @users = current_user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
     render :index
   end
 end
