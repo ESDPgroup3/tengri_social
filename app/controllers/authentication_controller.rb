@@ -3,11 +3,11 @@ class AuthenticationController < ApplicationController
   def login_or_signup
   end
 
-	def show_form
+  def show_form
   end
 
   def look_for
-  	@phone = params[:phone]
+    @phone = params[:phone]
     @user = User.where(phone: params[:phone])
     if @user.exists?
       redirect_to new_user_session_path(phone: @phone)
