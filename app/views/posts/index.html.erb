@@ -1,6 +1,12 @@
 <div class="container" style=" max-width: 500px">
   <% @posts.each do |post| %> 
   <div class="mt-5">
+<% if post.user.avatar.attached? %> 
+   <div>  <%= image_tag post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> </div>
+   <% else %>
+   <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
+   <% end %>
+
   <h2><%= link_to post.user.phone , user_path(post.user) %></h2>
   <!-- исправить user.phone на user.nickname -->
   <h5> <%= post.title %> </h5>
