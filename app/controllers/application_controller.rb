@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resources)
-	user_path(@user[:id])  	
+	   posts_path  	
   end
 
   def after_inactive_sign_up_path_for(resources)

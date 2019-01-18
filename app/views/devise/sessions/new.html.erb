@@ -7,15 +7,12 @@
   </div>
   <div class="field border border-info form_for_phone m-auto text-left">
     <p class="phonenumber text-left m-0">Ваш пароль</p>
-    <%= f.password_field :password, autofocus: true, autocomplete: "current-password", :class => "input_phone" %>
-              <a class="border border-success" id="show">
-                <i class="fa fa-eye d-none hide-password" aria-hidden="true"></i>
-                <i class="fa fa-eye-slash show-password" aria-hidden="true"></i>
-              </a>
+    <%= f.password_field :password, autofocus: true, autocomplete: "current-password", :class => "input_phone mr-5" %>
+    <span toggle="#user_password" class="fa fa-eye-slash fa-fw field-icon toggle-password d-inline-block mr-0"></span>
   </div>
   <%= f.submit 'Продолжить', class: 'send-phone' %>
   <% end %>
-    <div class="small-print m-auto">
-  <%= link_to "Забыли пароль?", new_password_path(resource_name) %><br />
-</div>
+  <div class="small-print m-auto">
+    <%= link_to "Забыли пароль?", new_password_path(resource_name) %><br />
+  </div>
 </div>
