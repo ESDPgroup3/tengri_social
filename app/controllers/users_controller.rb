@@ -13,9 +13,7 @@ class UsersController < ApplicationController
 
   def likes_toggle
     post = Post.find_by(id: params[:post_id])
-
-      current_user.liked_posts << post
-
+    current_user.liked_posts << post
     redirect_back(fallback_location: posts_path)
   end
 
