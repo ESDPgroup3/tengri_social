@@ -12,6 +12,8 @@
    <%= image_tag("no-foto.png", :alt => "no avatar") %>
    <% end %>
    <h3> <%= @user.phone %> </h3>
+   <h3> <%= @user.nickname %> </h3>
+   <h3> ---------------- </h3>
  </div>
      <div class="ml-4">
      <p class="btn btn-outline-info"><%= link_to "#{@user.followers.count} - подписчики", followers_user_path(@user) %> </p>

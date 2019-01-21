@@ -1,0 +1,11 @@
+<%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
