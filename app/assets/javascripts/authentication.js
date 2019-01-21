@@ -1,6 +1,7 @@
 $(document).ready(function(){
 $('#phone').mask('9999999999');
   });
+
 $(document).ready(function(){
 $('form').submit(function(){
   var phone = $('#phone').val();
@@ -13,4 +14,3 @@ $('form').submit(function(){
   }
 });
   });
-
