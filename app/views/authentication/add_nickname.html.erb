@@ -1,11 +1,15 @@
-<%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+<div class="text-center start_page">
+  <h3 class="password_creation m-auto">Придумайте никнейм</h3>
+  <p class="password_explanation text-left m-auto">Как Вас величать?</p>
+  <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
   <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname %>
+    <%= f.hidden_field :phone, value: params[:phone] %>
+  </div>
+  <div class="field border border-info input_for_form m-auto text-left mb-5">
+    <p class="phonenumber text-left m-0">Никнейм</p>
+    <%= f.text_field :nickname, autofocus: true, :class => "input_phone mr-5" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<%= f.submit 'Продолжить', class: 'send-phone' %>
 <% end %>
-
+</div>
