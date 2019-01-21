@@ -48,7 +48,7 @@ $('#user_password_confirmation').keyup(function() {
   else{
     $('#password_error').removeClass('d-none');
   }
-});s
+});
 });
 
 
