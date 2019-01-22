@@ -28,3 +28,43 @@
 	background: blue;
 	border-radius: 5px;
 }
+.input_for_form{
+  width: 320px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.password_explanation{
+  font-size: 12px;
+  width: 320px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+.password_creation{
+  font-size: 20px;
+  font-weight: bold;
+  width: 320px;
+}
+
+@media only screen 
+
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+.password_creation{
+  font-size: 45px;
+  width: 500px;
+}
+.password_explanation{
+  font-size: 23px;
+  width: 700px;
+  padding-bottom: 50px;
+  padding-top: 10px;
+}
+.password_creation{
+  font-size: 45px;
+  width: 700px;
+    padding-bottom: 50px;
+}
+}
+

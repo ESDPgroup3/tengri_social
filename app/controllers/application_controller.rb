@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:phone, :password, :password_confirmation, :remember_me, :avatar]
+    added_attrs = [:phone, :password, :password_confirmation, :remember_me, :avatar, :nickname]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
@@ -19,7 +19,5 @@ class ApplicationController < ActionController::Base
 	   posts_path  	
   end
 
-  def after_inactive_sign_up_path_for(resources)
-  	user_path(@user[:id]) 
-  end
+
 end

@@ -41,9 +41,8 @@
   font-size: 15px;
   color: #A9A9A9;
   font-weight: 200;
-
 }
-.form_for_phone{
+.input_for_form{
   width: 320px;
   padding: 5px 20px 5px 20px;
   border-radius: 5px;
@@ -52,7 +51,6 @@
 .send-phone{
   display: inline-block;
   width: 320px;
-  margin-top: 20px;
   border-radius: 5px;
   background-image: linear-gradient(to right, #558bd5, #113a96 );
   color: white;
@@ -60,4 +58,55 @@
   padding: 10px 0px 10px 0px;
   margin-top: 40px;
 }
+.small-print{
+  width: 220px;
+  font-size: 10px;
+  padding-top: 40px;
+}
 
+@media only screen 
+
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+.start_page{
+  padding-top: 200px;
+  font-size: 45px;
+}
+.around_button_start_page{
+  margin-top: 50px;
+}
+.button_log_in, .button_sign_up{
+  width: 750px;
+  height:120px;
+  padding-top: 25px;
+}
+.greeting{
+  font-size: 50px;
+  width: 750px;
+  padding-bottom: 100px;
+}
+.input_for_form{
+  width: 700px;
+  padding: 15px 50px 15px 50px;
+  border-radius: 10px;
+  font-size: 37px;
+}
+.phonenumber{
+  font-size: 20px;
+}
+.input_phone{
+  font-size: 37px;
+    width: 500px;
+}
+.send-phone{
+  width: 700px;
+  border-radius: 10px;
+  font-size: 30px;
+  padding: 20px 0px 20px 0px;
+  margin-top: 50px;
+}
+.small-print{
+  width: 500px;
+  font-size: 22px;
+}
+}
