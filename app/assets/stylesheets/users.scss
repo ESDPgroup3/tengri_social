@@ -1,3 +1,29 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.a{
+	color: black;
+	background: blue;
+	border-radius: 5px;
+	padding: 2px;
+}
+
+.card{
+	color: black;
+	backgraund: green;
+}
+
+.flex-container{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	max-width: inherit;
+}
+
+.position{
+	align-items: center;
+	justify-content: center;
+	max-width: 180px;
+}

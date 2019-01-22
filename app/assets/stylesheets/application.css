@@ -22,3 +22,9 @@
   font-size: 10px;
   padding-top: 40px;
 }
+
+.decoration{
+	color: black;
+	background: blue;
+	border-radius: 5px;
+}
