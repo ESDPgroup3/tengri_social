@@ -3,6 +3,10 @@ class AuthenticationController < ApplicationController
   def login_or_signup
   end
 
+  def add_nickname
+    
+  end
+
   def show_form
   end
 
