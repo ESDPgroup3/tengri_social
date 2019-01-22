@@ -70,42 +70,43 @@
   and (-webkit-min-device-pixel-ratio: 2) { 
 .start_page{
   padding-top: 200px;
-  font-size: 35px;
+  font-size: 45px;
 }
 .around_button_start_page{
   margin-top: 50px;
 }
 .button_log_in, .button_sign_up{
-  width: 550px;
+  width: 750px;
   height:120px;
-  padding-top: 35px;
+  padding-top: 25px;
 }
 .greeting{
-  font-size: 45px;
-  width: 550px;
+  font-size: 50px;
+  width: 750px;
+  padding-bottom: 100px;
 }
 .input_for_form{
-  width: 500px;
-  padding: 5px 50px 5px 50px;
+  width: 700px;
+  padding: 15px 50px 15px 50px;
   border-radius: 10px;
-  font-size: 32px;
+  font-size: 37px;
 }
 .phonenumber{
   font-size: 20px;
 }
 .input_phone{
-  font-size: 32px;
-    width: 300px;
+  font-size: 37px;
+    width: 500px;
 }
 .send-phone{
-  width: 500px;
+  width: 700px;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 30px;
   padding: 20px 0px 20px 0px;
   margin-top: 50px;
 }
 .small-print{
-  width: 400px;
-  font-size: 19px;
+  width: 500px;
+  font-size: 22px;
 }
 }

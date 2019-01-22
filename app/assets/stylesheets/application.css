@@ -50,9 +50,14 @@
   width: 500px;
 }
 .password_explanation{
-  font-size: 20px;
-  width: 500px;
-  padding-bottom: 40px;
+  font-size: 23px;
+  width: 700px;
+  padding-bottom: 50px;
   padding-top: 10px;
+}
+.password_creation{
+  font-size: 45px;
+  width: 700px;
+    padding-bottom: 50px;
 }
 }
