@@ -5,28 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# require 'faker'
+# include Faker
 
-User.create(phone: '1111111', password: '111111', password_confirmation: '111111')
-User.create(phone: '2222222', password: '222222', password_confirmation: '222222')
-User.create(phone: '3333333', password: '333333', password_confirmation: '333333')
+def copy_avatar_fixture(product, file)
+  fixtures_path = Rails.root.join('app', 'assets', 'images', "#{file}.jpg")
+  product.avatar.attach(io: File.open(fixtures_path), filename: "#{file}.jpg")
+end
 
-require 'faker'
-include Faker
+user1 = User.create(phone: '5555555555', password: '123456789', password_confirmation: '123456789', nickname: 'RenyVary')
+  copy_avatar_fixture(user1, 1)
+user2 = User.create(phone: '1111111111', password: '123456789', password_confirmation: '123456789', nickname: 'BuBuZa')
+  copy_avatar_fixture(user2, 2)
+user3 = User.create(phone: '2222222222', password: '123456789', password_confirmation: '123456789', nickname: 'tm20388')
+  copy_avatar_fixture(user3, 3)
+user4 = User.create(phone: '4444444444', password: '123456789', password_confirmation: '123456789', nickname: 'Sankhuan')
+  copy_avatar_fixture(user4, 4)
+user5 = User.create(phone: '3333333333', password: '123456789', password_confirmation: '123456789', nickname: 'Nutella')
 
-def copy_image_fixture(product, file)
+
+
+def copy_picture_fixture(product, file)
   fixtures_path = Rails.root.join('app', 'assets', 'images', "#{file}.jpg")
   product.picture.attach(io: File.open(fixtures_path), filename: "#{file}.jpg")
 end
 
-@file = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-10.times do
-  3.times do |n|
+@file = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+3.times do
+  5.times do |n|
     n = Post.create(
-      title: Faker::Lorem.sentence(3),
       description: Faker::Lorem.sentence(15),
-      user_id: n
+      user_id: (n + 1)
       )
-    copy_image_fixture(n, @file.sample)
+    copy_picture_fixture(n, @file.sample)
   end
 end

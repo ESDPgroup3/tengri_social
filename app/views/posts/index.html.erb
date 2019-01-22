@@ -8,9 +8,12 @@
     <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
     <% end %>
 
-    <h2><%= link_to post.user.phone , user_path(post.user) %></h2>
+    <% if post.user.nickname.nil? %>
+    <h3><%= link_to post.user.phone , user_path(post.user) %></h3>
+    <% else %>
+    <h3><%= link_to post.user.nickname , user_path(post.user) %></h23>
+    <% end %>
     <!-- исправить user.phone на user.nickname -->
-    <h5> <%= post.title %> </h5>
     <p> <%= post.description %> </p>    
 
     <% if post.picture.attached? %> 
