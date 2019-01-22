@@ -19,3 +19,39 @@
 //= require bootstrap
 //= bootstrap
 //= require_tree .
+
+
+$(document).ready(function(){
+$(".toggle-password").click(function() {
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+  });
+$('#user_password').keyup(function() {
+  var pass = $('#user_password').val();
+  if (pass.length >= 8) {
+    $("#check_simbol").addClass('text-success');
+  }
+});
+
+var find_password = $('#user_password, #user_password_confirmation');
+$('#user_password_confirmation').keyup(function() {
+  var pass = $('#user_password').val();
+  var pass_rep = $('#user_password_confirmation').val();
+  if (pass == pass_rep) {
+        $('#password_error').addClass('d-none');
+  }
+  else{
+    $('#password_error').removeClass('d-none');
+  }
+});
+});
+
+
+
+
+

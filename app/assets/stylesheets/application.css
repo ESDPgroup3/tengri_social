@@ -12,7 +12,47 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
  body{
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
  }
+.small-print{
+  width: 220px;
+  font-size: 10px;
+  padding-top: 40px;
+}
+.input_for_form{
+  width: 320px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.password_explanation{
+  font-size: 12px;
+  width: 320px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+.password_creation{
+  font-size: 20px;
+  font-weight: bold;
+  width: 320px;
+}
+
+@media only screen 
+
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+.password_creation{
+  font-size: 45px;
+  width: 500px;
+}
+.password_explanation{
+  font-size: 20px;
+  width: 500px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+}

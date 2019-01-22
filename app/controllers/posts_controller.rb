@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.of_followed_users(current_user.follows).order('created_at DESC')
+    # @posts = Post.of_followed_users(current_user.follows).order('created_at DESC')
+    @posts = Post.all.reverse
   end
 
   def edit
@@ -50,5 +51,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description ,:user_id)
+  end
+
+  def upload_picture
+    @post.picture.attach(uploaded_file) if uploaded_file.present?
+  end
+
+  def uploaded_file
+    params[:post][:picture]
   end
 end

@@ -42,7 +42,7 @@
   color: #A9A9A9;
   font-weight: 200;
 }
-.form_for_phone{
+.input_for_form{
   width: 320px;
   padding: 5px 20px 5px 20px;
   border-radius: 5px;
@@ -58,7 +58,7 @@
   padding: 10px 0px 10px 0px;
   margin-top: 40px;
 }
-.privacy_consent{
+.small-print{
   width: 220px;
   font-size: 10px;
   padding-top: 40px;
@@ -84,7 +84,7 @@
   font-size: 45px;
   width: 550px;
 }
-.form_for_phone{
+.input_for_form{
   width: 500px;
   padding: 5px 50px 5px 50px;
   border-radius: 10px;
@@ -104,9 +104,8 @@
   padding: 20px 0px 20px 0px;
   margin-top: 50px;
 }
-.privacy_consent{
+.small-print{
   width: 400px;
-  font-size: 17px;
-  /*padding-top: 40px;*/
+  font-size: 19px;
 }
 }
