@@ -1,57 +1,77 @@
-
-<div class="card" style="width: 20rem;">
-	<div class="card-body">
-    <% if @user.avatar.attached? %> 
-    <div>  <%= image_tag @user.avatar, style: 'width: 250px', class: "text-center img-circular"  %> </div>
-    <% if current_user == @user %> 
-    <%= link_to 'Delete avatar', delete_avatar_path(@user.avatar.id),
-    method: :delete,
-    data: { confirm: 'Are you sure?' } %>
-    <% end %>
+<div class='container center-position' style=" max-width: 600px">
+  <div class="container">
+    <% if @user.avatar.attached? %>
+      <div class="media-body flex-container"> 
+        <div class="card-body position ">
+          <%= image_tag @user.avatar, style: 'width: 150px; height: 150px', class: "rounded-circle float-center"%> 
+          <% if current_user == @user %> 
+            <button type="button" class="close" aria-label="Close">
+              <div aria-hidden="true">
+                <%= link_to(delete_avatar_path(@user.avatar.id),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }) do %>
+                  <i style='COLOR:blue;' class="fa fa-pencil-square"></i><% end %>
+                <% end %>
+              </div>
+        </div>
+            </button>
+          <% else %>
+          <%= image_tag("no-foto.png", :alt => "no avatar") %>
+          <% end %>
+        <% if @user.nickname.nil? %>
+            <h3> <%= @user.phone %> </h3>
+        <% else %>
+            <h3> <%= @user.nickname %> </h3>
+        <% end %>
+          <h3>@<%= @user.phone %></h3>
+          <section class="btn-group center-position">
+            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.followers.count} - подписчики", followers_user_path(@user) %>
+              <i class="fa fa-users"></i>
+            </div>
+            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.follows.count} - подписки", follows_user_path(@user) %>
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.follows.count} - бонусов", follows_user_path(@user) %>
+              <i class="fa fa-bitcoin"></i>
+            </div>
+          </section>
+    <% if current_user == @user %>
+    <div class="card-body">
+      <%= link_to 'Добавить новый пост', new_post_path, class: "btn btn-primary btn-md mb-1" %>
     <% else %>
-    <%= image_tag("no-foto.png", :alt => "no avatar") %>
+      <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "btn btn-primary btn-md mb-1" %>
     <% end %>
-    <% if @user.nickname.nil? %>
-    <h3> <%= @user.phone %> </h3>
-    <% else %>
-    <h3> <%= @user.nickname %> </h3>
-
-    <% end %>
+      </div>
+    </div>
   </div>
-  <div class="ml-4">
-   <p class="btn btn-outline-info"><%= link_to "#{@user.followers.count} - подписчики", followers_user_path(@user) %> </p>
-   <p class="btn btn-outline-info"><%= link_to "#{@user.follows.count} - подписки", follows_user_path(@user) %> </p>
- </div>
- <% if current_user == @user %>
- <div class="card-body">
-  <%= link_to 'Добавить новый пост', new_post_path, class: "btn btn-primary btn-md mb-1" %>
 
-  <% else %>
-  <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "btn btn-primary btn-md mb-1" %>
-  <% end %>
+ 
 
 </div>
-</div>
 
+<!-- посты пользователя -->
 <div class='container' style=" max-width: 800px">
-
+  <div class="card">
   <% @posts.each do |post| %> 
-  <div class="card m-4" style="width: 500px;" id="post">
-   <% if post.picture.attached? %> 
-   <div>	<%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
-   <% end %>
-   <div class="card-body">
-    <h5 class="card-title"><%= post.title %> </h5>
-    <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
+    <div class="card-body">
+      <h6><%= image_tag @user.avatar, style: 'width: 50px; height: 50px', class: "rounded-circle float-center "%> 
+          @<%= @user.phone %>
+        <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
+      </h6>
+    </div>
+    <div class="card align-self-center" style="width: 500px;" id="post">
+      <% if post.picture.attached? %> 
+    <div class="card_body"> <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
+    <% end %>
+    <div class="card-body align-self-center">
+      <% if current_user == @user %>
+      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %>
+      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md", remote: true %>
+    <% end %>
+    <%= post.likes.count %>
+    <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-   <% if current_user == @user %>
-   <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %>
-   <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md", remote: true %>
-   <% end %>
-   <%= post.likes.count %>
-   <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
- </div>
-</div>
-<% end %>
+  <% end %>
 </div>
