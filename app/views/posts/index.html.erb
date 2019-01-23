@@ -1,5 +1,5 @@
 <div class="container" style=" max-width: 500px">
-  <p>Hello, <%=  link_to current_user.phone, user_path(current_user) %> </p>
+  
   <% @posts.each do |post| %> 
   <div class="mt-5">
     <% if post.user.avatar.attached? %> 

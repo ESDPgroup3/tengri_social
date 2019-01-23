@@ -27,3 +27,21 @@
 	justify-content: center;
 	max-width: 180px;
 }
+.back_container{
+	background: #F2F2F2;
+}
+.photo{
+	width: 150px; 
+	height: 150px;
+}
+.active_user {
+       
+    margin-right: 0.5rem;
+    text-align: right;
+}
+.square:hover{
+	color: #3C85E6;
+}
+.square:focus {
+	color: #3066AC;
+}

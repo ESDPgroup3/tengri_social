@@ -67,4 +67,19 @@
     padding-bottom: 50px;
 }
 }
-
+.container{
+  max-width: 800px;
+}
+.navbar{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+ .gradient {
+    background: #1613CC; /* Для старых браузров */
+    background: linear-gradient(to right, #5585F7, #1613CC);
+    padding: 8px 20px;
+    border: 1px solid #1613CC);
+   }
+.sign-out {
+  color: red;
+}
