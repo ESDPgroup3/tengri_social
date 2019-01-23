@@ -17,8 +17,8 @@
       <p> <%= post.description %> </p>    
 
       <% if post.picture.attached? %> 
-  
-      <% if ['jpg', 'jpeg', 'png'].include?(post.picture) %>
+
+      <% if post.picture.content_type.include?("image") %>
       <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %>
       <% else %>
       <%= video_tag url_for(post.picture), :controls => true , class: "video" %>
