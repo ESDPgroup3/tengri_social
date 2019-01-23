@@ -1,28 +1,28 @@
-<% unless @hide_navbar %>
-    <h2 class="pt-5 mt-3">Sign up</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-
-      <div class="field">
-        <%= f.hidden_field :phone, value: params[:phone] %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autofocus: true, autocomplete: "current-password" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
-<% end %>
+<div class="text-center start_page">
+  <h3 class="password_creation m-auto">Создайте пароль</h3>
+  <p class="password_explanation text-left m-auto">Придумайте пароль. Пароль должен состоять из 8 знаков на латинице и включать в себя одну цифру</p>
+  <div id="password_error" class="text-info mb-3 d-none">Пароли не совпадают</div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<!--   <%= devise_error_messages! %> -->
+  <div class="field">
+    <%= f.hidden_field :phone, value: params[:phone] %>
+  </div>
+  <div class="field border border-info input_for_form m-auto text-left mb-5">
+    <p class="phonenumber text-left m-0">Ваш пароль</p>
+    <%= f.password_field :password, autofocus: true, autocomplete: "current-password", :class => "input_phone" %>
+    <span toggle="#user_password" class="fa fa-eye-slash fa-fw field-icon toggle-password d-inline-block mr-0"></span>
+  </div>
+  <div class="password_explanation m-auto pb-3">
+    <i class="fa fa-check" aria-hidden="true" id="check_simbol"> 8 символов</i>
+    <i class="fa fa-check pr-5 " aria-hidden="true" id="check_integer"> 1 цифра</i>
+  </div>
+  <div class="">
+    <div class="field border border-info input_for_form m-auto text-left">
+      <p class="phonenumber text-left m-0">Подтверждение пароля</p>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "input_phone" %>
+      <span toggle="#user_password_confirmation" class="fa fa-eye-slash fa-fw field-icon toggle-password d-inline-block mr-0"></span>
+    </div>
+  </div>
+  <%= f.submit 'Продолжить', class: 'send-phone' %>
+  <% end %>
+</div>

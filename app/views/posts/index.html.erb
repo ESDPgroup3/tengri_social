@@ -1,21 +1,47 @@
 <div class="container" style=" max-width: 500px">
+  <p>Hello, <%=  link_to current_user.phone, user_path(current_user) %> </p>
   <% @posts.each do |post| %> 
   <div class="mt-5">
-  <h2> <%= post.user.phone %> </h2>
-  <!-- исправить user.phone на user.nickname -->
-  <h5> <%= post.title %> </h5>
-  <p> <%= post.description %> </p>    
+    <% if post.user.avatar.attached? %> 
+    <div>  <%= image_tag post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> </div>
+    <% else %>
+    <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
+    <% end %>
 
-  <% if post.picture.attached? %> 
-  <div>  <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
-  <% end %>
-  <p> <small class="text-muted"> <%= post.created_at %></small></p>
+    <% if post.user.nickname.nil? %>
+    <h3><%= link_to post.user.phone , user_path(post.user) %></h3>
+    <% else %>
+    <h3><%= link_to post.user.nickname , user_path(post.user) %></h23>
+    <% end %>
+    <!-- исправить user.phone на user.nickname -->
+    <p> <%= post.description %> </p>    
+
+    <% if post.picture.attached? %> 
+    <div>  <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
+    <% end %>
+    <p> <small class="text-muted"> <%= post.created_at %></small></p>
   </div>
   <div>
-     <% if current_user.id == post.user.id %>
-     <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
-     <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
-    <% end %>
-   </div>
-<% end %> 
+   <% if current_user.id == post.user.id %>
+   <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
+   <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
+   <% end %>
+ </div>
+ <div class="mt-2">  
+   <%= post.likes.count %>
+   <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
+ </div>
+ <% post.comments.each do |comment| %>
+<%= comment.user.phone %>
+<p class='card-text'> <%= comment.body %> </p>
+
+<% end %>
+<%= render 'comments/form', post: post %>
+ <% end %> 
+</div>
+
+
+
+
+
 </div>

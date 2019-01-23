@@ -9,7 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
      
-  <body>qweqweqeqwqe
+  <body>
+    <%= render 'layouts/application/navbar' %>
+    <div class="p-5"></div>
+    <div class="container" style=" max-width: 900px">
     <%= yield %>
     </div>
   </body>
