@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resources)
-	    edit_user_password_path(resources) 	
+	   posts_path 	
   end
-
-
 end
