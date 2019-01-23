@@ -60,8 +60,14 @@
       </h6>
     </div>
     <div class="card align-self-center" style="width: 500px;" id="post">
-      <% if post.picture.attached? %> 
-    <div class="card_body"> <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
+      <% if post.attachment.attached? %> 
+    <div class="card_body"> 
+      <% if post.attachment.content_type.include?("image") %>
+      <%= image_tag post.attachment, style: 'width: 500px', class: "text-center"  %>
+      <% else %>
+      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+      <% end %>
+    </div>
     <% end %>
     <div class="card-body align-self-center">
       <% if current_user == @user %>

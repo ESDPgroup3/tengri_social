@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   # validate :correct_image_type
 
   belongs_to :user
-  has_one_attached :picture
+  has_one_attached :attachment
 
   has_and_belongs_to_many :likes,
   join_table: :likes,

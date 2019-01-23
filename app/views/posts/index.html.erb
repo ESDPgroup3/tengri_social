@@ -16,12 +16,12 @@
       <!-- исправить user.phone на user.nickname -->
       <p> <%= post.description %> </p>    
 
-      <% if post.picture.attached? %> 
+      <% if post.attachment.attached? %> 
 
-      <% if post.picture.content_type.include?("image") %>
-      <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %>
+      <% if post.attachment.content_type.include?("image") %>
+      <%= image_tag post.attachment, style: 'width: 500px', class: "text-center"  %>
       <% else %>
-      <%= video_tag url_for(post.picture), :controls => true , class: "video" %>
+      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
       <% end %>
 
       <% end %>

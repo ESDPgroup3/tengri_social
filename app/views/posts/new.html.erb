@@ -13,7 +13,7 @@
 	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
 		<%= f.text_field :title %>
 		<%= f.text_field :description %>
-		<%= f.file_field :picture %>
+		<%= f.file_field :attachment %>
 		<%= f.hidden_field :user_id, value: current_user.id %>
 		<%= f.submit %> 
 	<% end %>
