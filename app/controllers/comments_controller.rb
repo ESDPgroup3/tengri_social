@@ -1,22 +1,24 @@
 class CommentsController < ApplicationController
-    layout 'authentication'
+  layout 'authentication'
   before_action :user_log_in?
 	def new
 		
 	end
 
 	def create
-		comment = Comment.new(comment_params)
-		comment.user = current_user
+    @comment = @commentable.comments.new(comment_params)
+		@comment.user = current_user
+    if @comment.save
+      redirect_to @commentable
+    else
+      redirect_to @commentable, alert: "Something wrong"
+    end
 
-		comment.save
-
-		redirect_to posts_path(comment.user)
 	end
 
 	private
 
 	def comment_params
-		params.require(:comment).permit(:post_id, :body)
+		params.require(:comment).permit(:body, :parent_id,)
 	end
 end

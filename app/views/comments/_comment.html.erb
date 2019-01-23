@@ -1,0 +1,9 @@
+<div class="border border-info p-3">
+   <%= comment.user.phone %>
+   <p> <%= comment.body %> </p>
+   <%= link_to "Ответить", "#", id: "reply" %>
+     <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: comment.id, class: "d-none form-reply"}  %>
+
+     <%= render comment.comments %>
+  </div> 
+
