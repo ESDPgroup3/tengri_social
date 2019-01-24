@@ -1,9 +1,12 @@
-<div class="border border-info p-3">
+<% nesting = local_assigns.fetch(:nesting, 1) %>
+<% max_nesting = local_assigns[:max_nesting]%> 
+<div class="border-left border-info p-3">
    <%= comment.user.phone %>
    <p> <%= comment.body %> </p>
-   <%= link_to "Ответить", "#", id: "reply" %>
-     <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: comment.id, class: "d-none form-reply"}  %>
 
-     <%= render comment.comments %>
+   <%= link_to "Ответить", "#", id: "reply" %>
+     <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "form-reply"}  %>
+
+     <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting] %>
   </div> 
 

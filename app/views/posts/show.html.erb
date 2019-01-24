@@ -42,4 +42,4 @@
 
     <%= render partial: "comments/form", locals: {commentable: @post}  %>
 
-    <%= render @post.comments.where(parent_id: [nil, ""]) %>
+    <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
