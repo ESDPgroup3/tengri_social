@@ -1,26 +1,26 @@
 <nav class="navbar fixed-top bg-white navbar-expand-md">
   <div class="container nav-justified">
-    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      &#x2630;
-    </button>
-    
       <% if params[:action] == 'show' %>
-      <div class="nav-item">
-          <%= link_to(posts_path, class: 'navbar-nav') do %> 
+      <div class="h6">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
             <i class="fa fa-long-arrow-left"> Назад в ленту </i>
           <% end %>
       </div>
       <% elsif params[:action] == 'edit' %>
-        <%= link_to(user_path(current_user), class: 'navbar-nav') do %> 
+        <div class="h6">
+          <%= link_to(user_path(current_user), class: 'text-primary') do %> 
               <i class="fa fa-long-arrow-left"> Назад в профиль </i>
-        <% end %>
+          <% end %>
+        </div>
       <% elsif params[:action] == 'new' %>
-        <%= link_to(posts_path, class: 'navbar-nav') do %> 
-              <i class="fa fa-long-arrow-left"> Назад </i>
-        <% end %>
+        <div class="h6">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+                <i class="fa fa-long-arrow-left"> Назад </i>
+          <% end %>
+        </div>
       <% else %>
-          <%= link_to(user_path(current_user), class: 'navbar-nav') do %> 
+        <div class="h6">
+          <%= link_to(user_path(current_user), class: 'text-primary') do %> 
               <i class="fa fa-long-arrow-left"> 
                 Привет, 
                 <% if current_user.nickname.nil? %>
@@ -30,9 +30,10 @@
                 <% end %>
               </i>
           <% end %>
+        </div>
       <%end %>
       
-      <div class="nav-item">
+      <div class="h6 pr-5">
         <% if params[:action] == 'show' %>
           <p class="mt-3"> Профиль </p>
           <% elsif params[:action] == 'edit' %>
@@ -42,9 +43,9 @@
         <%end %>
       </div>
       <% if user_signed_in? %>
-        <div class="nav-item">
+        <div class="h6 pl-5">
           <% if params[:action] == 'show' %>
-            <%= link_to(edit_user_path(current_user), class: 'btn table-white') do %>
+            <%= link_to(edit_user_path(current_user), class: 'text-primary') do %>
               <i class="fa fa-cog" aria-hidden="true"></i>
             <% end %>
           <% elsif params[:action] == 'edit'%>
