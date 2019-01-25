@@ -1,4 +1,3 @@
-
 $(document).on('turbolinks:load', function() {
     $("#reply").on('click', function(event){
         event.preventDefault();
@@ -8,3 +7,4 @@ $(document).on('turbolinks:load', function() {
           $(".form-reply").addClass("d-none");
     });
 });
+
