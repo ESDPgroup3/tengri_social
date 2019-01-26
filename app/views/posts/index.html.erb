@@ -3,45 +3,46 @@
   <% @posts.each do |post| %> 
   <div class="mt-5">
     <% if post.user.avatar.attached? %> 
-    <div>  <%= image_tag post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> </div>
+      <div>  
+        <%= image_tag post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> 
+      </div>
     <% else %>
-    <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
+      <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
     <% end %>
-
     <% if post.user.nickname.nil? %>
-    <h3><%= link_to post.user.phone , user_path(post.user) %></h3>
+      <h3>
+        <%= link_to post.user.phone , user_path(post.user) %>
+      </h3>
     <% else %>
-    <h3><%= link_to post.user.nickname , user_path(post.user) %></h23>
+      <h3>
+        <%= link_to post.user.nickname , user_path(post.user) %>
+      </h3>
     <% end %>
-      <!-- исправить user.phone на user.nickname -->
-      <p class="text_wrap"> <%= post.description %> </p>    
-
-      <% if post.attachment.attached? %> 
-
+    <p class="text_wrap"> <%= post.description %> </p>    
+    <% if post.attachment.attached? %> 
       <% if post.attachment.content_type.include?("image") %>
-      <%= image_tag post.attachment, style: 'width: 500px', class: "text-center"  %>
+        <%= image_tag post.attachment, style: 'width: 500px', class: "text-center"  %>
       <% else %>
-      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+        <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
       <% end %>
-
-      <% end %>
-      <p> <small class="text-muted"> <%= post.created_at %></small></p>
-    </div>
-    <div>
-     <% if current_user.id == post.user.id %>
-     <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
-     <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
-     <% end %>
-   </div>
-   <div class="mt-2">  
-     <%= post.likes.count %>
-     <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
-   </div>
-   <% post.comments.each do |comment| %>
-   <%= comment.user.phone %>
-   <p class='card-text'> <%= comment.body %> </p>
-   <% end %>
-   <%= render 'comments/form', post: post %>
-   <% end %> 
- </div>
+    <% end %>
+    <p> 
+      <small class="text-muted"> <%= post.created_at %></small>
+    </p>
+  </div>
+  <div>
+    <% if current_user.id == post.user.id %>
+      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %></a>
+      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md"  %></a>
+    <% end %>
+  </div>
+  <div class="mt-2">  
+    <%= post.likes.count %>
+    <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
+  </div>
+   <%= render partial: "comments/form", locals: {commentable: post}  %>
+  <%= link_to(post_path(post)) do %>
+    Посмотреть все коментари (<%= post.comments.count %>)
+  <% end %>
+  <% end %> 
 </div>
