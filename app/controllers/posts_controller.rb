@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    # id = current_user.follows << current_user
+    id = current_user.follows << current_user
     # @posts = Post.of_followed_users(id).order('created_at DESC')
     @posts = Post.all
   end
