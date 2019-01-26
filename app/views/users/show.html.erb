@@ -93,9 +93,10 @@
       </div>
     </section>
     <% if current_user != @user %>
-        <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "btn btn-primary" %>
+        <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "btn btn-primary btn-md mb-1" %>
         <% end %>
       <% end %>
+    </div>
   <% @posts.each do |post| %>
     <section class='container mt-2 mb-2'>
       <div class="card">
@@ -140,9 +141,13 @@
             </div>
           </div>  
         </div>
-        <div class="card border-0 align-self-center">
-          <% if post.picture.attached? %> 
-            <div class="card_body"> <%= image_tag post.picture, class: "image text-center"  %> </div>
+        <div class="card border-0 align-self-center">     
+          <% if post.attachment.attached? %>
+            <% if post.attachment.content_type.include?("image") %>
+              <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
+            <% else %>
+              <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+            <% end %>
           <% end %>
         <div class="card-body border-0 align-self-center">
           <div class="post_section pt-3">

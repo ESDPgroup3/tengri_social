@@ -27,7 +27,7 @@ user5 = User.create(phone: '3333333333', password: '123456789', password_confirm
 
 def copy_picture_fixture(product, file)
   fixtures_path = Rails.root.join('app', 'assets', 'images', "#{file}.jpg")
-  product.picture.attach(io: File.open(fixtures_path), filename: "#{file}.jpg")
+  product.attachment.attach(io: File.open(fixtures_path), filename: "#{file}.jpg")
 end
 
 

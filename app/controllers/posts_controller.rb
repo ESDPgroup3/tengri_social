@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save 
-      upload_picture
+      upload_attachment
       redirect_to user_path(@post.user)
     else
       render 'new'
@@ -22,8 +22,9 @@ class PostsController < ApplicationController
   end
 
   def index
-    # @posts = Post.of_followed_users(current_user.follows).order('created_at DESC')
-    @posts = Post.all.reverse
+    # id = current_user.follows << current_user
+    # @posts = Post.of_followed_users(id).order('created_at DESC')
+    @posts = Post.all
   end
 
   def edit
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
       if @post.update(post_params)
-        upload_picture
+        upload_attachment
         redirect_to user_path(@post.user)
       else
         render :edit
@@ -50,14 +51,14 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description ,:user_id)
+    params.require(:post).permit(:title, :description ,:user_id, :attachment)
   end
 
-  def upload_picture
-    @post.picture.attach(uploaded_file) if uploaded_file.present?
+  def upload_attachment
+    @post.attachment.attach(uploaded_file) if uploaded_file.present?
   end
 
   def uploaded_file
-    params[:post][:picture]
+    params[:post][:attachment]
   end
 end
