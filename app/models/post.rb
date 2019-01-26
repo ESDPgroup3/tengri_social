@@ -3,11 +3,11 @@ class Post < ApplicationRecord
   # validate :correct_image_type
 
   belongs_to :user
-<<<<<<< HEAD
+
   has_one_attached :picture, dependent: :destroy
-=======
+
   has_one_attached :attachment
->>>>>>> 4b735358efde92814eec9913b1d92885775a907d
+
 
   has_and_belongs_to_many :likes, dependent: :nullify,
   join_table: :likes,
@@ -15,7 +15,7 @@ class Post < ApplicationRecord
 
   scope :of_followed_users, -> (following_users) { where user_id: following_users}
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   
   private 
 
