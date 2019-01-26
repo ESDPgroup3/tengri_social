@@ -77,7 +77,7 @@
  .gradient {
     background: #1613CC; /* Для старых браузров */
     background: linear-gradient(to right, #5585F7, #1613CC);
-    padding: 8px 20px;
+    padding: 8px 15px;
     border: 1px solid #1613CC;
    }
 .sign-out {
@@ -148,6 +148,9 @@
   left: 2px;
   top: 4px;
   z-index: 101;
+}
+.nav_nick{
+  line-height: 30px;
 }
 .active_user_mini {
     font-size: 5px;
@@ -252,7 +255,6 @@ input[type="button" i], input[type="submit" i], input[type="reset" i], input[typ
   top: -7px;
   z-index: 101;
 }
-
 .card-body {
     padding: 0.25rem;
 }
