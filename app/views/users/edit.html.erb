@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h3 class="headers_edit text-center m-auto">Личная информация</h3>
+  <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :phone, value: params[:phone] %>
+  </div>
+  <div class="field border border-secondary input_for_form m-auto text-left">
+    <p class="phonenumber text-left m-0">Имя пользователя</p>
+    <%= f.text_field :nickname, :value => current_user.nickname,  autofocus: true, :class => "input_phone mr-5" %>
+  </div>
+  <%= f.submit 'Сохранить изменения', class: 'send-phone' %>
+  <% end %>
+</div>
+<div class="">
+  <h3 class="headers_edit text-center m-auto pt-5 ">Безопасность</h3>
+  <div class="input_for_form m-auto text-left pb-3 border-bottom text-primary">
+    <i class="fa fa-lock"></i>
+    <%= link_to "Сбросить пароль" , edit_user_registration_path(current_user), class: "link_in_edit d-inline-block text-primary" %>
+    <i class="fa fa-chevron-right"></i>
+  </div>
+  <div class="input_for_form m-auto pt-3 text-danger">
+    <i class="fa fa-times"></i>
+    <%= link_to "Удалить аккаунт" , registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "link_in_edit d-inline-block text-danger" %>
+    <i class="fa fa-chevron-right text-right"></i>
+  </div>
+</div>

@@ -16,6 +16,7 @@
  */
  body{
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  margin: 0 auto;
  }
 .small-print{
   width: 220px;
@@ -46,6 +47,9 @@
   font-weight: bold;
   width: 320px;
 }
+.link_in_edit{
+    width: 230px;
+}
 
 @media only screen 
 
@@ -66,5 +70,288 @@
   width: 700px;
     padding-bottom: 50px;
 }
+.link_in_edit{
+    width: 500px;
 }
+}
+.container{
+  max-width: 500px;
+}
+.navbar{
+  font-size: 12px;
+}
+ .gradient {
+    background: #1613CC; /* Для старых браузров */
+    background: linear-gradient(to right, #5585F7, #1613CC);
+    padding: 8px 15px;
+    border: 1px solid #1613CC;
+   }
+.sign-out {
+  color: red;
+}
+.nav-item {
+  text-align: right;
+}
+.h6{
+  font-size: 12px;
+}
+.position-relative{
+  position: relative;
+}
+.h5{
+  font-size: 14px;
+  left: -2px;
+  top: -7px;
+  z-index: 101;
+}
+.text_wrap { 
+  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    word-break: break-all;
+    white-space: normal;
+}
+.card{
+  color: black;
+}
+.card-body {
+    padding: 0.25rem;
+}
+
+.flex-container{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  max-width: inherit;
+}
+
+.position{
+  align-items: center;
+  justify-content: center;
+  max-width: 180px;
+}
+.back_container{
+  margin-top: 0;
+  background: #F2F2F2;
+}
+.photo{
+  width: 70px; 
+  height: 70px;
+}
+.photo_mini{
+  width: 30px; 
+  height: 30px;
+}
+.active_user, .active_user_mini {
+    margin-right: 0.1rem;
+    text-align: right;
+}
+.active_user{
+  left: 2px;
+  top: 4px;
+  z-index: 101;
+}
+.nav_nick{
+  line-height: 30px;
+}
+.active_user_mini {
+    font-size: 5px;
+}
+.square:hover{
+  color: #3C85E6;
+}
+.square:focus {
+  color: #3066AC;
+}
+.avatar_mini{
+  padding: 5px 10px;
+  padding-right: 0;
+}
+.post_write{
+  padding: 1px;
+}
+.post_writed{
+  padding-right: 8px;
+}
+.new_post{
+  display: flex;
+  justify-content: space-between;
+  background: #A2CDF8;
+  border-radius: 10px;
+  margin: 1px;
+}
+input::placeholder{
+  font-size: 12px;
+  color: #5585F7;
+}
+input[type="text"]{
+  width: 310px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.post_section{
+  display: flex;
+  justify-content: flex-start;
+}
+.nickname_text{
+  font-size: 12px;
+  padding-right: 5px;
+}
+.time{
+  font-size: 12px;
+  color: grey;
+  line-height: 21px;
+}
+.image {
+  max-width: 300px;
+}
+.followers{
+  color: #8255C7;
+}
+.dropdown{
+  text-align: right;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border: 0;
+  background: transparent;
+}
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+  background-color: transparent;
+  } 
+.smile{
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 5px;
+  color: white;
+  background: grey;
+  border-radius: 50%;
+}
+.frown-o{
+  left: 0px;
+  top: -7px;
+  z-index: 101;
+}
+.counter{
+  font-size: 10px;
+}
+@media (min-width: 800px){
+  .container{
+  max-width: 750px;
+}
+.navbar{
+  font-size: 14px;
+}
+.h6{
+  font-size: 14px;
+}
+.h5{
+  font-size: 14px;
+  left: -2px;
+  top: -7px;
+  z-index: 101;
+}
+.card-body {
+    padding: 0.25rem;
+}
+
+.flex-container{
+  max-width: inherit;
+}
+.position{
+  max-width: 180px;
+}
+.photo{
+  width: 80px; 
+  height: 80px;
+}
+.photo_mini{
+  width: 40px; 
+  height: 40px;
+}
+.active_user, .active_user_mini {
+    margin-right: 0.5rem;
+    text-align: right;
+}
+.active_user{
+  left: 2px;
+  top: 4px;
+  z-index: 101;
+}
+.active_user_mini {
+    font-size: 7px;
+}
+.post_write{
+  padding: 8px;
+}
+.post_writed{
+  padding-right: 8px;
+}
+.new_post{
+  margin: 5px;
+}
+input::placeholder{
+  font-size: 14px;
+}
+input[type="text"]{
+  width: 630px;
+}
+.nickname_text{
+  font-size: 15px;
+  padding-right: 5px;
+}
+.time{
+  font-size: 12px;
+  color: grey;
+  line-height: 26px;
+}
+.image {
+  max-width: 600px;
+}
+.followers{
+  color: #8255C7;
+}
+.dropdown{
+  text-align: right;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border: 0;
+}
+.dropdown-toggle{
+  background: white;
+}
+.smile{
+  font-size: 40px;
+  text-align: center;
+  padding-bottom: 5px;
+  color: white;
+  background: grey;
+  border-radius: 50%;
+}
+.counter{
+  font-size: 12px;
+}
+.frown-o{
+  left: 0px;
+  top: -9px;
+  z-index: 101;
+}
+}
+
 

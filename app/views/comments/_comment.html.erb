@@ -1,0 +1,10 @@
+<% nesting = local_assigns.fetch(:nesting, 1) %>
+<% max_nesting = local_assigns[:max_nesting]%> 
+<div class="border-left border-bottom border-info p-3">
+  <%= comment.user.nickname %>
+  <p> <%= comment.body %> </p>
+  <%= link_to "Ответить", "#", id: "reply" %>
+  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply", @submit_text =>"Ответить на коментарий" }  %>
+  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting] %>
+</div> 
+
