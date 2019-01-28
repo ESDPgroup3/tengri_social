@@ -4,8 +4,10 @@
       <div class="media-body flex-container"> 
         <div class="card-body position ">
           <div class="active_user counter position-relative">
-            <% if @user == current_user %>
-              <i class="fa fa-circle text-success" aria-hidden="true"></i>
+            <% if @user.online? %>
+              <i class="fa fa-circle text-success"></i>
+            <% else %>
+              <i class="fa fa-circle text-danger"></i>
             <% end %>
           </div>
           <div class="position-relative">

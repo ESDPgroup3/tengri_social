@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def email_changed?
     false
   end
+
+  def online?
+    updated_at > 30.minutes.ago
+  end
 end
