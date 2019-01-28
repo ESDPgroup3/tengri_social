@@ -1,5 +1,5 @@
 <div class="container" style=" max-width: 500px">
-  <p>Hello, <%=  link_to current_user.phone, user_path(current_user) %> </p>
+  
   <% @posts.each do |post| %> 
   <div class="mt-5">
     <% if post.user.avatar.attached? %> 
@@ -18,7 +18,7 @@
         <%= link_to post.user.nickname , user_path(post.user) %>
       </h3>
     <% end %>
-    <p> <%= post.description %> </p>    
+    <p class="text_wrap"> <%= post.description %> </p>    
     <% if post.attachment.attached? %> 
       <% if post.attachment.content_type.include?("image") %>
         <%= image_tag post.attachment, style: 'width: 500px', class: "text-center"  %>
