@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   layout 'authentication'
-  before_action :user_log_in?
+  
 	def new
 		
 	end

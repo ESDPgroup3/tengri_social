@@ -7,17 +7,25 @@
         <%= image_tag post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> 
       </div>
     <% else %>
-      <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
+      <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px', class: "text-center img-circular" ) %>
     <% end %>
+
     <% if post.user.nickname.nil? %>
-      <h3>
+      <h3 class="d-inline">
         <%= link_to post.user.phone , user_path(post.user) %>
       </h3>
     <% else %>
-      <h3>
+      <h3 class="d-inline">
         <%= link_to post.user.nickname , user_path(post.user) %>
       </h3>
     <% end %>
+
+    <% if post.user.online? %>
+    <i class="fa fa-circle text-success"></i>
+    <% else %>
+    <i class="fa fa-circle text-danger"></i>
+    <% end %>
+
     <p> <%= post.description %> </p>    
     <% if post.attachment.attached? %> 
       <% if post.attachment.content_type.include?("image") %>
