@@ -3,8 +3,10 @@
     <div class="new_post">
       <div class="avatar_mini">
         <div class="active_user_mini">
-          <% if @user == current_user %>
-            <i class="fa fa-circle text-success" aria-hidden="true"></i>
+          <% if current_user.online? %>
+            <i class="fa fa-circle text-success"></i>
+            <% else %>
+            <i class="fa fa-circle text-danger"></i>
           <% end %>
         </div>
         <div>
@@ -40,16 +42,27 @@
               </div>
             </div>
           <% end %>
-        </div>
+        </div> 
         <div class="card-body">
           <div class="post_section">
-            <div class="pr-2">
-              <div class="position-relative">
-                <% if post.user.avatar.attached? %>
-                  <%= image_tag post.user.avatar, class: "photo rounded-circle float-center" %> 
-                <% else %>
-                  <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
-                <% end %>
+            <div class="post_section">
+              <div class="position-relative pr-2">
+                <div class="active_user_mini">
+                  <div>
+                    <% if current_user.online? %>
+                      <i class="fa fa-circle text-success"></i>
+                      <% else %>
+                      <i class="fa fa-circle text-danger"></i>
+                    <% end %>
+                  </div>
+                  <div>
+                    <% if post.user.avatar.attached? %>
+                      <%= image_tag post.user.avatar, class: "photo rounded-circle float-center" %> 
+                    <% else %>
+                      <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
             <div>
@@ -136,3 +149,4 @@
     </section>
   <% end %> 
 </div>
+
