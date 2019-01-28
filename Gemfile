@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem "font-awesome-rails"
+gem 'rails_emoji_picker'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
