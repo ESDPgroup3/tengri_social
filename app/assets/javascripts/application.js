@@ -18,6 +18,7 @@
 //= require popper 
 //= require bootstrap
 //= bootstrap
+//= require rails_emoji_picker
 //= require_tree .
 
 
