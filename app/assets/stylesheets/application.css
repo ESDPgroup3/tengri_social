@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+*= require rails_emoji_picker
  *= require font-awesome
  */
  body{
