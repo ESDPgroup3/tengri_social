@@ -37,11 +37,6 @@
      <%= post.likes.count %>
      <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
    </div>
-   <% post.comments.each do |comment| %>
-   <%= comment.user.phone %>
-   <p class='card-text'> <%= comment.body %> </p>
-
-   <% end %>
    <%= render 'comments/form', post: post %>
    <% end %> 
  </div>

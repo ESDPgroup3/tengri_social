@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :users  do
+  resources :users, :except => [:destroy, :create]  do
     member do
       get 'follows'
       get 'followers'
