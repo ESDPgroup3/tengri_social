@@ -203,10 +203,19 @@ input[type="text"]{
   font-size: 12px;
   padding-right: 5px;
 }
+.nickname_text_comment{
+  font-size: 10px;
+  padding-right: 3px;
+}
 .time{
   font-size: 12px;
   color: grey;
   line-height: 21px;
+}
+.time_comment{
+  font-size: 9px;
+  color: grey;
+  line-height: 19px;
 }
 .image {
   max-width: 300px;
