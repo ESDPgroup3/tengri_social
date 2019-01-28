@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     layout 'authentication'
-   before_action :user_log_in?
+
 
    def index
      @users = User.all
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def update
-@user = User.find(params[:id])
+    @user = User.find(params[:id])
       if @user.update(user_params)
         redirect_to @user, notice: 'User was successfully updated.' 
       else

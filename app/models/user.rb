@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :phone, presence: true, length: { is: 10 }, uniqueness: true, numericality: { only_integer: true }
 
   has_many :posts, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
@@ -29,5 +30,9 @@ class User < ApplicationRecord
 
   def email_changed?
     false
+  end
+
+  def online?
+    updated_at > 30.minutes.ago
   end
 end
