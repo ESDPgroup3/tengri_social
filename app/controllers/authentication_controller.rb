@@ -4,7 +4,6 @@ class AuthenticationController < ApplicationController
   end
 
   def add_nickname
-    
   end
 
   def show_form
