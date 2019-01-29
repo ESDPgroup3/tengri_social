@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'followers'
     end
   end
-  root  'authentication#login_or_signup'
+  root 'authentication#show_form'
   get 'authentication/show_form', as: :show_form_in
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/look_for'
