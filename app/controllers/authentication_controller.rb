@@ -1,7 +1,6 @@
 class AuthenticationController < ApplicationController
   layout 'application'
-  def login_or_signup
-  end
+
 
   def add_nickname
   end
