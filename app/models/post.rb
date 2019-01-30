@@ -8,24 +8,21 @@ class Post < ApplicationRecord
 
   has_one_attached :attachment
 
-
   has_and_belongs_to_many :likes, dependent: :nullify,
-  join_table: :likes,
-  class_name: 'User'
+                                  join_table: :likes,
+                                  class_name: 'User'
 
-  scope :of_followed_users, -> (following_users) { where user_id: following_users}
+  scope :of_followed_users, ->(following_users) { where user_id: following_users }
 
   has_many :comments, as: :commentable, dependent: :destroy
-  
-  private 
+
+  private
 
   def correct_image_type
-
-  	# if picture.attached? && !picture.all? {|image| image.content_type.in?( %w( image/jpeg image/png )) }
-   #    errors.add(:images , 'Must be a JPEG or a PNG')
-  	# elsif images.attached? == false 
-  	# 	errors.add(:images , 'required')
-  	# end
-
+    # if picture.attached? && !picture.all? {|image| image.content_type.in?( %w( image/jpeg image/png )) }
+    #    errors.add(:images , 'Must be a JPEG or a PNG')
+    # elsif images.attached? == false
+    #   errors.add(:images , 'required')
+    # end
   end
 end
