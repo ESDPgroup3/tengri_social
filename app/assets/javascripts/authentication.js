@@ -9,12 +9,10 @@ $(function(){
 	$(phoneField).on('keyup', function(e){
 		console.log(phoneField.value.length)
 
-		if (phoneField.value.length === 10) {
-			$($('#submit')[0]).attr('disabled', false)
-		} else {
-			$($('#submit')[0]).attr('disabled', true)
-		}
+		const submit = document.getElementById("submit");
+		submit.disabled = phoneField.value.length !== 10;
 	})
 })
+
 
 
