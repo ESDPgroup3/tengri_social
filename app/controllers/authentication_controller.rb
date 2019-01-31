@@ -1,4 +1,6 @@
 class AuthenticationController < ApplicationController
+ before_action :user_signed_ib?
+
   layout 'application'
 
 

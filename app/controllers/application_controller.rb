@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
 	   posts_path 	
   end
 
+  def user_signed_ib?
+    if user_signed_in?
+    redirect_to posts_path
+    end
+  end 
+
+
   private
   
   def user_activity
