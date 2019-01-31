@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 	   posts_path 	
   end
 
-  def user_signed_ib?
+  def user_signed?
     if user_signed_in?
     redirect_to posts_path
     end
