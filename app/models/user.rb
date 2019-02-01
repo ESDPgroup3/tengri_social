@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+
   validates :phone, presence: true, length: { is: 10 }, uniqueness: true, numericality: { only_integer: true }
 
   has_many :posts, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
   has_many :comments, dependent: :nullify
   
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,:trackable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:phone]
 
   has_and_belongs_to_many :follows, dependent: :destroy,
