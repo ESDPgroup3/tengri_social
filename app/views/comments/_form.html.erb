@@ -1,9 +1,9 @@
 
   <%= form_with model: [commentable, Comment.new], local: true, html: { class: local_assigns[:class]} do |f|%>
-  <p class="emoji-picker-container">
-	  <%= f.text_area :body, placeholder: "Добавьте коментарий", class: 'form-control', data: { emojiable: true } %>
-      </p>
-    <%= f.hidden_field :parent_id, value: local_assigns[:parent_id] %>
-	  <%= f.submit "Добавить", class: 'btn btn-secondary' %>
+  	<div class="emoji-picker-container">
+	  <%= f.text_area :body, placeholder: "Оcтавьте коментарий", type: "form-control", class: 'form-control', data: { emojiable: true } %>
+      <%= f.hidden_field :parent_id, value: local_assigns[:parent_id] %>
+	  <%= f.submit "Добавить", class: 'button' %>
+	</div>
   <% end %>
 

@@ -16,8 +16,9 @@
  *= require font-awesome
  */
  body{
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   margin: 0 auto;
+  background: #F6F6F6;
  }
 .small-print{
   width: 220px;
@@ -76,17 +77,20 @@
 }
 }
 .container{
-  max-width: 500px;
+  max-width: 768px;
 }
 .navbar{
-  font-size: 12px;
+  background: #FFFFFF;
+  height: 90px;
+  font-size: 0.9em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09);
 }
- .gradient {
-    background: #1613CC; /* Для старых браузров */
-    background: linear-gradient(to right, #5585F7, #1613CC);
-    padding: 8px 15px;
-    border: 1px solid #1613CC;
-   }
+.gradient {
+  background: #1613CC; /* Для старых браузров */
+  background: linear-gradient(to right, #5585F7, #1613CC);
+  padding: 8px 15px;
+  border: 1px solid #1613CC;
+ }
 .sign-out {
   color: red;
 }
@@ -107,21 +111,34 @@
 }
 .text_wrap { 
   white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    white-space: pre-wrap;       /* css-3 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
-    word-break: break-all;
-    white-space: normal;
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  white-space: pre-wrap;       /* css-3 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+  word-break: break-all;
+  white-space: normal;
+}
+.wrap{
+  max-width: 38.25em;
+  font-size: 1em;
+  color: #0E1826;
+}
+.icon_text{
+  font-size: 0.75em;
+  color: #0E1826;
+  line-height: 2em;
+  margin-bottom: 0;
 }
 .card{
   color: black;
 }
 .card-body {
-    padding: 0.25rem;
+  padding: 0.25rem;
 }
-
+.display_flex{
+  display: flex;
+}
 .flex-container{
   display: flex;
   flex-flow: column;
@@ -137,19 +154,19 @@
 }
 .back_container{
   margin-top: 0;
-  background: #F2F2F2;
+  background: #F6F6F6;
 }
 .photo{
-  width: 70px; 
-  height: 70px;
+  width: 71px; 
+  height: 71px;
 }
 .photo_mini{
-  width: 30px; 
-  height: 30px;
+  width: 37px; 
+  height: 37px;
 }
 .active_user, .active_user_mini {
-    margin-right: 0.1rem;
-    text-align: right;
+  margin-right: 0.1rem;
+  text-align: right;
 }
 .active_user{
   left: 2px;
@@ -160,9 +177,9 @@
   line-height: 30px;
 }
 .active_user_mini {
-    font-size: 5px;
+  font-size: 5px;
 }
-.square:hover{
+.square:hover {
   color: #3C85E6;
 }
 .square:focus {
@@ -177,6 +194,7 @@
 }
 .post_writed{
   padding-right: 8px;
+  margin-bottom: 0;
 }
 .new_post{
   display: flex;
@@ -198,27 +216,44 @@ input[type="text"]{
 .post_section{
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 0;
 }
-.nickname_text{
-  font-size: 12px;
+a, .nickname_text{
+  font-size: 17px;
+  color: #0E1826;
   padding-right: 5px;
 }
 .nickname_text_comment{
-  font-size: 10px;
+  font-size: 13px;
+  color: #0E1826;
   padding-right: 3px;
+  margin-bottom: 0;
 }
 .time{
   font-size: 12px;
-  color: grey;
-  line-height: 21px;
+  color: #838487;
+  line-height: 2em;
 }
 .time_comment{
-  font-size: 9px;
-  color: grey;
-  line-height: 19px;
+line-height: 1.7em;
+}
+.text_comment{
+  font-size: 14px;
+  color: #0E1826;
+  margin-bottom: 0;
+}
+.reply{
+  font-size: 13px;
+  color: #568CD6;
+}
+.border_bottom{
+  border-bottom: 0.005em solid #838487;
 }
 .image {
-  max-width: 300px;
+  max-width: 100%;
+}
+.post_container{
+  max-width: 612px;
 }
 .followers{
   color: #8255C7;
@@ -255,6 +290,7 @@ input[type="button" i], input[type="submit" i], input[type="reset" i], input[typ
 .counter{
   font-size: 10px;
 }
+
 @media (min-width: 800px){
   .container{
   max-width: 750px;
