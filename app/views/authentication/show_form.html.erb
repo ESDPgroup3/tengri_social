@@ -6,7 +6,7 @@
     <p class="phonenumber text-left m-0">Номер телефона</p>
     +7 <%= f.telephone_field :phone, :class => "input_phone", autofocus: true, :data=> {:mask=> '9999999999'} %>
   </div>
-  <%= f.submit 'Продолжить', class: 'send-phone' %>
+  <%= f.submit 'Продолжить', class: 'send-phone' , :disabled => true, :id => 'submit', :maxlength => 10 %>
   <% end %>
   <div class="small-print m-auto text-left">
     Я соглашаюсь с <%= link_to "документами и правилами" , root_path %> и понимаю политику <%= link_to "конфиденциальности" , root_path %>
