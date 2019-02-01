@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :nullify
   
   devise :database_authenticatable, :registerable,:trackable,
-
          :recoverable, :rememberable, :validatable, :authentication_keys => [:phone]
 
   has_and_belongs_to_many :follows, dependent: :destroy,
