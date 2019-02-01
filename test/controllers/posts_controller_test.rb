@@ -25,5 +25,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get "/posts"
     assert_response :redirect
   end
-
 end

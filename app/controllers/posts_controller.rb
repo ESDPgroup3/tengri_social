@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save 
+    if @post.save
       upload_attachment
       redirect_to user_path(@post.user)
     else
@@ -34,17 +34,17 @@ class PostsController < ApplicationController
   end
 
   def update
-      if @post.update(post_params)
-        upload_attachment
-        redirect_to user_path(@post.user)
-      else
-        render :edit
-      end 
+    if @post.update(post_params)
+      upload_attachment
+      redirect_to user_path(@post.user)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description ,:user_id, :attachment)
+    params.require(:post).permit(:title, :description, :user_id, :attachment)
   end
 
   def upload_attachment
