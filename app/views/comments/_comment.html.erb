@@ -19,7 +19,7 @@
 	      <% end %>
 	      <p class="time post_writed"> <%= show_svg('line2.svg') %> <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>
 	    </div> 
-		<div class="text_comment">
+		<div class="text_comment text_wrap">
 		  <%= comment.body %>
 		</div>
 		<%= link_to "Ответить", "#", id: "reply", class: "reply" %>

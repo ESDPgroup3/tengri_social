@@ -17,7 +17,7 @@
       <div class="card-body">
         <div class="post_section">
           <div class="post_section">
-            <div class="position-relative pr-2">
+            <div class="position-relative pl-2 pr-2">
               <div class="active_user_mini">
                 <div>
                   <% if current_user.online? %>
@@ -50,7 +50,7 @@
             <div class="wrap text_wrap">
               <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
             </div>
-            <div class="card border-0 align-self-center">     
+            <div class="card border-0 align-self-center mt-0">     
               <% if @post.attachment.attached? %>
                 <% if @post.attachment.content_type.include?("image") %>
                   <div class="card_body"> <%= image_tag @post.attachment, class: "image text-center"  %> </div>
@@ -94,7 +94,17 @@
       </div>
     </div>
   </section> 
-  <div id="comments" class="container fixed-bottom">
-    <%= render partial: "comments/form", locals: {commentable: @post}  %>
+  <div class="container nil"></div>
+  <div id="comments" class="container display_flex between fixed-bottom">
+    <div class="pt-2 pr-1">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
+      <% else %>
+        <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+      <% end %>
+    </div>
+    <div class="comment_form_width pb-1">
+      <%= render partial: "comments/form", locals: {commentable: @post}  %>
+    </div>
   </div>
 </div>

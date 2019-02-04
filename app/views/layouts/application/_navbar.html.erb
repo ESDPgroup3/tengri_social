@@ -1,76 +1,73 @@
 <nav class="navbar fixed-top bg-white navbar-expand-md">
   <div class="container nav-justified">
-      <% if params[:action] == 'show' %>
+    <% if params[:action] == 'show' %>
       <div class="h6">
           <%= link_to(posts_path, class: 'text-primary') do %> 
             <i class="fa fa-long-arrow-left"> Назад в ленту </i>
           <% end %>
       </div>
-      <% elsif params[:action] == 'edit' %>
-        <div class="h6">
-          <%= link_to(user_path(current_user), class: 'text-primary') do %> 
-              <i class="fa fa-long-arrow-left"> Назад в профиль </i>
-          <% end %>
-        </div>
-      <% elsif params[:action] == 'new' %>
-        <div class="h6">
-          <%= link_to(posts_path, class: 'text-primary') do %> 
-                <i class="fa fa-long-arrow-left"> Назад </i>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="h6">
-          <%= link_to(user_path(current_user), class: 'text-dark font-weight-bold') do %> 
-              <div class="post_section">
-                <% if current_user.avatar.attached? %>
-                  <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center"%> 
-                <% else %>
-                  <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
-                <% end %>
-                <div class="nav_nick pl-1">
-                  Привет, 
-                  <% if current_user.nickname.nil? %>
-                    <%= current_user.phone %>
-                  <% else %>
-                    <%= current_user.nickname.capitalize %>!
-                  <% end %>
-                </div>
-          </div> 
-          <% end %>
-        </div>
-      <%end %>
-      
-      <div class="h6 pr-5">
-        <% if params[:action] == 'show' %>
-          <p class="mt-3"> Профиль </p>
-          <% elsif params[:action] == 'edit' %>
-          <p class="mt-3"> Настройки </p>
-          <% elsif params[:action] == 'new' %>
-          <p class="mt-3"> Новый пост</p>
-        <%end %>
+    <% elsif params[:action] == 'edit' %>
+      <div class="h6">
+        <%= link_to(user_path(current_user), class: 'text-primary') do %> 
+            <i class="fa fa-long-arrow-left"> Назад в профиль </i>
+        <% end %>
       </div>
-      <% if user_signed_in? %>
-        <div>
-          <% if params[:action] == 'show' %>
-            <%= link_to(edit_user_path(current_user), class: 'text-primary h6 pl-5') do %>
-              <i class="fa fa-cog" aria-hidden="true"></i>
+    <% elsif params[:action] == 'new' %>
+      <div class="h6">
+        <%= link_to(posts_path, class: 'text-primary') do %> 
+              <i class="fa fa-long-arrow-left"> Назад </i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="h6">
+        <%= link_to(user_path(current_user), class: 'text-dark font-weight-bold') do %> 
+          <div class="post_section">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center"%> 
+            <% else %>
+              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
             <% end %>
-          <% elsif params[:action] == 'edit'%>
-            <%= link_to(destroy_user_session_path, method: :delete, class: 'navbar-nav h6 pl-5') do %>
-              <div class="sign-out">
-                Выйти <i class="fa fa-sign-out" aria-hidden="true"></i>
-              </div>
+            <div class="nav_nick pl-1">
+              Привет, 
+              <% if current_user.nickname.nil? %>
+                <%= current_user.phone %>
+              <% else %>
+                <%= current_user.nickname.capitalize %>!
               <% end %>
-          <% elsif params[:action] == 'new' %>
-             <% nil %>
-          <% else %>
-            <i class="fa fa-search text-secondary pr-1" aria-hidden="true"></i>
-            <%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 gradient h6 pl-1" %>
-          <% end %>
-
-      <% end %>
+            </div>
+          </div> 
+        <% end %>
+      </div>
+    <%end %>      
+    <div class="h6 pr-1">
+      <% if params[:action] == 'show' %>
+        <p class="mt-3"> Профиль </p>
+        <% elsif params[:action] == 'edit' %>
+        <p class="mt-3"> Настройки </p>
+        <% elsif params[:action] == 'new' %>
+        <p class="mt-3"> Новый пост</p>
+      <%end %>
     </div>
-                
+    <% if user_signed_in? %>
+      <div>
+        <% if params[:action] == 'show' %>
+          <%= link_to(edit_user_path(current_user), class: 'text-primary h6 pl-1') do %>
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          <% end %>
+        <% elsif params[:action] == 'edit'%>
+          <%= link_to(destroy_user_session_path, method: :delete, class: 'navbar-nav h6 pl-1') do %>
+            <div class="sign-out">
+              Выйти <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+            <% end %>
+        <% elsif params[:action] == 'new' %>
+           <% nil %>
+        <% else %>
+          <i class="fa fa-search text-secondary pr-1" aria-hidden="true"></i>
+          <%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 pl-3 pr-3 gradient h6" %>
+        <% end %>
+      </div>
+    <% end %>            
   </div>
 </nav>
 

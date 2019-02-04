@@ -1,7 +1,7 @@
 <div class="back_container shadow-sm">
   <section class="container">
     <div class="new_post">
-      <div class="avatar_mini">
+      <div class="avatar_mini pr-1">
         <div class="active_user_mini">
           <% if current_user.online? %>
             <i class="fa fa-circle text-success"></i>
@@ -9,7 +9,7 @@
             <i class="fa fa-circle text-danger"></i>
           <% end %>
         </div>
-        <div>
+        <div class="pb-2">
           <% if current_user.avatar.attached? %>
             <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center"%> 
           <% else %>
@@ -17,9 +17,9 @@
           <% end %>
         </div>
       </div>
-      <div class="post_write">
+      <div class="post_write pt-1 pl-1">
         <%= form_with url: posts_path, scope: :post, local: true do |f| %>
-          <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)'; %>
+          <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text"; %>
           <%f.file_field :picture %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <% f.submit %> 
@@ -47,7 +47,7 @@
           <div class="post_section">
             <div class="post_section">
               <div class="position-relative pr-2">
-                <div class="active_user_mini">
+                <div class="active_user_mini pl-3">
                   <div>
                     <% if current_user.online? %>
                       <i class="fa fa-circle text-success"></i>
@@ -77,76 +77,89 @@
               <div class="wrap">
                 <div class="card-text post_writed text_wrap"><%= post.description %> </div>
               </div>
+              <div class="card border-0 align-self-center mt-2">     
+                <% if post.attachment.attached? %>
+                  <% if post.attachment.content_type.include?("image") %>
+                    <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
+                  <% else %>
+                    <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="card-body border-0 align-self-center">
+                <div class="post_section pt-3">
+                  <div class="post_section">
+                    <p class="icon_text">
+                      <%= show_svg('comment.svg') %>
+                      <%= post.comments.count %> комментариев 
+                    </p>            
+                  </div>
+                  <div class="pr-2 pl-2"> 
+                     <%= show_svg('line.svg') %>
+                    </div>
+                    <div class="post_section">
+                      <%= link_to(likes_toggle_path(post)) do %>
+                        <p class="icon_text"> 
+                          <% if post.likes.ids.include?(current_user.id) %>
+                            <%= show_svg('tenge_active.svg') %>
+                          <% else %>
+                            <%= show_svg('tenge_grey.svg') %>
+                          <% end %>
+                          <%= post.likes.count %> лайкбонусов
+                        </p>
+                      <% end %>
+                    </div>
+                </div>
+              </div>
+              <% if post.comments.any? %>
+              <% comment = post.comments.last %>
+                <div class="card-body border-top border-light">
+                  <div class="post_section">
+                    <div class="pr-2">
+                      <div class="position-relative">
+                        <% if comment.user.avatar.attached? %>
+                          <%= image_tag comment.user.avatar, class: "photo_mini rounded-circle float-center" %> 
+                        <% else %>
+                          <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="post_section">
+                        <%= link_to(user_path(post.user)) do %>
+                          <p class="nickname_text_comment">
+                            @<%= comment.user.nickname %>
+                          </p>
+                        <% end %>                        
+                        <p class="time post_writed"> | <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>
+                      </div>
+                      <div class="wrap">
+                        <div class="card-text post_writed text_comment text_wrap"><%= comment.body %> </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
+              <% end %>  
             </div>
           </div>  
         </div>
-        <div class="card border-0 align-self-center">     
-          <% if post.attachment.attached? %>
-            <% if post.attachment.content_type.include?("image") %>
-              <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
-            <% else %>
-              <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="card-body border-0 align-self-center">
-          <div class="post_section pt-3">
-            <div class="post_section pr-1">
-              <%= link_to(post_path(post)) do %>
-                <p class="time">
-                  <i class="fa fa-comment-o text-secondary pr-1 nickname_text"></i>
-                   <%= post.comments.count %> комментариев
-                </p>
-              <% end %>
-            </div>
-            <div class="post_section">
-              <%= link_to(likes_toggle_path(post)) do %>
-              <p class="time">
-                | <i class="fa fa-gg-circle text-warning pr-1 nickname_text"></i>
-                <%= post.likes.count %> лайк-бонусов
-                </p>
-              <% end %>
-            </div>
-          </div>
-        </div>
         <% if post.comments.any? %>
-        <% comment = post.comments.last %>
-          <div class="card-body border-top border-light">
-            <div class="post_section">
-              <div class="pr-2">
-                <div class="position-relative">
-                  <% if comment.user.avatar.attached? %>
-                    <%= image_tag comment.user.avatar, class: "photo_mini rounded-circle float-center" %> 
-                  <% else %>
-                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
-                  <% end %>
-                </div>
-              </div>
-              <div>
-                <div class="post_section">
-                  <p class="nickname_text_comment">
-                    <%= link_to(user_path(post.user)) do %>
-                      @<%= comment.user.nickname %>
-                    <% end %>
-                  </p>
-                  <p class="time_comment post_writed"> | <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>
-                </div>
-                <div class="wrap">
-                  <div class="card-text post_writed time text_wrap"><%= comment.body %> </div>
-                </div>
-              </div>
-            </div>  
+          <div class="text-center">
+            <%= link_to(post_path(post)) do %>
+              <p class="nickname_text_comment all_comments">
+                Все комментарии
+              </p>
+            <% end %>
           </div>
         <% end %>
-        <div class="time text-center">
-        <%= link_to(post_path(post)) do %>
-          <p>
-             Все комментарии
-          </p>
-        <% end %>
-      </div>
       </div>
     </section>
   <% end %> 
+  <div class="container text-center pb-2 pt-2">
+    <div class="text-center pb-1">   
+      <%= show_svg('smile.svg') %>
+    </div> 
+    <p class="smile">Извините, посты кончились. Подпишитесь еще на кого-нибудь</p>
+  </div>
 </div>
 
