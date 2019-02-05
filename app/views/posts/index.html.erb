@@ -89,10 +89,12 @@
               <div class="card-body border-0 align-self-center">
                 <div class="post_section pt-3">
                   <div class="post_section">
-                    <p class="icon_text">
-                      <%= show_svg('comment.svg') %>
-                      <%= post.comments.count %> комментариев 
-                    </p>            
+                    <%= link_to(post_path(post)) do %>
+                      <p class="icon_text">
+                        <%= show_svg('comment.svg') %>
+                        <%= post.comments.count %> комментариев
+                      </p>
+                    <% end %>           
                   </div>
                   <div class="pr-2 pl-2"> 
                      <%= show_svg('line.svg') %>
