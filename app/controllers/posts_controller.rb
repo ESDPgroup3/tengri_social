@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save 
+    if @post.save
       upload_attachment
       redirect_to user_path(@post.user)
     else
@@ -23,26 +23,27 @@ class PostsController < ApplicationController
   end
 
   def index
-    id = current_user.follows << current_user
-    # @posts = Post.of_followed_users(id).order('created_at DESC')
-    @posts = Post.all
+    id = current_user.follows
+    posts_of_friends = Post.of_followed_users(id).order('created_at DESC')
+    my_posts = current_user.posts
+    @posts = posts_of_friends.merge(my_posts)
   end
 
   def edit
   end
 
   def update
-      if @post.update(post_params)
-        upload_attachment
-        redirect_to user_path(@post.user)
-      else
-        render :edit
-      end 
+    if @post.update(post_params)
+      upload_attachment
+      redirect_to user_path(@post.user)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description ,:user_id, :attachment)
+    params.require(:post).permit(:title, :description, :user_id, :attachment)
   end
 
   def upload_attachment

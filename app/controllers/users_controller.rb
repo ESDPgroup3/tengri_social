@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-    layout 'authentication'
-    before_action :user_log_in?
+  layout 'authentication'
+  before_action :user_log_in?
 
-
-   def index
-     @users = User.all
-   end
+  def index
+    @users = User.all
+  end
 
   def show
     @user = User.find(params[:id])
@@ -14,11 +13,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-      if @user.update(user_params)
-        redirect_to @user, notice: 'User was successfully updated.' 
-      else
-        redirect_back(fallback_location: posts_path)
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      redirect_back(fallback_location: posts_path)
+    end
   end
 
   def likes_toggle
@@ -60,5 +59,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:nickname)
   end
-
 end

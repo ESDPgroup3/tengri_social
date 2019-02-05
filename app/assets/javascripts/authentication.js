@@ -1,18 +1,18 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 $('#phone').mask('9999999999');
   });
 
-// $(document).ready(function(){
-// $('form').submit(function(){
-//   var phone = $('#phone').val();
-//   if (phone.length != 10){
-//     $('#phone_error').removeClass('d-none');
-//     return false;
-//   }
-//   else{
-//     return true;
-//   }
-// });
-//   });
+$(function(){
+	let phoneField = $('#phone')[0]
+	console.log(phoneField)
+
+	$(phoneField).on('keyup', function(e){
+		console.log(phoneField.value.length)
+
+		const submit = document.getElementById("submit");
+		submit.disabled = phoneField.value.length !== 10;
+	})
+})
+
 
 

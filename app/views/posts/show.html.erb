@@ -1,48 +1,110 @@
-<div class="mt-5">
-  <% if @post.user.avatar.attached? %> 
-  <div>  
-    <%= image_tag @post.user.avatar, style: 'width: 70px', class: "text-center img-circular"  %> 
+<div class="back_container shadow-sm"> 
+  <section class='container mt-2 mb-2'>
+    <div class="card">
+      <div>
+        <% if current_user.id == @post.user.id %>
+          <div class="dropdown">
+            <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ...
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to 'изменить', edit_post_path(@post), class: "dropdown-item" %>
+              <%= link_to 'удалить', post_path(@post), method: :delete, class: "dropdown-item", remote: true %>
+            </div>
+          </div>
+        <% end %>
+      </div> 
+      <div class="card-body">
+        <div class="post_section">
+          <div class="post_section">
+            <div class="position-relative pl-2 pr-2">
+              <div class="active_user_mini">
+                <div>
+                  <% if current_user.online? %>
+                    <i class="fa fa-circle text-success"></i>
+                    <% else %>
+                    <i class="fa fa-circle text-danger"></i>
+                  <% end %>
+                </div>
+                <div>
+                  <% if @post.user.avatar.attached? %>
+                    <%= image_tag @post.user.avatar, class: "photo rounded-circle float-center" %> 
+                  <% else %>
+                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="post_section"> 
+              <%= link_to(user_path(@post.user)) do %>
+                <p class="nickname_text">
+                  @<%= @post.user.nickname %>
+                </p>
+              <% end %>
+              <p class="time post_writed">
+                <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d %m %Y %H : %M") %>
+              <p>
+            </div>
+            <div class="wrap text_wrap">
+              <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
+            </div>
+            <div class="card border-0 align-self-center mt-0">     
+              <% if @post.attachment.attached? %>
+                <% if @post.attachment.content_type.include?("image") %>
+                  <div class="card_body"> <%= image_tag @post.attachment, class: "image text-center"  %> </div>
+                <% else %>
+                  <%= video_tag url_for(@post.attachment), :controls => true , class: "video" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="card-body border-0 pl-2 pt-3">
+            <div class="post_section border_top pt-3 border-bottom">
+              <div class="post_section">
+                <p class="icon_text">
+                  <%= show_svg('comment.svg') %>
+                  <%= @post.comments.count %> комментариев 
+                </p>            
+              </div>
+              <div class="pr-2 pl-2"> 
+               <%= show_svg('line.svg') %>
+              </div>
+              <div class="post_section">
+                <%= link_to(likes_toggle_path(@post)) do %>
+                  <p class="icon_text"> 
+                    <% if @post.likes.ids.include?(current_user.id) %>
+                      <%= show_svg('tenge_active.svg') %>
+                    <% else %>
+                      <%= show_svg('tenge_grey.svg') %>
+                    <% end %>
+                    <%= @post.likes.count %> лайкбонусов
+                  </p>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-body border-light">
+                <div>
+                   <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
+                </div> 
+            </div>
+          </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </section> 
+  <div class="container nil"></div>
+  <div id="comments" class="container display_flex between fixed-bottom">
+    <div class="pt-2 pr-1">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
+      <% else %>
+        <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+      <% end %>
+    </div>
+    <div class="comment_form_width pb-1">
+      <%= render partial: "comments/form", locals: {commentable: @post}  %>
+    </div>
   </div>
-  <% else %>
-  <%= image_tag("no-foto.png", :alt => "no avatar", style: 'width: 70px') %>
-  <% end %>
-  <% if @post.user.nickname.nil? %>
-  <h3 class="d-inline">
-    <%= link_to @post.user.phone , user_path(@post.user) %>
-  </h3>
-  <% else %>
-  <h3 class="d-inline">
-    <%= link_to @post.user.nickname , user_path(@post.user) %>
-  </h3>
-  <% end %>
-  <% if @post.user.online? %>
-  <i class="fa fa-circle text-success"></i>
-  <% else %>
-  <i class="fa fa-circle text-danger"></i>
-  <% end %>
-  <p> <%= @post.description %> </p>    
-  <% if @post.attachment.attached? %> 
-  <% if @post.attachment.content_type.include?("image") %>
-  <%= image_tag @post.attachment, style: 'width: 500px', class: "text-center"  %>
-  <% else %>
-  <%= video_tag url_for(@post.attachment), :controls => true , class: "video" %>
-  <% end %>
-  <% end %>
-  <p> 
-    <small class="text-muted"> <%= @post.created_at %></small>
-  </p>
-</div>
-<div>
-  <% if current_user.id == @post.user.id %>
-  <%= link_to 'изменить', edit_post_path(@post), class: "btn btn-primary btn-md" %></a>
-  <%= link_to 'удалить', post_path(@post), method: :delete, class: "btn btn-primary btn-md"  %></a>
-  <% end %>
-</div>
-<div class="mt-2">  
-  <%= @post.likes.count %>
-  <%= link_to 'Like',  likes_toggle_path(@post), class: "btn btn-primary btn-md mb-1" %>
-</div>
-<div id="comments">
-  <%= render partial: "comments/form", locals: {commentable: @post}  %>
-  <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
 </div>

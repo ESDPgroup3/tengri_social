@@ -27,6 +27,7 @@ gem 'devise'
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem "font-awesome-rails"
 gem 'rails_emoji_picker'
+gem 'rubocop', '~> 0.63.1', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -41,7 +42,6 @@ gem 'rails_emoji_picker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
