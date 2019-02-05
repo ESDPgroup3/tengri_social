@@ -3,12 +3,9 @@ class AuthenticationController < ApplicationController
 
   layout 'application'
 
+  def add_nickname; end
 
-  def add_nickname
-  end
-
-  def show_form
-  end
+  def show_form; end
 
   def look_for
     @phone = params[:phone]
