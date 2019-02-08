@@ -2,8 +2,8 @@
   <div class="container  center-position">
     <div class="container">
       <div class="media-body flex-container"> 
-        <div class="card-body position ">
-          <div class="active_user counter position-relative">
+        <div class="card-body position">
+          <div class="active_user fa_circle position-relative">
             <% if @user.online? %>
               <i class="fa fa-circle text-success"></i>
             <% else %>
@@ -20,46 +20,57 @@
           <% if current_user == @user %> 
             <button type="button" class="close mt-0 h5 position-relative" aria-label="Close">
               <div aria-hidden="true">
-                <%= link_to(delete_avatar_path(@user.avatar),
-                method: :delete,
-                data: { confirm: 'Are you sure?' }) do %>
-                  <i class="fa fa-pencil-square square"></i>
+                <%= link_to(edit_user_registration_path) do %>
+                  <div class="square">
+                    <%= show_svg('edit_button.svg') %>
+                  </div>
                 <% end %>
+              </div>
+            </button>
+          <% else %>
+            <button type="button" class="close mb-5 h5 position-relative" aria-label="Close">
+              <div aria-hidden="true">
+                  <div class="square">
+                  </div>
               </div>
             </button>
           <% end %>  
         </div>
-        <% if @user.nickname.nil? %>s
-            <h6> <%= @user.phone %> </h6>
-        <% else %>
-            <h6> @<%= @user.nickname %> </h6>
-        <% end %>
-        <section class="btn-group center-position">
-          <div class="border-right text-center pr-1"><%= link_to(followers_user_path(@user)) do %>
-            <i class="fa fa-user followers"></i>
-            <div class="counter">
-              <%= @user.followers.count %>
-              <p> подписчиков </p>
-            </div>
+        <div class="position-relative user">
+          <% if @user.nickname.nil? %>s
+              <h6> <%= @user.phone %> </h6>
+          <% else %>
+              <h6> @<%= @user.nickname %> </h6>
           <% end %>
-          </div>
-          <div class="border-0 text-center pl-1 pr-1"><%= link_to(follows_user_path(@user)) do %>
-            <i class="fa fa-user text-primary"></i>
-            <div class="counter">
-              <%= @user.follows.count %>
-              <p> подписки </p>
+          <section class="btn-group center-position">
+            <div class="text-center pr-1"><%= link_to(followers_user_path(@user)) do %>
+              <%= show_svg('friens_icon.svg') %>
+                <div class="counter">
+                  <p class="count"><%= @user.followers.count %></p>
+                  <p> подписчиков </p>
+                </div>
+              <% end %>
             </div>
-            <% end %>
-          </div>
-          <div class="border-left text-center pl-1"><%= link_to(user_path(@user)) do %>
-            <i class="fa fa-gg-circle text-warning"></i>
-            <div class="counter">
-              <%=  @user.liked_posts.count %>
-              <p> бонусов </p>
+            <%= show_svg('line3.svg') %>
+            <div class="text-center pl-1 pr-1"><%= link_to(follows_user_path(@user)) do %>
+              <%= show_svg('friens_icon_2.svg') %>
+                <div class="counter">
+                  <p class="count"><%= @user.follows.count %></p>
+                  <p> подписки </p>
+                </div>
+              <% end %>
             </div>
-            <% end %>
-          </div>
-        </section>
+            <%= show_svg('line3.svg') %>
+            <div class="text-center pl-1"><%= link_to(user_path(@user)) do %>
+              <%= show_svg('tenge_icon_active.svg') %>
+                <div class="counter">
+                  <p class="count"><%=  @user.liked_posts.count %></p>
+                  <p> бонусов </p>
+                </div>
+              <% end %>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
@@ -67,11 +78,6 @@
     <section class="container">
       <div class="new_post">
         <div class="avatar_mini">
-          <div class="active_user_mini">
-            <% if @user == current_user %>
-              <i class="fa fa-circle text-success" aria-hidden="true"></i>
-            <% end %>
-          </div>
           <div>
             <% if @user.avatar.attached? %>
               <%= image_tag @user.avatar, class: "photo_mini rounded-circle float-center"%> 
@@ -80,9 +86,9 @@
             <% end %>
           </div>
         </div>
-        <div class="post_write">
+        <div class="post_write pb-2 pl-2">
           <%= form_with url: posts_path, scope: :post, local: true do |f| %>
-            <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)'; %>
+            <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text"; %>
             <%f.file_field :picture %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <% f.submit %> 
@@ -90,12 +96,12 @@
         </div>          
       </div>
     </section>
-  <% end %>
-  <div class="flex-container">
-    <% if current_user != @user %>
+  <% end %> 
+  <% if current_user != @user %>
+    <div class="container padding_bot flex-container">
       <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "text-primary nickname_text" %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>  
   <% @posts.each do |post| %>
     <section class='container mt-2 mb-2'>
       <div class="card">
@@ -114,8 +120,8 @@
         </div>
         <div class="card-body">
           <div class="post_section">
-            <div class="pr-2">
-              <div class="position-relative">
+            <div class="pl-2 pr-2">
+              <div class="position-relative pl-2">
                 <% if @user.avatar.attached? %>
                   <%= image_tag @user.avatar, class: "photo rounded-circle float-center" %> 
                 <% else %>
@@ -137,41 +143,52 @@
               <div class="wrap">
                 <div class="card-text post_writed text_wrap"><%= post.description %> </div>
               </div>
+              <div>
+                <div class="card border-0 align-self-center mt-">     
+                  <% if post.attachment.attached? %>
+                    <% if post.attachment.content_type.include?("image") %>
+                      <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
+                    <% else %>
+                      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="card-body border-0 align-self-center">
+                  <div class="post_section pt-3">
+                    <div class="post_section mr-1">
+                      <p class="icon_text">
+                        <%= show_svg('comment.svg') %>
+                        <%= post.comments.count %> комментариев 
+                      </p>            
+                    </div>
+                    <div class="pr-1"> 
+                      <%= show_svg('line.svg') %>
+                    </div>
+                    <div class="post_section">
+                      <%= link_to(likes_toggle_path(post)) do %>
+                        <p class="icon_text"> 
+                          <% if post.likes.ids.include?(current_user.id) %>
+                            <%= show_svg('tenge_active.svg') %>
+                          <% else %>
+                            <%= show_svg('tenge_grey.svg') %>
+                          <% end %>
+                          <%= post.likes.count %> лайкбонусов
+                        </p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>  
-        </div>
-        <div class="card border-0 align-self-center">     
-          <% if post.attachment.attached? %>
-            <% if post.attachment.content_type.include?("image") %>
-              <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
-            <% else %>
-              <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="card-body border-0 align-self-center">
-          <div class="post_section pt-3">
-            <div class="post_section mr-3">
-              <i class="fa fa-comment-o text-secondary pr-3 nickname_text"></i>
-              <p class="time">
-                 <%= post.comments.count %> комментариев
-              </p>
-            </div>
-            <div class="post_section">
-              <i class="fa fa-gg-circle text-secondary pr-3 nickname_text"></i>
-              <p class="time">
-                 <%= post.likes.count %> лайк-бонусов
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   <% end %>
-  <div class="back_container flex-container">
-    <div class="smile photo_mini position-relative">   
-      <i class="fa fa-frown-o frown-o position-relative" aria-hidden="true"></i>
+  <div class="container text-center pb-2 pt-2">
+    <div class="text-center pb-1">   
+      <%= show_svg('smile.svg') %>
     </div> 
-    <p class="time">Пиши исчо, постов больше нет</p>
+    <p class="smile">Пиши исчо, постов больше нет</p>
   </div>
 </div>

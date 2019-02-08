@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     id = current_user.follows
     posts_of_friends = Post.of_followed_users(id).order('created_at DESC')
     my_posts = current_user.posts
-    @posts = posts_of_friends.merge(my_posts)
+    @posts = posts_of_friends + my_posts
   end
 
   def edit
