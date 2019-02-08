@@ -5,7 +5,7 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <!--   <%= devise_error_messages! %> -->
   <div class="field">
-    <%= f.hidden_field :phone, value: params[:phone] %>
+    <%= f.hidden_field :phone, value: cookies[:phone] %>
   </div>
   <div class="field border border-info input_for_form m-auto text-left mb-5">
     <p class="phonenumber text-left m-0">Ваш пароль</p>
