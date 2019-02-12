@@ -8,7 +8,8 @@ class AuthenticationController < ApplicationController
   def show_form; end
 
   def look_for
-    @phone = params[:phone]
+    cookies[:phone] = params[:phone]
+    @phone = cookies[:phone]
     @user = User.find_by_phone(@phone)
     if @user
       redirect_to new_user_session_path(phone: @phone)
