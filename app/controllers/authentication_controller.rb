@@ -1,7 +1,6 @@
 class AuthenticationController < ApplicationController
  before_action :user_signed?
-
-  layout 'application'
+  layout 'authentication'
 
   def add_nickname; end
 

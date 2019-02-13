@@ -1,8 +1,81 @@
-.start_page{
-  padding-top: 80px;
-  font-size: 22px;
-  font-weight: 500;
+ body{
+  font-family: Roboto, sans-serif;
+  margin: 0 auto;
+  background: white;
+ }
+ .start_page{
+  display: flex;
+  justify-content: center;
+  margin-top: 264px;
+
 }
+.greeting{
+width: 244px;
+height: 57px;
+font-weight: bold;
+line-height: normal;
+font-size: 24px;
+color: #0E1826;
+}
+.input_for_form{
+border: 0.5px solid #568CD6;
+box-sizing: border-box;
+box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.120697);
+border-radius: 5px;
+margin-top: 58px;
+width: 358px;
+height: 56px;
+padding: 6px 12px 10px 12px;
+}
+.phonenumber{
+font-weight: 500;
+font-size: 12px;
+color: #838487;
+margin: 0;
+}
+.input_phone, .phone-mask{
+  border: none;
+  font-size: 14px;
+}
+.input_phone:active, .input_phone:hover, .input_phone:focus {
+  outline: 0;
+  outline-offset: 0
+  }
+  .gradient {
+  background: #1613CC; /* Для старых браузров */
+  background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
+  border-radius: 5px;
+ }
+ .block-send-information, .send-information{
+  margin-top: 52px;
+  border-radius: 5px;
+  width: 358px;
+  height: 44px;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+ }
+  .block-send-information{
+  background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 0.480663) 99.99%, #DDEAFD 100%);
+
+ }
+  .send-information{
+  background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
+ }
+ .registration-agreement{
+  margin-top: 63px;
+  font-size: 12px;
+  text-align: center;
+  color: #838487;
+}
+.link-in_agreement{
+  font-size: 12px;
+  color: #4e87dc;
+}
+/* 
 .around_button_start_page{
   margin-top: 30px;
 }
@@ -21,18 +94,11 @@
   background: #dc3545;
 }
 .button_log_in:hover, .button_sign_up:hover { color: white; text-decoration: none;}
-.button_log_in:active, .button_sign_up:active { color: white; text-decoration: none;} 
+.button_log_in:active, .button_sign_up:active { color: white; text-decoration: none;} */
 
-.greeting{
-  padding: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  width: 340px;
-}
-.input_phone{
-  border: none;
-  font-size: 17px;
-}
+/*
+}*/
+/*
 .input_phone:active, .input_phone:hover, .input_phone:focus {
   outline: 0;
   outline-offset: 0;
@@ -42,12 +108,7 @@
   color: #A9A9A9;
   font-weight: 200;
 }
-.input_for_form{
-  width: 320px;
-  padding: 5px 20px 5px 20px;
-  border-radius: 5px;
-  font-size: 17px;
-}
+
 .send-phone{
   display: inline-block;
   width: 320px;
@@ -59,16 +120,19 @@
   margin-top: 40px;
 }
 .small-print{
-  width: 220px;
-  font-size: 10px;
-  padding-top: 40px;
+font-size: 12px;
+text-align: center;
+
+color: #838487;
+}*/
+
+
+@media (min-width: 770px){
+.input_for_form{
+width: 350px;
 }
-
-@media only screen 
-
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
-.start_page{
+}
+/*.start_page{
   padding-top: 200px;
   font-size: 45px;
 }
@@ -79,18 +143,8 @@
   width: 750px;
   height:120px;
   padding-top: 25px;
-}
-.greeting{
-  font-size: 50px;
-  width: 750px;
-  padding-bottom: 100px;
-}
-.input_for_form{
-  width: 700px;
-  padding: 15px 50px 15px 50px;
-  border-radius: 10px;
-  font-size: 37px;
-}
+}*/
+/*
 .phonenumber{
   font-size: 20px;
 }
@@ -108,5 +162,4 @@
 .small-print{
   width: 500px;
   font-size: 22px;
-}
-}
+}*/

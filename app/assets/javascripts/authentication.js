@@ -14,5 +14,16 @@ $(function(){
 	})
 })
 
-
+$(function(){
+  $('#phone').keyup(function() {
+  const phone = $('#phone').val();
+  if (phone.length == 10) {
+    $("#submit").addClass('send-information');
+    $("#submit").removeClass('block-send-information');
+  } else {
+    $("#submit").addClass('block-send-information');
+    $("#submit").removeClass('send-information');
+  }
+})
+})
 

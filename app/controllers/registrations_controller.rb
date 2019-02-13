@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+    layout 'authentication'
   protected
 
   def update_resource(resource, params)
