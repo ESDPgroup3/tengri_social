@@ -16,13 +16,6 @@
     <i class="fa fa-check" aria-hidden="true" id="check_simbol"> 8 символов</i>
     <i class="fa fa-check pr-5 " aria-hidden="true" id="check_integer"> 1 цифра</i>
   </div>
-  <div class="">
-    <div class="field border border-info input_for_form m-auto text-left">
-      <p class="phonenumber text-left m-0">Подтверждение пароля</p>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "input_phone" %>
-      <span toggle="#user_password_confirmation" class="fa fa-eye-slash fa-fw field-icon toggle-password d-inline-block mr-0"></span>
-    </div>
-  </div>
   <%= f.submit 'Продолжить', class: 'send-phone' %>
   <% end %>
 </div>

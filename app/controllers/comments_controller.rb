@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  layout 'application'
+  layout 'authentication'
   before_action :user_log_in?
 
   def new

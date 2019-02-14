@@ -4,12 +4,14 @@
     <title>TengriSocial</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=400, initial-width=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
      
   <body>
+    <%= render 'layouts/application/navbar' %>
+    <div class="p-5"></div>
     <%= yield %>
     </div>
   </body>
