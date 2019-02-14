@@ -35,6 +35,8 @@ $(".toggle-password").click(function() {
 
 $('#user_password').keyup(function() {
   const pass = $('#user_password').val();
+  const submit = document.getElementById("create_password");
+    submit.disabled = pass.length !== 8 && pass.match(/\d/i) > 0;
   if (pass.length >= 8) {
     $("#check_simbol").addClass('text-success');
   } else {
@@ -45,21 +47,15 @@ $("#check_simbol").removeClass('text-success');
   } else {
 $("#check_integer").removeClass('text-success');
   }
-});
-
-let find_password = $('#user_password, #user_password_confirmation');
-$('#user_password_confirmation').keyup(function() {
-  const pass = $('#user_password').val();
-  const pass_rep = $('#user_password_confirmation').val();
-  if (pass === pass_rep) {
-        $('#password_error').addClass('d-none');
-  }
-  else{
-    $('#password_error').removeClass('d-none');
+  if (pass.match(/\d/i) > 0 && pass.length >= 8) {
+    $("#create_password").addClass('send-information');
+    $("#create_password").removeClass('block-send-information');
+  } else {
+    $("#create_password").removeClass('send-information');
+    $("#create_password").addClass('block-send-information');
   }
 });
 });
-
 
 
 

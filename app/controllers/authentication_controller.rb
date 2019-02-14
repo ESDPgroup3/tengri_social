@@ -2,8 +2,6 @@ class AuthenticationController < ApplicationController
  before_action :user_signed?
  layout 'application'
 
-  def add_nickname; end
-
   def show_form; end
 
   def look_for
