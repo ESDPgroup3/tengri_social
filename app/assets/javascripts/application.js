@@ -55,8 +55,8 @@ $("#check_integer").removeClass('text-success');
     $("#create_password").addClass('block-send-information');
   }
 });
+
+
 });
-
-
 
 

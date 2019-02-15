@@ -1,8 +1,10 @@
 class AuthenticationController < ApplicationController
- before_action :user_signed?
+ before_action :user_signed?, except: [:add_nickname]
  layout 'application'
 
   def show_form; end
+
+  def add_nickname; end
 
   def look_for
     cookies[:phone] = params[:phone]

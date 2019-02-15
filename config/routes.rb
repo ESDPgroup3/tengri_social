@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
-  get 'users/add_nickname', as: :nickname
+
   resources :users, :except => [:destroy, :create] do
     member do
       get 'follows'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'authentication#show_form'
   get 'authentication/show_form', as: :show_form_in
   post 'authentication/look_for'
+  get 'authentication/add_nickname', as: :nickname
 
 
   resources :posts do
