@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  layout 'application'
   protected
 
   def update_resource(resource, params)
@@ -6,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resources)
-    nickname_path(current_user)
+    nickname_path
   end
 
   def after_update_path_for(resource)

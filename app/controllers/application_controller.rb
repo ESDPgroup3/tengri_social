@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :user_activity
 
+
   protected
 
   def configure_permitted_parameters
