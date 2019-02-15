@@ -31,19 +31,6 @@
 	background: blue;
 	border-radius: 5px;
 }
-.input_for_form{
-  width: 320px;
-  padding: 5px 20px 5px 20px;
-  border-radius: 5px;
-  font-size: 17px;
-  margin-bottom: 10px;
-}
-.password_explanation{
-  font-size: 12px;
-  width: 320px;
-  padding-bottom: 40px;
-  padding-top: 10px;
-}
 .password_creation{
   font-size: 20px;
   font-weight: bold;
@@ -54,12 +41,6 @@
 }
 
 @media (min-width: 770px){
-.password_explanation{
-  font-size: 12px;
-  width: 700px;
-  padding-bottom: 40px;
-  padding-top: 10px;
-}
 .password_creation{
   font-size: 20px;
   font-weight: bold;
@@ -229,19 +210,19 @@ h6{
   border: 0.5px solid #568CD6;
   box-sizing: border-box;
 }
-input[type="text"]::placeholder{
+/* input[type="text"]::placeholder{
   font-size: 14px;
   width: 100%;
   color: #5585F7;
-}
-input[type="text"]{
+} */
+/* input[type="text"]{
   width: 100%;
   height: 48px;
   padding: 5px 10px;
   border: 0.5px solid #568CD6;
   box-sizing: border-box;
   border-radius: 5px;
-}
+} */
 input[type="form-control"]{
   font-size: 14px;
   color: #5585F7;
@@ -342,9 +323,9 @@ line-height: 1.7em;
   border: 0;
   background: transparent;
 }
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+/*input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
   background-color: transparent;
-  } 
+  } */
 .smile{
   font-size: 14px;
   color: #838487;
@@ -531,7 +512,7 @@ h6{
   border: 0.5px solid #568CD6;
   box-sizing: border-box;
 }
-input[type="text"]::placeholder{
+/* input[type="text"]::placeholder{
   font-size: 14px;
   width: 100%;
   color: #5585F7;
@@ -543,7 +524,7 @@ input[type="text"]{
   border: 0.5px solid #568CD6;
   box-sizing: border-box;
   border-radius: 5px;
-}
+} */
 input[type="form-control"]{
   font-size: 14px;
   color: #5585F7;
@@ -643,9 +624,9 @@ line-height: 1.7em;
   border: 0;
   background: transparent;
 }
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+/*input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
   background-color: transparent;
-  } 
+  } */
 .smile{
   font-size: 14px;
   color: #838487;
