@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  def edit
+    render layout: "user"
+  end
 
 
   def update

@@ -264,7 +264,7 @@ input[type="form-control"]::placeholder{
 a, .nickname_text{
   font-size: 17px;
   color: #0E1826;
-  padding-right: 5px;
+/*  padding-right: 5px;*/
 }
 .nickname_text_comment{
   font-size: 13px;
@@ -565,7 +565,7 @@ input[type="form-control"]::placeholder{
 a, .nickname_text{
   font-size: 17px;
   color: #0E1826;
-  padding-right: 5px;
+/*  padding-right: 5px;*/
 }
 .nickname_text_comment{
   font-size: 13px;

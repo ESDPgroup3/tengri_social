@@ -1,27 +1,81 @@
-<div class="text-center">
-  <h3 class="headers_edit text-center m-auto">Личная информация</h3>
-  <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+<div class="settings">
+  <div class="form-in-authentication">
+    <h3 class="names-sectors">
+      Личная информация
+    </h3>
+    <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+    <div class="edit-nickname">
+      <p class="hint-input">
+        Имя пользователя
+      </p>
+      <%= f.text_field :nickname, :value => current_user.nickname,  autofocus: true, :class => "input_information" %>
+    </div>
+    <%= f.submit 'Сохранить изменения', class: 'block-send-information' %>
+    <% end %>
+    <div class="account-settings">
+      <h3 class="names-sectors">
+        Аккаунт
+      </h3>
+      <hr class="line-sector">
+      <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+      <div class="flex-between">
+        <span>
+          <%= image_tag 'icons/heart.png', class: 'imgtag-png' %> Понравившиеся публикации
+        </span>
+        <i class="fa fa-chevron-right text-right"></i>
+      </div>
+      <% end %>
+      <hr class="line-sector">
+      <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+      <div class="flex-between">
+        <span class="d-flex justify-content-start">
+          <div class="d-inline-block">
+            <%= image_tag 'icons/lock.png', class: 'imgtag-png' %>
+          </div>
+          <div class="d-inline-block ml-2">Сделать профиль приватным 
+           <p class='hint-settings'> Просматривать ваш профиль и посты <br> могут только одобренный вами люди </p>
+         </div>
+       </span>
+       <%= image_tag 'icons/off.png' %>
+     </div>
+     <% end %>
+   </div>
+   <div>
+    <h3 class="names-sectors">Конфиденциальность <br> и безопасность</h3>
+    <hr class="line-sector">
+    <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+    <div class="flex-between">
+      <span class="d-flex justify-content-start">
+        <div class="d-inline-block"><%= image_tag 'icons/visibility.png', class: 'imgtag-png' %></div>
+        <div class="d-inline-block ml-2">Видеть меня по номеру телефона
+          <p class='hint-settings'> Другие пользователи могут искать  <br> вас по номеру телефона </p>
+        </div>
+      </span>
+      <%= image_tag 'icons/off.png' %>
+    </div>
+    <% end %>
+    <hr class="line-sector">
+    <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+    <div class="flex-between">
+      <span><%= image_tag 'icons/user.png', class: 'imgtag-png' %> Черный список</span>
+      <i class="fa fa-chevron-right text-right"></i>
+    </div>
+    <% end %>
+    <hr class="line-sector">
+    <%= link_to edit_user_registration_path(current_user), class: 'links-in-setting reset-password' do %>
+    <div class="flex-between">
+      <span><%= image_tag 'icons/PIN.png', class: 'imgtag-png' %> Сбросить пароль</span>
+      <i class="fa fa-chevron-right text-right"></i>
+    </div>
+    <% end %>
+    <hr class="line-sector">
+    <%= link_to registration_path(current_user), class: 'links-in-setting delete-accaunt' do %>
+    <div class="flex-between  mb-5">
+      <span><%= image_tag 'icons/cross.png', class: 'imgtag-png' %> Удалить аккаунт</span>
+      <i class="fa fa-chevron-right text-right"></i>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.hidden_field :phone, value: params[:phone] %>
-  </div>
-  <div class="field border border-secondary input_for_form m-auto text-left">
-    <p class="phonenumber text-left m-0">Имя пользователя</p>
-    <%= f.text_field :nickname, :value => current_user.nickname,  autofocus: true, :class => "input_phone mr-5" %>
-  </div>
-  <%= f.submit 'Сохранить изменения', class: 'send-phone' %>
-  <% end %>
-</div>
-<div class="">
-  <h3 class="headers_edit text-center m-auto pt-5 ">Безопасность</h3>
-  <div class="input_for_form m-auto text-left pb-3 border-bottom text-primary">
-    <i class="fa fa-lock"></i>
-    <%= link_to "Сбросить пароль" , edit_user_registration_path(current_user), class: "link_in_edit d-inline-block text-primary" %>
-    <i class="fa fa-chevron-right"></i>
-  </div>
-  <div class="input_for_form m-auto pt-3 text-danger">
-    <i class="fa fa-times"></i>
-    <%= link_to "Удалить аккаунт" , registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "link_in_edit d-inline-block text-danger" %>
-    <i class="fa fa-chevron-right text-right"></i>
-  </div>
-</div>
+

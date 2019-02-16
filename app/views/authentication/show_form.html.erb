@@ -1,10 +1,10 @@
 <div class="start_page">
   <div class="form-in-authentication">
-    <h3 class="greeting">Добро пожаловать в <br>Tengri social!</h3>
+    <h3 class="names-sectors">Добро пожаловать в <br>Tengri social!</h3>
     <%= form_with url: authentication_look_for_path(@phone), local: true do |f| %>
     <div class="input_for_form">
-      <p class="phonenumber">Номер телефона</p>
-      <p class="phone-mask">+7 <%= f.telephone_field :phone, :class => "input_phone", autofocus: true, :data=> {:mask=> '9999999999'} %></p>
+      <p class="hint-input">Номер телефона</p>
+      <p class="phone-mask">+7 <%= f.telephone_field :phone, :class => "input_information", autofocus: true, :data=> {:mask=> '9999999999'} %></p>
     </div>
     <%= f.submit 'Продолжить', class: 'block-send-information' , :disabled => true, :id => 'submit', :maxlength => 10 %>
     <% end %>
