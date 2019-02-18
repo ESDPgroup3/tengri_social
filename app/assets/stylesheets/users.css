@@ -69,5 +69,45 @@
 .delete-accaunt{
   color: #D93067;
 }
+.modal-exit{
+  font-size: 16px;
+  font-weight: normal;
+  padding: 25px 0 25px 0;
+}
+.modal-content{
+  border-radius: 6px;
+  width: 400px;
+}
+.modal-footer{
+  background: #F6F6F6;
+  border-radius: 6px;
+  height: 50px;
+}
+.link-exit{
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  width: 200px;
+}
+.exit{
+  color: #568CD6;
+}
+.no-exit{
+  color: #D93067;
+}
+.exit:active, .exit:hover, .exit:focus {
+  color: #568CD6;
+  text-decoration: none;
+}
+.no-exit:active, .no-exit:hover, .no-exit:focus {
+  color: #D93067;
+  text-decoration: none;
+}
+.border-exit{
+  border: 1px solid #E0E0E0;
+  height: 40px;
+}
+
+
 
 

@@ -78,4 +78,19 @@
   </div>
 </div>
 
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"> 
+      <div class="modal-exit">
+        <p class="text-center m-0">Вы уверены, что хотите выйти?</p>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+        <span class="border-exit"></span>
+        <%= link_to "Выйти", destroy_user_session_path, method: :delete,  class: 'link-exit exit' %>
+      </div>
+    </div>
+  </div>
+</div>
+
 

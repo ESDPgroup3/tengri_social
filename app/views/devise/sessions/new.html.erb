@@ -7,9 +7,9 @@
       <%= f.check_box :remember_me %> <%= f.label :remember_me, value = "запомнить меня" %>
       <%= f.hidden_field :phone, value: cookies[:phone] %>
     </div>
-    <div class="input_for_form">
+    <div class="input_for_form input_valide">
       <p class="hint-input">Ваш пароль</p>
-      <%= f.password_field :password, autocomplete: "current-password", :class => "input_information" %>
+      <%= f.password_field :password, :autofocus => true, autocomplete: "current-password", :class => "input_information" %>
       <span toggle="#user_password" class="fa fa-eye-slash fa-fw field-icon toggle-password"></span>
     </div>
     <%= f.submit 'Продолжить', class: 'send-information'  %>

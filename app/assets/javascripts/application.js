@@ -55,8 +55,6 @@ $('#user_password').keyup(function() {
     $("#create_password").addClass('block-send-information');
   }
 });
-
-
 });
 
 
