@@ -4,12 +4,12 @@
   <div class="password_explanation">Как Вас величать?</div>
   <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
     <%= f.hidden_field :phone, value: params[:phone] %>
-  <div class="input_for_new_password">
+  <div id = "nick_field" class="input_for_new_password input_valide">
     <p class="phonenumber text-left m-0">Никнейм</p>
     <%= f.text_field :nickname, autofocus: true, :class => "input_phone" %>
   </div>
-
-  <%= f.submit 'Продолжить', :disabled => true, class: 'block-send-information',:id => "create_nickname" %>
+  <div class="nick_invalide d-none" id="msg_error">sorry такой пользователь уже существует</div>
+  <%= f.submit 'Продолжить', :disabled => true, class: 'block-send-information', :id => "create_nickname" %>
   <% end %>
 </div>
 </div>

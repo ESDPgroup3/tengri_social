@@ -6,6 +6,14 @@ class AuthenticationController < ApplicationController
 
   def add_nickname; end
 
+  def nickname_exists
+    @nick_exists = User.exists?(nickname: params[:nickname])
+    p params[:nickname]
+    respond_to do |format|
+      format.js { render :json => @nick_exists }
+    end
+  end
+
   def look_for
     cookies[:phone] = params[:phone]
     @phone = cookies[:phone]

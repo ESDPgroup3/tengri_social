@@ -39,8 +39,16 @@
   font-size: 24px;
   color: #0E1826;
 }
-.input_for_form, .input_for_password, .input_for_new_password{
+.input_valide{
   border: 0.5px solid #568CD6;
+}
+.input_invalide{
+  border: 0.5px solid #D93067;
+}
+.nick_invalide{
+  color: #D93067;
+}
+.input_for_form, .input_for_password, .input_for_new_password{
   box-sizing: border-box;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.120697);
   border-radius: 5px;
