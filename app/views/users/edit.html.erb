@@ -8,7 +8,7 @@
       <p class="hint-input">
         Имя пользователя
       </p>
-      <%= f.text_field :nickname, :value => current_user.nickname,  autofocus: true, :class => "input_information" %>
+      <%= f.text_field :nickname, :value => current_user.nickname, :class => "input_information" %>
     </div>
     <%= f.submit 'Сохранить изменения', class: 'block-send-information' %>
     <% end %>
