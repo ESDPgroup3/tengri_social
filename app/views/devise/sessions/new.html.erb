@@ -2,14 +2,14 @@
   <div class="form-in-authentication">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="correct-password"></div>
-    <h3 class="greeting">Привет, <%= @user.nickname %> </h3>
+    <h3 class="names-sectors">Привет, <%= @user.nickname %> </h3>
     <div class="field">
       <%= f.check_box :remember_me %> <%= f.label :remember_me, value = "запомнить меня" %>
       <%= f.hidden_field :phone, value: cookies[:phone] %>
     </div>
-    <div class="input_for_password">
-      <p class="phonenumber">Ваш пароль</p>
-      <%= f.password_field :password, autofocus: true, autocomplete: "current-password", :class => "input_phone" %>
+    <div class="input_for_form input_valide">
+      <p class="hint-input">Ваш пароль</p>
+      <%= f.password_field :password, :autofocus => true, autocomplete: "current-password", :class => "input_information" %>
       <span toggle="#user_password" class="fa fa-eye-slash fa-fw field-icon toggle-password"></span>
     </div>
     <%= f.submit 'Продолжить', class: 'send-information'  %>

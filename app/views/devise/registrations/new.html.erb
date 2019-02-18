@@ -1,12 +1,12 @@
 <div class="start_page">
   <div class="form-in-authentication">
-  <h3 class="greeting">Создайте пароль</h3>
+  <h3 class="names-sectors">Создайте пароль</h3>
   <div class="password_explanation">Придумайте пароль. Пароль должен состоять из 8 знаков на латинице и включать в себя одну цифру</div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.hidden_field :phone, value: cookies[:phone] %>
-    <div class="input_for_new_password">
-    <p class="phonenumber">Ваш пароль</p>
-    <%= f.password_field :password, autofocus: true, autocomplete: "current-password", :class => "input_phone" %>
+  <div class="input_for_new_password input_valide">
+    <p class="hint-input">Ваш пароль</p>
+    <%= f.password_field :password, :autofocus => true, autocomplete: "current-password", :class => "input_information" %>
     <span toggle="#user_password" class="fa fa-eye-slash fa-fw field-icon toggle-password"></span>
   </div>
   <div class="password_check">
