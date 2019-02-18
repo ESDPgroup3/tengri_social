@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   validates :phone, presence: true, length: { is: 10 }, uniqueness: true, numericality: { only_integer: true }
-
+  validates_uniqueness_of :nickname, allow_blank: true
+  validates :nickname, length: {minimum: 5}, on: :update
   has_many :posts, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
   has_many :comments, dependent: :nullify
@@ -35,5 +36,12 @@ class User < ApplicationRecord
 
   def online?
     updated_at > 30.minutes.ago
+  end
+  private
+  symbols = [ '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ':', ';', '<', '>', '-', '_']
+  def error_messages
+    if nickname.length < 5
+      puts "your nickname has to be more symbols"
+    end
   end
 end

@@ -19,8 +19,8 @@
 //= require bootstrap
 //= bootstrap
 //= require rails_emoji_picker
+//= require lodash
 //= require_tree .
-
 
 $(document).ready(function(){
 $(".toggle-password").click(function() {
@@ -36,16 +36,16 @@ $(".toggle-password").click(function() {
 $('#user_password').keyup(function() {
   const pass = $('#user_password').val();
   const submit = document.getElementById("create_password");
-    submit.disabled = pass.length !== 8 && pass.match(/\d/i) > 0;
+  submit.disabled = pass.length < 8 || pass.match(/\d/i) == 0;
   if (pass.length >= 8) {
     $("#check_simbol").addClass('text-success');
   } else {
-$("#check_simbol").removeClass('text-success');
+    $("#check_simbol").removeClass('text-success');
   }
   if (pass.match(/\d/i) > 0) {
     $("#check_integer").addClass('text-success');
   } else {
-$("#check_integer").removeClass('text-success');
+    $("#check_integer").removeClass('text-success');
   }
   if (pass.match(/\d/i) > 0 && pass.length >= 8) {
     $("#create_password").addClass('send-information');
