@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :user_activity
+
 
   protected
 
@@ -20,8 +22,19 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resources)
-	   posts_path  	
+    posts_path
   end
 
+  def user_signed?
+    if user_signed_in?
+      nickname_path(current_user)
+    end
+  end 
 
+
+  private
+
+  def user_activity
+    current_user.try :touch
+  end
 end

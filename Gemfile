@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'bootstrap', '~> 4.1.2'
 gem 'jquery-rails'
+gem 'lodash-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -26,6 +27,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem "font-awesome-rails"
+gem 'rails_emoji_picker'
+gem 'rails-ujs'
+gem 'rubocop', '~> 0.63.1', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -40,7 +44,6 @@ gem "font-awesome-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

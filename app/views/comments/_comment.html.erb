@@ -1,0 +1,34 @@
+<% nesting = local_assigns.fetch(:nesting, 1) %>
+<% max_nesting = local_assigns[:max_nesting]%> 
+<div class="border-info pl-3">
+  <div class="pr-2">
+  	<div class="post_section">
+	  <div class="position-relative">
+	    <% if comment.user.avatar.attached? %>
+	      <%= image_tag comment.user.avatar, class: "photo_mini rounded-circle float-center" %> 
+	    <% else %>
+	      <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+	    <% end %>
+	  </div>
+	  <div class="pl-2">
+	    <div class="post_section">                
+	      <%= link_to(user_path(@post.user)) do %>
+		    <p class="nickname_text_comment">
+			  @<%= comment.user.nickname %>
+		    </p>
+	      <% end %>
+	      <p class="time post_writed"> <%= show_svg('line2.svg') %> <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>
+	    </div> 
+		<div class="text_comment text_wrap">
+		  <%= comment.body %>
+		</div>
+		<%= link_to "Ответить", "#", id: "reply", class: "reply" %>
+	  </div>
+	</div>
+  </div>
+  <div>
+  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply", @submit_text =>"Ответить на коментарий" }  %>
+  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting] %>
+  </div>
+</div> 
+

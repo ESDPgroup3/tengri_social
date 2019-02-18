@@ -1,77 +1,194 @@
-<div class='container center-position' style=" max-width: 600px">
-  <div class="container">
-    <% if @user.avatar.attached? %>
+<div class="back_container shadow-sm">
+  <div class="container  center-position">
+    <div class="container">
       <div class="media-body flex-container"> 
-        <div class="card-body position ">
-          <%= image_tag @user.avatar, style: 'width: 150px; height: 150px', class: "rounded-circle float-center"%> 
+        <div class="card-body position">
+          <div class="active_user fa_circle position-relative">
+            <% if @user.online? %>
+              <i class="fa fa-circle text-success"></i>
+            <% else %>
+              <i class="fa fa-circle text-danger"></i>
+            <% end %>
+          </div>
+          <div class="position-relative">
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, class: "photo rounded-circle float-center"%> 
+            <% else %>
+              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+            <% end %>
+          </div>
           <% if current_user == @user %> 
-            <button type="button" class="close" aria-label="Close">
+            <button type="button" class="close mt-0 h5 position-relative" aria-label="Close">
               <div aria-hidden="true">
-                <%= link_to(delete_avatar_path(@user.avatar.id),
-                method: :delete,
-                data: { confirm: 'Are you sure?' }) do %>
-                  <i style='COLOR:blue;' class="fa fa-pencil-square"></i><% end %>
+                <%= link_to(edit_user_registration_path) do %>
+                  <div class="square">
+                    <%= show_svg('edit_button.svg') %>
+                  </div>
                 <% end %>
               </div>
-        </div>
             </button>
           <% else %>
-          <%= image_tag("no-foto.png", :alt => "no avatar") %>
+            <button type="button" class="close mb-5 h5 position-relative" aria-label="Close">
+              <div aria-hidden="true">
+                  <div class="square">
+                  </div>
+              </div>
+            </button>
+          <% end %>  
+        </div>
+        <div class="position-relative user">
+          <% if @user.nickname.nil? %>s
+              <h6> <%= @user.phone %> </h6>
+          <% else %>
+              <h6> @<%= @user.nickname %> </h6>
           <% end %>
-        <% if @user.nickname.nil? %>
-            <h3> <%= @user.phone %> </h3>
-        <% else %>
-            <h3> <%= @user.nickname %> </h3>
-        <% end %>
-          <h3>@<%= @user.phone %></h3>
           <section class="btn-group center-position">
-            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.followers.count} - подписчики", followers_user_path(@user) %>
-              <i class="fa fa-users"></i>
+            <div class="text-center pr-1"><%= link_to(followers_user_path(@user)) do %>
+              <%= show_svg('friens_icon.svg') %>
+                <div class="counter">
+                  <p class="count"><%= @user.followers.count %></p>
+                  <p> подписчиков </p>
+                </div>
+              <% end %>
             </div>
-            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.follows.count} - подписки", follows_user_path(@user) %>
-              <i class="fa fa-user"></i>
+            <%= show_svg('line3.svg') %>
+            <div class="text-center pl-1 pr-1"><%= link_to(follows_user_path(@user)) do %>
+              <%= show_svg('friens_icon_2.svg') %>
+                <div class="counter">
+                  <p class="count"><%= @user.follows.count %></p>
+                  <p> подписки </p>
+                </div>
+              <% end %>
             </div>
-            <div class="btn btn-outline-info btn-sm"><%= link_to "#{@user.follows.count} - бонусов", follows_user_path(@user) %>
-              <i class="fa fa-bitcoin"></i>
+            <%= show_svg('line3.svg') %>
+            <div class="text-center pl-1"><%= link_to(user_path(@user)) do %>
+              <%= show_svg('tenge_icon_active.svg') %>
+                <div class="counter">
+                  <p class="count"><%=  @user.liked_posts.count %></p>
+                  <p> бонусов </p>
+                </div>
+              <% end %>
             </div>
           </section>
-    <% if current_user == @user %>
-    <div class="card-body">
-      <%= link_to 'Добавить новый пост', new_post_path, class: "btn btn-primary btn-md mb-1" %>
-    <% else %>
-      <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "btn btn-primary btn-md mb-1" %>
-    <% end %>
+        </div>
       </div>
     </div>
   </div>
-
- 
-
-</div>
-
-<!-- посты пользователя -->
-<div class='container' style=" max-width: 800px">
-  <div class="card">
-  <% @posts.each do |post| %> 
-    <div class="card-body">
-      <h6><%= image_tag @user.avatar, style: 'width: 50px; height: 50px', class: "rounded-circle float-center "%> 
-          @<%= @user.phone %>
-        <li class="list-group-item"><p class="card-text"><%= post.description %> </p></li>
-      </h6>
-    </div>
-    <div class="card align-self-center" style="width: 500px;" id="post">
-      <% if post.picture.attached? %> 
-    <div class="card_body"> <%= image_tag post.picture, style: 'width: 500px', class: "text-center"  %> </div>
-    <% end %>
-    <div class="card-body align-self-center">
-      <% if current_user == @user %>
-      <%= link_to 'изменить', edit_post_path(post), class: "btn btn-primary btn-md" %>
-      <%= link_to 'удалить', post_path(post), method: :delete, class: "btn btn-primary btn-md", remote: true %>
-    <% end %>
-    <%= post.likes.count %>
-    <%= link_to 'Like',  likes_toggle_path(post), class: "btn btn-primary btn-md mb-1" %>
+  <% if current_user == @user %>
+    <section class="container">
+      <div class="new_post">
+        <div class="avatar_mini">
+          <div>
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, class: "photo_mini rounded-circle float-center"%> 
+            <% else %>
+              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="post_write pb-2 pl-2">
+          <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+            <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text"; %>
+            <%f.file_field :picture %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <% f.submit %> 
+          <% end %>
+        </div>          
       </div>
+    </section>
+  <% end %> 
+  <% if current_user != @user %>
+    <div class="container padding_bot flex-container">
+      <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "text-primary nickname_text" %>
     </div>
-  </div>
+  <% end %>  
+  <% @posts.each do |post| %>
+    <section class='container mt-2 mb-2'>
+      <div class="card">
+        <div>
+          <% if current_user == @user %>
+            <div class="dropdown">
+              <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ...
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'изменить', edit_post_path(post), class: "dropdown-item" %>
+                <%= link_to 'удалить', post_path(post), method: :delete, class: "dropdown-item", remote: true %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="post_section">
+            <div class="pl-2 pr-2">
+              <div class="position-relative pl-2">
+                <% if @user.avatar.attached? %>
+                  <%= image_tag @user.avatar, class: "photo rounded-circle float-center" %> 
+                <% else %>
+                  <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+                <% end %>
+              </div>
+            </div>
+            <div>
+              <div class="post_section">
+                <p class="nickname_text">
+                  <% if @user.nickname.nil? %>
+                    <%= @user.phone %>
+                  <% else %>
+                    @<%= @user.nickname %>
+                  <% end %>
+                </p>
+                <p class="time post_writed">| <%= post.created_at.strftime("%d %m %Y %H : %M") %></p>
+              </div>
+              <div class="wrap">
+                <div class="card-text post_writed text_wrap"><%= post.description %> </div>
+              </div>
+              <div>
+                <div class="card border-0 align-self-center mt-">     
+                  <% if post.attachment.attached? %>
+                    <% if post.attachment.content_type.include?("image") %>
+                      <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
+                    <% else %>
+                      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="card-body border-0 align-self-center">
+                  <div class="post_section pt-3">
+                    <div class="post_section mr-1">
+                      <p class="icon_text">
+                        <%= show_svg('comment.svg') %>
+                        <%= post.comments.count %> комментариев 
+                      </p>            
+                    </div>
+                    <div class="pr-1"> 
+                      <%= show_svg('line.svg') %>
+                    </div>
+                    <div class="post_section">
+                      <%= link_to(likes_toggle_path(post)) do %>
+                        <p class="icon_text"> 
+                          <% if post.likes.ids.include?(current_user.id) %>
+                            <%= show_svg('tenge_active.svg') %>
+                          <% else %>
+                            <%= show_svg('tenge_grey.svg') %>
+                          <% end %>
+                          <%= post.likes.count %> лайкбонусов
+                        </p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </section>
   <% end %>
+  <div class="container text-center pb-2 pt-2">
+    <div class="text-center pb-1">   
+      <%= show_svg('smile.svg') %>
+    </div> 
+    <p class="smile">Пиши исчо, постов больше нет</p>
+  </div>
 </div>

@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nickname: MyString
-  first_name: MyString
+  nickname: "onetwo"
+  encrypted_password: 'password1'
   surname: MyString
-  birthday: 2019-01-10
+  phone: 1234567890
 
 two:
   nickname: MyString

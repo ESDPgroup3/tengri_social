@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   layout 'authentication'
+
   before_action :user_log_in?
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -13,8 +14,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save 
-      upload_picture
+    if @post.save
+      upload_attachment
       redirect_to user_path(@post.user)
     else
       render 'new'
@@ -22,25 +23,27 @@ class PostsController < ApplicationController
   end
 
   def index
-    # @posts = Post.of_followed_users(current_user.follows).order('created_at DESC')
-    @posts = Post.all.reverse
+    id = current_user.follows
+    posts_of_friends = Post.of_followed_users(id).order('created_at DESC')
+    my_posts = current_user.posts
+    @posts = posts_of_friends + my_posts
   end
 
   def edit
   end
 
   def update
-      if @post.update(post_params)
-        upload_picture
-        redirect_to user_path(@post.user)
-      else
-        render :edit
-      end 
+    if @post.update(post_params)
+      upload_attachment
+      redirect_to user_path(@post.user)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -50,14 +53,14 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description ,:user_id)
+    params.require(:post).permit(:title, :description, :user_id, :attachment)
   end
 
-  def upload_picture
-    @post.picture.attach(uploaded_file) if uploaded_file.present?
+  def upload_attachment
+    @post.attachment.attach(uploaded_file) if uploaded_file.present?
   end
 
   def uploaded_file
-    params[:post][:picture]
+    params[:post][:attachment]
   end
 end
