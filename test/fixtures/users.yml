@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nickname: "one"
-  encrypted_password: 'password'
+  nickname: "onetwo"
+  encrypted_password: 'password1'
   surname: MyString
   phone: 1234567890
 

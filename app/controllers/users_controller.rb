@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
