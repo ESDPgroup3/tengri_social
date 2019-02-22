@@ -1,7 +1,15 @@
 <div class="password_page">
   <div class="form-in-authentication">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% flash.each do |key, value| %>
+    <% if value == "Неверный пароль" %>
+    <div class=" incorrect-password alert alert-dismissible alert-<%= key.to_s == 'notice' ? 'success' : 'danger' %>" role="alert">
+      <%= value if value.is_a?(String) %>
+    </div>
+    <% else %>
     <div class="correct-password"></div>
+    <% end %>
+    <% end %>
     <h3 class="names-sectors">Привет, <%= @user.nickname %> </h3>
     <div class="field">
       <%= f.check_box :remember_me %> <%= f.label :remember_me, value = "запомнить меня" %>

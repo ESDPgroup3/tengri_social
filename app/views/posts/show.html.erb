@@ -20,10 +20,10 @@
             <div class="position-relative pl-2 pr-2">
               <div class="active_user_mini">
                 <div>
-                  <% if current_user.online? %>
+                  <% if post.user.online? %>
                     <i class="fa fa-circle text-success"></i>
                     <% else %>
-                    <i class="fa fa-circle text-danger"></i>
+                    <i class="fa fa-circle text-transparent"></i>
                   <% end %>
                 </div>
                 <div>
