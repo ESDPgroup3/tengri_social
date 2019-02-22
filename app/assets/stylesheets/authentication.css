@@ -1,4 +1,4 @@
-body{
+ body{
   font-family: Roboto, sans-serif;
   margin: 0 auto;
   background: white;
@@ -106,6 +106,7 @@ body{
 }
 .block-send-information, .send-information{
   font-family: Roboto;
+  margin-top: 52px;
   border-radius: 5px;
   width: 358px;
   height: 44px;
@@ -116,12 +117,10 @@ body{
 }
 .block-send-information{
   background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 0.480663) 99.99%, #DDEAFD 100%);
-  margin-top: 52px;
 }
 .send-information{
   background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
   box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
-  margin-top: 52px;
 }
 .registration-agreement{
   margin-top: 63px;
@@ -161,8 +160,4 @@ body{
   margin-top: 126px;
   margin-bottom: 81px;
 }
-.links-in-setting{
-  font-weight: 500;
-font-size: 17px;
-color: #333333;
-}
+
