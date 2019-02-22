@@ -49,7 +49,7 @@
               <div class="position-relative pr-2">
                 <div class="active_user_mini pl-3">
                   <div>
-                    <% if current_user.online? %>
+                    <% if post.user.online? %>
                       <i class="fa fa-circle text-success"></i>
                       <% else %>
                       <i class="fa fa-circle text-danger"></i>
@@ -68,7 +68,7 @@
             <div>
               <div class="post_section">
                 <p class="nickname_text">
-                  <%= link_to(user_path(post.user)) do %>
+                  <%= link_to(user_path(post.user), class: "nickname_text" ) do %>
                     @<%= post.user.nickname %>
                   <% end %>
                 </p>
