@@ -36,13 +36,17 @@
 <script type="text/javascript">
   $(document).on('turbolinks:load', function() {
     $("#<%= reply %>").on('click', function(event){
-      event.preventDefault();
+      event.preventDefault();  
       if ($(".<%= reply %>").hasClass("d-none"))
         $(".<%= reply %>").removeClass("d-none"),
-        $("#comments").addClass("d-none");
+        $("#comments").addClass("d-none");      
       else
         $(".<%= reply %>").addClass("d-none"),
         $("#comments").removeClass("d-none");
+    });
+    $(".send").on('click', function(){
+      $(".<%= reply %>").addClass("d-none"),
+      $("#comments").removeClass("d-none");
     });
   });
 </script> 
