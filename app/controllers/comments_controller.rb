@@ -6,12 +6,13 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @post = Post.find(params[:post_id])
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
       respond_to do |format|
         format.html { redirect_to @commentable }
-        format.js
+        format.js {}
       end
     else
       redirect_to @commentable, alert: "Something wrong"

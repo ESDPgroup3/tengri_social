@@ -1,6 +1,6 @@
 <% nesting = local_assigns.fetch(:nesting, 1) %>
 <% max_nesting = local_assigns[:max_nesting]%> 
-<div class="border-info pl-3">
+<div class="border-info pl-3 commentt">
   <div class="pr-2">
   	<div class="post_section">
 	  <div class="position-relative">
@@ -22,13 +22,28 @@
 		<div class="text_comment text_wrap">
 		  <%= comment.body %>
 		</div>
-		<%= link_to "Ответить", "#", id: "reply", class: "reply" %>
+		<% reply = comment.id %>
+		<%= link_to "Ответить", "#", id: "#{reply}", class: "reply" %>
 	  </div>
 	</div>
   </div>
   <div>
-  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply", @submit_text =>"Ответить на коментарий" }  %>
-  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting] %>
+  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
+  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
   </div>
-</div> 
+</div>
+
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function() {
+    $("#<%= reply %>").on('click', function(event){
+      event.preventDefault();
+      if ($(".<%= reply %>").hasClass("d-none"))
+        $(".<%= reply %>").removeClass("d-none"),
+        $("#comments").addClass("d-none");
+      else
+        $(".<%= reply %>").addClass("d-none"),
+        $("#comments").removeClass("d-none");
+    });
+  });
+</script> 
 
