@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     render layout: "user"
   end
 
-
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -57,6 +56,16 @@ class UsersController < ApplicationController
     @avatar = ActiveStorage::Attachment.find_by(id: params[:upload_id])
     @avatar.purge
     redirect_back(fallback_location: posts_path)
+  end
+
+  def is_private
+    if @current_user.is_private? 
+      current_user.update(is_private: false)
+    else
+      urrent_user.update(is_private: true) 
+    end
+    redirect_back(fallback_location: puser_path(current_user))
+  
   end
 
   private
