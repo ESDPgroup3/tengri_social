@@ -24,9 +24,10 @@ class PostsController < ApplicationController
 
   def index
     id = current_user.follows
-    posts_of_friends = Post.of_followed_users(id).order('created_at DESC')
+    posts_of_friends = Post.of_followed_users(id)
     my_posts = current_user.posts
     @posts = posts_of_friends + my_posts
+    @posts.sort! { |a,b|  b[:created_at] <=> a[:created_at] }
   end
 
   def edit
