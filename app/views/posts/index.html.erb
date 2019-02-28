@@ -68,7 +68,7 @@
             <div>
               <div class="post_section">
                 <p class="nickname_text">
-                  <%= link_to(user_path(post.user)) do %>
+                  <%= link_to(user_path(post.user), class: "nickname_text" ) do %>
                     @<%= post.user.nickname %>
                   <% end %>
                 </p>

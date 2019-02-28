@@ -27,9 +27,9 @@
 }
 
 .decoration{
-	color: black;
-	background: blue;
-	border-radius: 5px;
+  color: black;
+  background: blue;
+  border-radius: 5px;
 }
 .password_creation{
   font-size: 20px;
@@ -100,7 +100,6 @@ h6{
 }
 .user{
   right: 19px;
-  bottom: 20px;
   z-index: 100;
 }
 .text_wrap { 
@@ -158,6 +157,10 @@ h6{
   width: 62px; 
   height: 62px;
 }
+.main-photo{
+  width: 124px; 
+  height: 124px;
+}
 .photo_mini{
   width: 36px; 
   height: 36px;
@@ -174,6 +177,10 @@ h6{
 .nav_nick{
   line-height: 30px;
   padding-top: 6px;
+  font-weight: bold;
+font-size: 18px;
+color: #0E1826;
+text-decoration: none;
 }
 .active_user_mini {
   font-size: 5px;
@@ -181,6 +188,18 @@ h6{
 .avatar_mini{
   padding: 5px 10px;
   padding-right: 0;
+}
+.links-under-avatar{
+  text-decoration: none;
+font-size: 16px;
+color: #0E1826;
+}
+.links-under-avatar:active, .links-under-avatar:hover, .links-under-avatar:focus {
+  text-decoration: none;
+color: #0E1826;
+}
+.width-follows{
+  min-width: 90px;
 }
 .post_write{
   padding: 1px;
@@ -257,20 +276,39 @@ input[type="form-control"]::placeholder{
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0;
+  margin-top: 6px;
 }
 .fa_circle{
   font-size: 10px;
 }
-a, .nickname_text{
+.nickname_text{
   font-size: 17px;
   color: #0E1826;
   padding-right: 5px;
+  font-weight: 500;
+}
+.nickname_follows{
+  font-weight: bold;
+  font-size: 18px;
+  color: #0E1826;
 }
 .nickname_text_comment{
   font-size: 13px;
   color: #0E1826;
   padding-right: 3px;
   margin-bottom: 0;
+}
+.btn-follows{
+  border: 1px solid #DEDEDE;
+  border-radius: 5px;
+  padding: 8px 31px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #0E1826;
+}
+.btn-follows:active, .btn-follows:hover, .btn-follows:focus {
+  outline: 0;
+  outline-offset: 0
 }
 .all_comments{
   color: #568CD6;
@@ -403,7 +441,6 @@ h6{
 }
 .user{
   right: 19px;
-  bottom: 20px;
   z-index: 100;
 }
 .text_wrap { 
@@ -460,6 +497,10 @@ h6{
 .photo{
   width: 71px; 
   height: 71px;
+}
+.main-photo{
+  width: 124px; 
+  height: 124px;
 }
 .photo_mini{
   width: 37px; 
@@ -558,14 +599,28 @@ input[type="form-control"]::placeholder{
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0;
+    margin-top: 6px;
 }
 .fa_circle{
   font-size: 10px;
 }
-a, .nickname_text{
+.nickname_text{
   font-size: 17px;
   color: #0E1826;
   padding-right: 5px;
+  font-weight: 500;
+}
+.btn-follows{
+  border: 1px solid #DEDEDE;
+  border-radius: 5px;
+  padding: 8px 31px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #0E1826;
+}
+.btn-follows:active, .btn-follows:hover, .btn-follows:focus {
+  text-decoration: none;
+  color: #0E1826;
 }
 .nickname_text_comment{
   font-size: 13px;
@@ -654,5 +709,3 @@ line-height: 1.7em;
   background: #A5CCFF;
 }
 }
-
-

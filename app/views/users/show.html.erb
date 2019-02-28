@@ -12,9 +12,9 @@
           </div>
           <div class="position-relative">
             <% if @user.avatar.attached? %>
-              <%= image_tag @user.avatar, class: "photo rounded-circle float-center"%> 
+              <%= image_tag @user.avatar, class: "main-photo rounded-circle float-center"%> 
             <% else %>
-              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+              <%= image_tag("no-foto.png", :alt => "no avatar", class: "main-photo rounded-circle float-center") %>
             <% end %>
           </div>
           <% if current_user == @user %> 
@@ -36,14 +36,14 @@
             </button>
           <% end %>  
         </div>
-        <div class="position-relative user">
+        <div class="user">
           <% if @user.nickname.nil? %>s
               <h6> <%= @user.phone %> </h6>
           <% else %>
               <h6> @<%= @user.nickname %> </h6>
           <% end %>
           <section class="btn-group center-position">
-            <div class="text-center pr-1"><%= link_to(followers_user_path(@user)) do %>
+            <div class="text-center pr-1 width-follows"><%= link_to(followers_user_path(@user), class: "links-under-avatar") do %>
               <%= show_svg('friens_icon.svg') %>
                 <div class="counter">
                   <p class="count"><%= @user.followers.count %></p>
@@ -52,7 +52,7 @@
               <% end %>
             </div>
             <%= show_svg('line3.svg') %>
-            <div class="text-center pl-1 pr-1"><%= link_to(follows_user_path(@user)) do %>
+            <div class="text-center pl-1 pr-1 width-follows"><%= link_to(follows_user_path(@user), class: "links-under-avatar") do %>
               <%= show_svg('friens_icon_2.svg') %>
                 <div class="counter">
                   <p class="count"><%= @user.follows.count %></p>
@@ -61,7 +61,7 @@
               <% end %>
             </div>
             <%= show_svg('line3.svg') %>
-            <div class="text-center pl-1"><%= link_to(user_path(@user)) do %>
+            <div class="text-center pl-1 width-follows"><%= link_to(user_path(@user), class: "links-under-avatar") do %>
               <%= show_svg('tenge_icon_active.svg') %>
                 <div class="counter">
                   <p class="count"><%=  @user.liked_posts.count %></p>
@@ -96,10 +96,30 @@
         </div>          
       </div>
     </section>
-  <% end %> 
-  <% if current_user != @user %>
+  <% else %>
     <div class="container padding_bot flex-container">
-      <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "text-primary nickname_text" %>
+      <% if @user.in?(current_user.follows) %>
+        <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4">
+          Отписаться
+        </a>
+      <% else %>
+        <%= link_to 'Подписаться', follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+      <% end %>
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content"> 
+            <div class="modal-exit">
+              <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+              <span class="border-exit"></span>
+              <%= link_to 'Отписаться', follow_toggle_path(@user), class: "text-primary nickname_text" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>  
   <% @posts.each do |post| %>
