@@ -1,4 +1,3 @@
-$('.text_comment').append('<%= escape_javascript(render(:partial => "comments/comment", :locals => {:comment => @comment, :post => @post, :user => @user}))%>');
+$('#text_comment_<% @id_parent%>').append('<%= escape_javascript(render(:partial => "comments/comment", :locals => {:comment => @comment, :post => @post, :user => @user}))%>');
 $('.form-control').val('');
-$ ('#form_comment').trigger('ajax:after');
 

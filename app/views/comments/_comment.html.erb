@@ -23,31 +23,13 @@
 		  <%= comment.body %>
 		</div>
 		<% reply = comment.id %>
-		<%= link_to "Ответить", "#", id: "#{reply}", class: "reply" %>
+		<%= link_to "Ответить", "#", class: "reply_comment" %>
 	  </div>
 	</div>
   </div>
-  <div>
-  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
-  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
+  <div id="text_comment_<%= @id_parent %>">
+	  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
+	  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).on('turbolinks:load', function() {
-    $("#<%= reply %>").on('click', function(event){
-      event.preventDefault();  
-      if ($(".<%= reply %>").hasClass("d-none"))
-        $(".<%= reply %>").removeClass("d-none"),
-        $("#comments").addClass("d-none");      
-      else
-        $(".<%= reply %>").addClass("d-none"),
-        $("#comments").removeClass("d-none");
-    });
-    $(".send").on('click', function(){
-      $(".<%= reply %>").addClass("d-none"),
-      $("#comments").removeClass("d-none");
-    });
-  });
-</script> 
 
