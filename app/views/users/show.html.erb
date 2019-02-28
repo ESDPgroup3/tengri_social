@@ -99,7 +99,29 @@
   <% end %> 
   <% if current_user != @user %>
     <div class="container padding_bot flex-container">
-      <%= link_to (@user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(@user), class: "text-primary nickname_text" %>
+      <% if @user.in?(current_user.follows) %>
+        <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4">
+          Отписаться
+        </a>
+      <% else %>
+        <%= link_to 'Подписаться', follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+      <% end %>
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content"> 
+            <div class="modal-exit">
+              <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+              <span class="border-exit"></span>
+              <%= link_to 'Отписаться', follow_toggle_path(@user), class: "text-primary nickname_text" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   <% end %>  
   <% @posts.each do |post| %>
