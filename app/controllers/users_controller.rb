@@ -59,13 +59,12 @@ class UsersController < ApplicationController
   end
 
   def is_private
-    if @current_user.is_private? 
+    if @current_user.is_private
       current_user.update(is_private: false)
     else
-      urrent_user.update(is_private: true) 
+      current_user.update(is_private: true) 
     end
-    redirect_back(fallback_location: puser_path(current_user))
-  
+    redirect_back(fallback_location: edit_user_path(current_user))
   end
 
   private

@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   end
   get 'likes_toggle/:post_id', to: 'users#likes_toggle', as: :likes_toggle
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
+  get 'is_private/:user_id', to: 'users#is_private', as: :is_private
   delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end
