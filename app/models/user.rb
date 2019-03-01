@@ -22,6 +22,18 @@ class User < ApplicationRecord
                                       foreign_key: :follow_id,
                                       association_foreign_key: :follower_id
 
+  has_and_belongs_to_many :inviteds, dependent: :destroy,
+                                    join_table: :invites,
+                                    class_name: 'User',
+                                    foreign_key: :invited_id,
+                                    association_foreign_key: :inviter_id
+  
+    has_and_belongs_to_many :inviters, dependent: :destroy,
+                                      join_table: :invites,
+                                      class_name: 'User',
+                                      foreign_key: :inviter_id,
+                                      association_foreign_key: :invited_id
+
   has_and_belongs_to_many :liked_posts, dependent: :nullify,
                                         join_table: :likes,
                                         class_name: 'Post'

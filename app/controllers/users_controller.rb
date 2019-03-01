@@ -32,14 +32,26 @@ class UsersController < ApplicationController
 
   def follow_toggle
     user = User.find_by(id: params[:user_id])
-    if current_user.follows.include?(user)
-      current_user.follows.delete(user)
+    if user.is_private == false
+      if current_user.follows.include?(user)
+        current_user.follows.delete(user)
+      else
+        current_user.follows << user
+      end
+      redirect_back(fallback_location: posts_path)
     else
-      current_user.follows << user
+      ask_follow_toggle
+    end
+  end
+  def ask_follow_toggle
+    user = User.find_by(id: params[:user_id])
+    if current_user.inviters.include?(user)
+      current_user.inviters.delete(user)
+    else
+      current_user.inviters << user
     end
     redirect_back(fallback_location: posts_path)
   end
-
   def follows
     @user = User.find(params[:id])
     @users = @user.follows
