@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_140013) do
+ActiveRecord::Schema.define(version: 2019_03_01_132718) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2019_02_11_140013) do
     t.index ["follower_id"], name: "index_followers_on_follower_id"
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer "inviter_id"
+    t.integer "invited_id"
+    t.boolean "status"
+    t.index ["invited_id"], name: "index_invites_on_invited_id"
+    t.index ["inviter_id"], name: "index_invites_on_inviter_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -88,6 +96,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_140013) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "is_private", default: false
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
