@@ -104,7 +104,11 @@
           Отписаться
         </a>
       <% else %>
-        <%= link_to 'Подписаться', follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+        <% if current_user != @user && @user.is_private == true %>
+          <%= link_to 'Подписаться', ask_follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+        <% else%>
+          <%= link_to 'Подписаться', follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+        <% end %>
       <% end %>
 
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -124,93 +128,97 @@
 
     </div>
   <% end %>  
-  <% @posts.each do |post| %>
-    <section class='container mt-2 mb-2'>
-      <div class="card">
-        <div>
-          <% if current_user == @user %>
-            <div class="dropdown">
-              <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ...
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to 'изменить', edit_post_path(post), class: "dropdown-item" %>
-                <%= link_to 'удалить', post_path(post), method: :delete, class: "dropdown-item", remote: true %>
+  <% if current_user ==@user || current_user != @user && @user.is_private == false || (@user.is_private == true && @user.followers.include?(current_user) == true)%>
+    <% @posts.each do |post| %>
+      <section class='container mt-2 mb-2'>
+        <div class="card">
+          <div>
+            <% if current_user == @user %>
+              <div class="dropdown">
+                <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ...
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to 'изменить', edit_post_path(post), class: "dropdown-item" %>
+                  <%= link_to 'удалить', post_path(post), method: :delete, class: "dropdown-item", remote: true %>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <div class="post_section">
-            <div class="pl-2 pr-2">
-              <div class="position-relative pl-2">
-                <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar, class: "photo rounded-circle float-center" %> 
-                <% else %>
-                  <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
-                <% end %>
-              </div>
-            </div>
-            <div>
-              <div class="post_section">
-                <p class="nickname_text">
-                  <% if @user.nickname.nil? %>
-                    <%= @user.phone %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <div class="post_section">
+              <div class="pl-2 pr-2">
+                <div class="position-relative pl-2">
+                  <% if @user.avatar.attached? %>
+                    <%= image_tag @user.avatar, class: "photo rounded-circle float-center" %> 
                   <% else %>
-                    @<%= @user.nickname %>
-                  <% end %>
-                </p>
-                <p class="time post_writed">| <%= post.created_at.strftime("%d %m %Y %H : %M") %></p>
-              </div>
-              <div class="wrap">
-                <div class="card-text post_writed text_wrap"><%= post.description %> </div>
-              </div>
-              <div>
-                <div class="card border-0 align-self-center mt-">     
-                  <% if post.attachment.attached? %>
-                    <% if post.attachment.content_type.include?("image") %>
-                      <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
-                    <% else %>
-                      <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
-                    <% end %>
+                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
                   <% end %>
                 </div>
-                <div class="card-body border-0 align-self-center">
-                  <div class="post_section pt-3">
-                    <div class="post_section mr-1">
-                      <p class="icon_text">
-                        <%= show_svg('comment.svg') %>
-                        <%= post.comments.count %> комментариев 
-                      </p>            
-                    </div>
-                    <div class="pr-1"> 
-                      <%= show_svg('line.svg') %>
-                    </div>
-                    <div class="post_section">
-                      <%= link_to(likes_toggle_path(post)) do %>
-                        <p class="icon_text"> 
-                          <% if post.likes.ids.include?(current_user.id) %>
-                            <%= show_svg('tenge_active.svg') %>
-                          <% else %>
-                            <%= show_svg('tenge_grey.svg') %>
-                          <% end %>
-                          <%= post.likes.count %> лайкбонусов
-                        </p>
+              </div>
+              <div>
+                <div class="post_section">
+                  <p class="nickname_text">
+                    <% if @user.nickname.nil? %>
+                      <%= @user.phone %>
+                    <% else %>
+                      @<%= @user.nickname %>
+                    <% end %>
+                  </p>
+                  <p class="time post_writed">| <%= post.created_at.strftime("%d %m %Y %H : %M") %></p>
+                </div>
+                <div class="wrap">
+                  <div class="card-text post_writed text_wrap"><%= post.description %> </div>
+                </div>
+                <div>
+                  <div class="card border-0 align-self-center mt-">     
+                    <% if post.attachment.attached? %>
+                      <% if post.attachment.content_type.include?("image") %>
+                        <div class="card_body"> <%= image_tag post.attachment, class: "image text-center"  %> </div>
+                      <% else %>
+                        <%= video_tag url_for(post.attachment), :controls => true , class: "video" %>
                       <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-body border-0 align-self-center">
+                    <div class="post_section pt-3">
+                      <div class="post_section mr-1">
+                        <p class="icon_text">
+                          <%= show_svg('comment.svg') %>
+                          <%= post.comments.count %> комментариев 
+                        </p>            
+                      </div>
+                      <div class="pr-1"> 
+                        <%= show_svg('line.svg') %>
+                      </div>
+                      <div class="post_section">
+                        <%= link_to(likes_toggle_path(post)) do %>
+                          <p class="icon_text"> 
+                            <% if post.likes.ids.include?(current_user.id) %>
+                              <%= show_svg('tenge_active.svg') %>
+                            <% else %>
+                              <%= show_svg('tenge_grey.svg') %>
+                            <% end %>
+                            <%= post.likes.count %> лайкбонусов
+                          </p>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>  
+            </div>  
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <% end %>
+    <div class="container text-center pb-2 pt-2">
+      <div class="text-center pb-1">   
+        <%= show_svg('smile.svg') %>
+      </div> 
+      <p class="smile">Пиши исчо, постов больше нет</p>
+    </div>
+  <% elsif current_user != @user && (@user.is_private == true && @user.followers.include?(current_user) == false ) %>
+    <% nil %>
   <% end %>
-  <div class="container text-center pb-2 pt-2">
-    <div class="text-center pb-1">   
-      <%= show_svg('smile.svg') %>
-    </div> 
-    <p class="smile">Пиши исчо, постов больше нет</p>
-  </div>
 </div>
