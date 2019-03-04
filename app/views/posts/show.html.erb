@@ -110,10 +110,14 @@
 
 <script type="text/javascript">
   $(document).on('turbolinks:load', function() {
+    uppendListeners();
+  });
+  function uppendListeners() {
     $(".reply_comment").unbind('click');
     $(".send").unbind('click');
     $(".reply_comment").on('click', function(event){
       event.preventDefault();
+      hideFormReplies();
       const mainDiv = $(this).parentsUntil(".commentt")[2];
       const commentForm = $($(mainDiv).next().children()[0]);
       if (commentForm.hasClass("d-none")) {
@@ -125,10 +129,13 @@
       }
     });
     $(".send").on('click', function(){
-      const commentForms = $(".comment_field");
-      for (let i = 0; i < commentForms.length - 1; i++)
-        $(commentForms[i]).addClass("d-none");
+      hideFormReplies();
       $("#comments").removeClass("d-none");
     });
-  });
+  }
+  function hideFormReplies() {
+    const commentForms = $(".form-reply");
+      for (let i = 0; i < commentForms.length - 1; i++)
+        $(commentForms[i]).addClass("d-none");
+  }
 </script> 
