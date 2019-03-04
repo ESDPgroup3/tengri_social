@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @id_parent = comment_params[:parent_id]
+    @parent_comment_id = comment_params[:parent_id].empty? ? 0 : comment_params[:parent_id]
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save

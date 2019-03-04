@@ -1,7 +1,18 @@
-<% @users.each do |user| %> 
-  <div class="card m-4" style="width: 500px;" id="post">
-   <div class="card-body">
-    <%= link_to user.phone , user_path(user) %>
-   </div>
- </div>
- <% end %>
+<div class="mt-5 container"><% @users.each do |user| %> 
+  <div class="d-flex align-items-center justify-content-between ml-5 mr-4 mb-3">
+    <%= link_to(user_path(user)) do %>
+    <div class="d-flex align-items-center">
+      <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "photo rounded-circle float-center mr-3"%> 
+      <% else %>
+      <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center  mr-3") %>
+      <% end %>
+      <div class="nickname_follows">@<%= user.nickname %></div>
+    </div>
+    <% end %>
+    <% if current_user != user %>
+    <%= link_to (user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(user), class: "btn-follows" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

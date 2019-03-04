@@ -1,10 +1,9 @@
 <%= form_with model: [commentable, Comment.new], html: { class: local_assigns[:class], id: 'form_comment'} do |f|%>
   <div class="pl-0 container post_section comment_field">
 	<div class="post_write field">
-	  <%= f.text_field :body, placeholder: "Оcтавьте коментарий", type: "form-control", class: 'form-control' %>
+	  <%= f.text_area :body, autofocus: true, placeholder: "Оcтавьте коментарий", type: "form-control", class: 'form-control' %> <span id="listen"></span>
 	  <%= f.hidden_field :parent_id, value: local_assigns[:parent_id] %>
 	</div>
 	<%= f.submit "Отправить", class: 'send' %>
   </div>
 <% end %>
-

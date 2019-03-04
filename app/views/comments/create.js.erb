@@ -1,3 +1,3 @@
-$('#text_comment_<% @id_parent%>').append('<%= escape_javascript(render(:partial => "comments/comment", :locals => {:comment => @comment, :post => @post, :user => @user}))%>');
+$('<%= @parent_comment_id == 0 ? ".comments-container" : "#text_comment_" + @parent_comment_id %>')
+.append('<%= escape_javascript(render(:partial => "comments/comment", :locals => {:comment => @comment, :post => @post, :user => @user}))%>');
 $('.form-control').val('');
-
