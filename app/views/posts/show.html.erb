@@ -93,7 +93,7 @@
     </div>
   </section> 
   <div class="container nil"></div>
-  <div id="comments" class="container display_flex between fixed-bottom">
+  <div id="comment_form_down" class="container display_flex between fixed-bottom">
     <div class="pt-2 pr-1">
       <% if current_user.avatar.attached? %>
         <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
@@ -107,35 +107,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).on('turbolinks:load', function() {
-    uppendListeners();
-  });
-  function uppendListeners() {
-    $(".reply_comment").unbind('click');
-    $(".send").unbind('click');
-    $(".reply_comment").on('click', function(event){
-      event.preventDefault();
-      hideFormReplies();
-      const mainDiv = $(this).parentsUntil(".commentt")[2];
-      const commentForm = $($(mainDiv).next().children()[0]);
-      if (commentForm.hasClass("d-none")) {
-        commentForm.removeClass("d-none");
-        $("#comments").addClass("d-none");      
-      } else {
-        commentForm.addClass("d-none");
-        $("#comments").removeClass("d-none");
-      }
-    });
-    $(".send").on('click', function(){
-      hideFormReplies();
-      $("#comments").removeClass("d-none");
-    });
-  }
-  function hideFormReplies() {
-    const commentForms = $(".form-reply");
-      for (let i = 0; i < commentForms.length - 1; i++)
-        $(commentForms[i]).addClass("d-none");
-  }
-</script> 
