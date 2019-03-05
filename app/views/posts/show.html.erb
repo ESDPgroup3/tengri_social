@@ -83,10 +83,8 @@
                 <% end %>
               </div>
             </div>
-            <div class="card-body border-light">
-                <div>
-                   <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
-                </div> 
+            <div class="comments-container card-body border-light">
+              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
             </div>
           </div>
           </div>
@@ -95,7 +93,7 @@
     </div>
   </section> 
   <div class="container nil"></div>
-  <div id="comments" class="container display_flex between fixed-bottom">
+  <div id="comment_form_down" class="container display_flex between fixed-bottom">
     <div class="pt-2 pr-1">
       <% if current_user.avatar.attached? %>
         <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
@@ -104,6 +102,7 @@
       <% end %>
     </div>
     <div class="comment_form_width pb-1">
+      <div id="listen"></div>
       <%= render partial: "comments/form", locals: {commentable: @post}  %>
     </div>
   </div>

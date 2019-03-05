@@ -19,7 +19,7 @@
       </div>
       <div class="post_write pt-1 pl-1">
         <%= form_with url: posts_path, scope: :post, local: true do |f| %>
-          <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text"; %>
+          <%= f.text_area :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: "form-control"; %>
           <%f.file_field :picture %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <% f.submit %> 
