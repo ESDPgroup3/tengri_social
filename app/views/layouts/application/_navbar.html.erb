@@ -83,7 +83,7 @@
             <%= show_svg('shape.svg') %>
           <% end %>
         <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
-          <%= link_to '#', class: 'navbar-nav h6 pl-1', "data-toggle" => "modal", 'data-target' => '#exampleModalCenter' do %>
+          <%= link_to '#', class: 'navbar-nav h6 pl-1 sort', "data-toggle" => "modal", 'data-target' => '#exampleModalCenter' do %>
             <div class="sign-out">
               Выйти <%= show_svg('logout.svg') %>
             </div>
