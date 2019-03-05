@@ -11,8 +11,25 @@
     </div>
     <% end %>
     <% if current_user != user %>
-    <%= link_to (user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(user), class: "btn-follows" %>
+    <%= link_to (user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), "#", class: "btn-follows", data:{toggle: "modal" ,target: "#exampleModalCenter"} %>
     <% end %>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content"> 
+            <div class="modal-exit">
+              <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+              <span class="border-exit"></span>
+              <%= link_to 'Отписаться', follow_toggle_path(user), class: "text-primary nickname_text" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    
   </div>
   <% end %>
 </div>
+
