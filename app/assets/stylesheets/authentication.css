@@ -160,4 +160,109 @@
   margin-top: 126px;
   margin-bottom: 81px;
 }
+.main-photo{
+  width: 124px; 
+  height: 124px;
+}
+.input_for_post{
+  background: #FFFFFF;
+  border: 0.5px solid #568CD6;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.input_for_post::placeholder { 
+  color: #568CD6; 
+}
+.back-navbar{
+  height: 80px;;
+}
+
+@media (max-width: 320px){
+  .password_page {
+    margin-top: 68px;
+  }
+  .start_page{
+    margin-top: 110px;
+  }
+  .form-in-authentication, .block-send-information, .send-information {
+    width: 288px;
+  } 
+  .correct-password {
+    margin-bottom: 10px;
+  }
+  .none_for_mobile{
+    display: none;
+  }
+  .main-photo{
+    width: 80px; 
+    height: 80px;
+  }
+  .photo, .photo_mini{
+    width: 24px; 
+    height: 24px; 
+  }
+  .wrap, .nickname_text {
+    font-size: 12px;
+  }
+  .nickname_text {
+    padding-right: 5px;
+    border-right: 1px solid  #838487;
+  }
+  .time {
+    font-size: 10px;
+    padding-left: 5px;
+  }
+  .card{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+    border: 0;
+  }
+  .dropdown-toggle{
+    background: white;
+  }
+  .user{
+    right: 0;
+  }
+  .under_main_avatar{
+    min-width: 80px;
+  }
+  .counter, .count{
+    font-weight: 14px;
+  }
+  .input_for_post{
+    font-size: 12px;
+    padding: 11px 2px 8px 12px;
+    height: 36px;
+    width: 100%;
+  }
+  .new-post{
+    margin-bottom: 20px;
+  }
+  .navbar {
+    height: 60px;
+    padding: 0 16px;
+  }
+  .back-navbar{
+    width: 320px;
+  }
+  .back-navbar{
+    height: 60px;
+  }
+  .back_container{
+    background: white;
+  }
+  .prifile-navbar{
+    font-size: 13px;
+  }
+  .under_post{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    border-top: 0.5px solid #e9e9ea;
+    border-bottom:  0.5px solid #e9e9ea;
+    padding: 10px;
+  }
+  .likes{
+    border-right:  0.5px solid #e9e9ea;
+  }
+}
 

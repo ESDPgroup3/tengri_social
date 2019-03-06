@@ -3,7 +3,7 @@
     <% if params[:action] == 'show' && params[:controller] == 'users' %>
       <div class="h6">
           <%= link_to(posts_path, class: 'text-primary') do %> 
-            <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад в ленту </p>
+            <p class="nav_link pt-4"> <%= show_svg('union.svg') %> <span class="none_for_mobile">Назад в ленту</span> </p>
           <% end %>
       </div>
     <% elsif params[:action] == 'show' && params[:controller] == 'posts' %>
@@ -65,7 +65,7 @@
     <%end %>  
     <div class="h6 pr-1">
       <% if params[:action] == 'show' && params[:controller] == 'users' %>
-        <p class="mt-3 pt-2"> Профиль </p>
+        <p class="mt-3 pt-2 text-center prifile-navbar"> Профиль </p>
       <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
         <p class="mt-3 pt-2"> Настройки </p>
       <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
@@ -79,7 +79,7 @@
     <% if user_signed_in? %>
       <div>
         <% if params[:action] == 'show' && params[:controller] == 'users' && current_user == @user%>
-          <%= link_to(edit_user_path(current_user), class: 'text-primary pb-3 h6 pl-5') do %>
+          <%= link_to(edit_user_path(current_user), class: 'text-primary pb-3 h6') do %>
             <%= show_svg('shape.svg') %>
           <% end %>
         <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>

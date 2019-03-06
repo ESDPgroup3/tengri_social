@@ -153,6 +153,7 @@ h6{
 .back_container{
   margin-top: 0;
   background: #F6F6F6;
+  padding-top: 20px;
 }
 .photo{
   width: 62px; 
@@ -264,7 +265,7 @@ input[type="form-control"]::placeholder{
 a, .nickname_text{
   font-size: 17px;
   color: #0E1826;
-  padding-right: 5px;
+  /* padding-right: 5px; */
 }
 .nickname_text_comment{
   font-size: 13px;
@@ -654,5 +655,6 @@ line-height: 1.7em;
   background: #A5CCFF;
 }
 }
+
 
 
