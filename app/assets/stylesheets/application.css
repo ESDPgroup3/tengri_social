@@ -126,6 +126,8 @@ body{
   line-height: normal;
   font-size: 14px;
   color: #FFFFFF;
+  text-align: center;
+  padding-top: 13px;
 }
 .block-send-information{
   background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 0.480663) 99.99%, #DDEAFD 100%);
@@ -631,15 +633,18 @@ input[class="send" i]::-webkit-file-upload-button {
 .likes{
   padding: 0 5px;
 }
+.unsubscribe{
+  color: #568CD6;
+  font-size: 14px;
+  height: 44px;
+  padding-top: 13px;
+}
 
 @media (max-width: 415px){
   .start_page {
     margin-top: 110px;
   }
   .form-in-authentication {
-    width: 288px;
-  }
-  .block-send-information, .send-information {
     width: 288px;
   }
   .password_page {
@@ -705,6 +710,20 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .comments, .likes{
     width: 50%;
+  }
+  .block-send-information, .send-information {
+    width: 288px;
+    height: 36px;
+    font-size: 12px;
+    padding-top: 10px;
+  }
+  .input_for_form{
+    margin-top: 18px;
+  }
+  .unsubscribe{
+    font-size: 12px;
+    padding-top: 10px;
+    height: 36px;
   }
 }
 

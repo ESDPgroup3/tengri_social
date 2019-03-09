@@ -29,13 +29,6 @@
                 <% end %>
               </div>
             </button>
-          <% else %>
-            <button type="button" class="close mb-5 h5 position-relative" aria-label="Close">
-              <div aria-hidden="true">
-                  <div class="square">
-                  </div>
-              </div>
-            </button>
           <% end %>  
         </div>
         <div class="user">
@@ -102,14 +95,12 @@
   <% if current_user != @user %>
     <div class="container padding_bot flex-container">
       <% if @user.in?(current_user.follows) %>
-        <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4">
+        <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="unsubscribe">
           Отписаться
         </a>
       <% else %>
-        <% if current_user != @user && @user.is_private == true %>
-          <%= link_to 'Подписаться', ask_follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
-        <% else%>
-          <%= link_to 'Подписаться', follow_toggle_path(@user), class: "text-white btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4" %>
+        <% if current_user != @user %>
+          <%= link_to 'Подписаться', follow_toggle_path(@user), class: "send-information m-0" %>
         <% end %>
       <% end %>
 
