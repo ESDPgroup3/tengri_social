@@ -298,7 +298,7 @@ h6{
   width: 124px; 
   height: 124px;
 }
-.photo_mini{
+.photo_mini, .photo_back{
   width: 36px; 
   height: 36px;
 }
@@ -319,8 +319,8 @@ h6{
   font-size: 5px;
 }
 .avatar_mini{
-  padding: 6px;
-  padding-right: 16px
+  padding: 4px;
+  padding-right: 14px
 }
 .post_write{
   width: 90%; 
@@ -333,8 +333,11 @@ h6{
   display: flex;
   align-items: center;
   background: #A2CDF8;
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 10px;
+}
+.new_post_index{
+  padding-top: 10px;
 }
 .padding_bot{
   padding-bottom: 15px;
@@ -422,12 +425,15 @@ a, .nickname_text{
 }
 .nickname_text_comment{
   font-size: 13px;
+  font-weight: 500;
   color: #0E1826;
   padding-right: 3px;
   margin-bottom: 0;
+  padding-top: 3px;
 }
 .all_comments{
   color: #568CD6;
+  padding-bottom: 15px;
 }
 .time{
   font-size: 12px;
@@ -467,6 +473,9 @@ a, .nickname_text{
 .dropdown, .dropdown-toggle{
   text-align: right;
   background: white;
+}
+.dropdown{
+  height: 2px;
 }
 .dropdown-toggle::after {
   display: inline-block;
@@ -558,10 +567,6 @@ input[class="send" i]::-webkit-file-upload-button {
     left: -2px;
     top: -7px;
   }
-  .photo_mini{
-    width: 37px; 
-    height: 37px;
-  }
   .post_write{
     width: 930px; 
   }
@@ -623,8 +628,7 @@ input[class="send" i]::-webkit-file-upload-button {
   margin-top: 20px;
 }
 .card-body{
-  padding: 8px 0;
-  padding-right: 8px;
+  padding: 16px 8px 8px 20px;
 }
 .comments{
   border-right: 1px solid #e9e9ea;
@@ -638,6 +642,24 @@ input[class="send" i]::-webkit-file-upload-button {
   font-size: 14px;
   height: 44px;
   padding-top: 13px;
+}
+.under_post_section{
+  padding: 11px 5px 8px 5px;
+}
+.post_write {
+  width: 770px;
+}
+.avatar_in_post{
+  width: 62px; 
+  height: 62px;
+}
+.photo_comment{
+  width: 24px; 
+  height: 24px;
+}
+.border_on_comment{
+  border-top: 1px solid #e9e9ea;
+  padding-top: 10px;
 }
 
 @media (max-width: 415px){
@@ -724,6 +746,32 @@ input[class="send" i]::-webkit-file-upload-button {
     font-size: 12px;
     padding-top: 10px;
     height: 36px;
+  }
+  .photo_back{
+    width: 36px; 
+    height: 36px;
+  }
+  .new_post{
+    border-radius: 5px;
+  }
+  .avatar_in_post{
+    width: 24px; 
+    height: 24px;
+  }
+  .photo_comment{
+    width: 16px; 
+    height: 16px;
+  }
+  .nickname_text_comment, .text_comment{
+    font-size: 12px;
+  }
+  .border_on_comment{
+    border-top: none;
+    padding-top: 0px;
+  }
+  .all_comments{
+    font-size: 13px;
+    padding-bottom: 10px;
   }
 }
 
