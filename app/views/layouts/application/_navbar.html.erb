@@ -1,9 +1,9 @@
 <nav class="navbar fixed-top bg-white navbar-expand-md">
   <div class="container nav-justified">
     <% if params[:action] == 'show' && params[:controller] == 'users' %>
-      <div class="h6">
+      <div class="">
           <%= link_to(posts_path, class: 'text-primary') do %> 
-            <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад в ленту </p>
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад в ленту</span> </p>
           <% end %>
       </div>
     <% elsif params[:action] == 'show' && params[:controller] == 'posts' %>
@@ -63,9 +63,10 @@
         <% end %>
       </div>
     <%end %>  
-    <div class="h6 pr-1">
+    
+    <div class="h6 m-0">
       <% if params[:action] == 'show' && params[:controller] == 'users' %>
-        <p class="mt-3 pt-2"> Профиль </p>
+        <p class="m-0 center-navbar"> Профиль </p>
       <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
         <p class="mt-3 pt-2"> Настройки </p>
       <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
@@ -79,8 +80,14 @@
     <% if user_signed_in? %>
       <div>
         <% if params[:action] == 'show' && params[:controller] == 'users' && current_user == @user%>
-          <%= link_to(edit_user_path(current_user), class: 'text-primary pb-3 h6 pl-5') do %>
-            <%= show_svg('shape.svg') %>
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <span class="none-desktop pr-3"><%= show_svg('Group-mobile.svg') %></span>
+            <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
+          <% end %>
+
+          <%= link_to(edit_user_path(current_user), class: 'text-primary') do %>
+            <span class="none-mobile"><%= show_svg('shape.svg') %></span>
+            <span class="none-desktop"><%= show_svg('settings-mobile.svg') %></span>
           <% end %>
         <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
           <%= link_to '#', class: 'navbar-nav h6 pl-1 sort', "data-toggle" => "modal", 'data-target' => '#exampleModalCenter' do %>

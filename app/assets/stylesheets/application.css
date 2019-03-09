@@ -213,13 +213,13 @@ body{
   text-align: right;
 }
 h6{
-  font-size: 17px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
   color: #0E1826;
 }
 .nav_link{
-  padding-top: 14px;
+  /* padding-top: 14px; */
   font-size: 17px;
   color: #568CD6;
   line-height: 20.4px;
@@ -266,9 +266,8 @@ h6{
 }
 .card{
   color: black;
-}
-.card-body {
-  padding: 0.25rem;
+  border: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 }
 .display_flex{
   display: flex;
@@ -294,8 +293,8 @@ h6{
   background: #F6F6F6;
 }
 .photo{
-  width: 62px; 
-  height: 62px;
+  width: 124px; 
+  height: 124px;
 }
 .photo_mini{
   width: 36px; 
@@ -307,7 +306,7 @@ h6{
 }
 .active_user{
   left: 2px;
-  top: 4px;
+  top: 14px;
   z-index: 101;
 }
 .nav_nick{
@@ -318,12 +317,11 @@ h6{
   font-size: 5px;
 }
 .avatar_mini{
-  padding: 5px 10px;
-  padding-right: 0;
+  padding: 6px;
+  padding-right: 16px
 }
 .post_write{
-  padding: 1px;
-  width: 310px; 
+  width: 90%; 
 }
 .post_writed{
   padding-right: 8px;
@@ -331,12 +329,10 @@ h6{
 }
 .new_post{
   display: flex;
-  justify-content: left;
+  align-items: center;
   background: #A2CDF8;
   border-radius: 10px;
-  margin: 1px;
-  padding-right: 16px;
-  padding-top: 8px;
+  padding: 10px;
 }
 .padding_bot{
   padding-bottom: 15px;
@@ -367,8 +363,12 @@ textarea {
   border-radius: 0.25rem;
 }
 textarea.form-control {
-  height: 49px;
+  height: 48px;
   padding-top: 0.8rem;
+}
+textarea::-webkit-input-placeholder { 
+  color: #568CD6; 
+  font-size: 14px;
 }
 input[type="form-control"]{
   font-size: 14px;
@@ -415,7 +415,8 @@ input[type="form-control"]::placeholder{
 a, .nickname_text{
   font-size: 17px;
   color: #0E1826;
-  padding-right: 5px;
+  font-weight: 500;
+  /* padding-right: 5px; */
 }
 .nickname_text_comment{
   font-size: 13px;
@@ -461,9 +462,9 @@ a, .nickname_text{
 .followers{
   color: #8255C7;
 }
-.dropdown{
+.dropdown, .dropdown-toggle{
   text-align: right;
-  background: transparent;
+  background: white;
 }
 .dropdown-toggle::after {
   display: inline-block;
@@ -473,7 +474,7 @@ a, .nickname_text{
   vertical-align: 0.255em;
   content: "";
   border: 0;
-  background: transparent;
+  background: white;
 }
 .dropdown-menu {
   position: absolute;
@@ -489,7 +490,7 @@ a, .nickname_text{
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: transparent;
+  background-color: white;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -527,6 +528,13 @@ input[class="send" i]::-webkit-file-upload-button {
   font-size: 14px;
   color: #FFFFFF;
 }
+.nav-justified{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;;
+}
+
 @media (min-width: 770px){
   .password_creation{
     width: 500px;
@@ -541,19 +549,12 @@ input[class="send" i]::-webkit-file-upload-button {
     font-size: 14px;
     color: #FFFFFF;
   }
-  h6{
-    font-size: 24px;
-  }
   .h6{
     font-size: 14px;
   }
   .h5{
     left: -2px;
     top: -7px;
-  }
-  .photo{
-    width: 71px; 
-    height: 71px;
   }
   .photo_mini{
     width: 37px; 
@@ -604,7 +605,34 @@ input[class="send" i]::-webkit-file-upload-button {
   }
 }
 
-@media (max-width: 320px){
+.none-desktop{
+  display: none;
+}
+.center-navbar{
+  padding-right: 62px;
+}
+.back-navbar{
+  height: 90px;
+}
+.blocks_under_avatar{
+  min-width: 95px;
+}
+.btn-group{
+  margin-top: 20px;
+}
+.card-body{
+  padding: 8px 0;
+  padding-right: 8px;
+}
+.comments{
+  border-right: 1px solid #e9e9ea;
+  padding: 0 5px;
+}
+.likes{
+  padding: 0 5px;
+}
+
+@media (max-width: 415px){
   .start_page {
     margin-top: 110px;
   }
@@ -616,7 +644,68 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .password_page {
     margin-top: 32px;
+  }
+  .none-mobile, .area-desktop{
+    display: none;
+  }
+  .photo{
+    width: 80px; 
+    height: 80px;
+  }
+  .none-desktop{
+    display: inline-block;
+  }
+  .center-navbar{
+    padding: 0;
+  }
+  .navbar , .back-navbar{
+    height: 60px;
+  }
+  .center-navbar{
+    padding-right: 0px;
+    padding-left: 33px;
+  }
+  .h5 {
+    top: -20px;
+  }
+  .blocks_under_avatar{
+    min-width: 90px;
+  }
+  h6{
+    font-size: 18px;
+  }
+  .photo_mini{
+    width: 24px; 
+    height: 24px;
+  }
+  textarea.form-control {
+    height: 35px;
+    padding-top: 0.5rem;
 }
+  .nickname_text{
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .time{
+    font-size: 10px;
+  }
+  .wrap{
+    font-size: 12px;
+  }
+  .mobile_post_section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #e9e9ea;
+    border-top: 1px solid #e9e9ea;
+  }
+  .card-body{
+    padding: 8px 0;
+    padding-right: 8px;
+  }
+  .comments, .likes{
+    width: 50%;
+  }
 }
 
 
