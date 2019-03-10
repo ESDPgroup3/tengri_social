@@ -28,7 +28,7 @@
 	  	</div>
 		</div>
   </div>
-  <div id="text_comment_<%= comment.id %> " class="pl-3">
+  <div id="text_comment_<%= comment.id %>" class="pl-3">
 	  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
 	  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
   </div>

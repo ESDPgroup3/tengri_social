@@ -348,7 +348,7 @@ h6{
   background: white;
   margin: 5px;
   border-radius: 5px;
-  border: 0.5px solid #568CD6;
+  border: 0.7px solid #568CD6;
   box-sizing: border-box;
   padding-top: 0.3rem;
 }
@@ -369,7 +369,7 @@ textarea {
 }
 textarea.form-control {
   height: 48px;
-  padding-top: 0.8rem;
+  padding-top: 13px;
 }
 textarea::-webkit-input-placeholder { 
   color: #568CD6; 
@@ -394,8 +394,7 @@ input[type="form-control"]::placeholder{
 }
 .field{
   max-width: 700px;
-  min-width:80%;
-  margin-bottom: 5px;
+  min-width: 80%;
 }
 .send{
   font-size: 17px;
@@ -530,7 +529,6 @@ input[class="send" i]::-webkit-file-upload-button {
   max-width: 768px;
 }
 .fixed-bottom{
-  max-height: 90px;
   background: #A5CCFF;
 }
 .btn{
@@ -573,7 +571,7 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .send{
     padding-left: 14px;
-    margin-top: 0.8rem;
+    margin-top: 7px;
   }
   .image {
     max-height: 1050px;
@@ -658,6 +656,10 @@ input[class="send" i]::-webkit-file-upload-button {
   border-top: 1px solid #e9e9ea;
   padding-top: 10px;
 }
+.fixed-bottom{
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
 
 @media (max-width: 415px){
   .start_page {
@@ -703,8 +705,9 @@ input[class="send" i]::-webkit-file-upload-button {
     height: 24px;
   }
   textarea.form-control {
-    height: 35px;
-    padding-top: 0.5rem;
+    height: 28px;
+    padding-top: 6px;
+    width: 100%;
 }
   .nickname_text{
     font-size: 12px;
@@ -772,6 +775,27 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .reply_comment{
     font-size: 10px;
+  }
+  .send {
+    font-size: 12px;
+    line-height: 0px;
+    padding: 0px;
+    margin-top: 4px;
+    margin-right: 0px;
+    width: 36%;;
+  }
+  .form-control{
+    padding: 3px 5px;
+  }
+  .field{
+    min-width: 70%;
+  }
+  .fixed-bottom{
+    padding-top: 6px;
+    padding-bottom: 20px;
+  }
+  .photo_input{
+    margin-top: 5px;
   }
 }
 

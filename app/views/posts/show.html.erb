@@ -1,6 +1,6 @@
-<div class="back_container shadow-sm"> 
+<div class=""> 
   <section class=''>
-    <div class="card">
+    <div class="">
       <div>
         <% if current_user.id == @post.user.id %>
           <div class="dropdown">
@@ -87,9 +87,9 @@
   </section> 
   <div class="container nil"></div>
   <div id="comment_form_down" class="container display_flex between fixed-bottom">
-    <div class="pt-2 pr-1">
+    <div class="pt-3 pr-1">
       <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
+        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center photo_input" %> 
       <% else %>
         <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
       <% end %>
