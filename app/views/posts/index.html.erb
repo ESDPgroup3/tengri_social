@@ -130,12 +130,12 @@
                             @<%= comment.user.nickname %>
                           </p>
                         <% end %>  
-                        <p class="time post_writed none-mobile"> | <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>                      
+                        <p class="time post_writed none-mobile"> | <%= comment.created_at.strftime("%d.%m.%Y, %H:%M") %></p>                      
                         
                       </div>
                       <div class="wrap">
                         <div class="card-text post_writed text_comment text_wrap mt-1"><%= comment.body %> </div>
-                        <div class="time post_writed none-desktop"><%= comment.created_at.strftime("%d %m %Y %H : %M") %></div>
+                        <div class="time post_writed none-desktop"><%= comment.created_at.strftime("%d.%m.%Y, %H:%M") %></div>
                       </div>
                     </div>
                   </div>  

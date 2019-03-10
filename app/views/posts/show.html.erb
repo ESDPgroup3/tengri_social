@@ -1,5 +1,5 @@
 <div class="back_container shadow-sm"> 
-  <section class='container mt-2 mb-2'>
+  <section class=''>
     <div class="card">
       <div>
         <% if current_user.id == @post.user.id %>
@@ -20,15 +20,8 @@
             <div class="position-relative pl-2 pr-2">
               <div class="active_user_mini">
                 <div>
-                  <% if current_user.online? %>
-                    <i class="fa fa-circle text-success"></i>
-                    <% else %>
-                    <i class="fa fa-circle text-danger"></i>
-                  <% end %>
-                </div>
-                <div>
                   <% if @post.user.avatar.attached? %>
-                    <%= image_tag @post.user.avatar, class: "photo rounded-circle float-center" %> 
+                    <%= image_tag @post.user.avatar, class: "avatar_in_post rounded-circle float-center" %> 
                   <% else %>
                     <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
                   <% end %>
@@ -39,18 +32,18 @@
           <div>
             <div class="post_section"> 
               <%= link_to(user_path(@post.user)) do %>
-                <p class="nickname_text">
+                <p class="nickname_text mb-1">
                   @<%= @post.user.nickname %>
                 </p>
               <% end %>
               <p class="time post_writed">
                 <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d %m %Y %H : %M") %>
-              <p>
+              </p>
             </div>
             <div class="wrap text_wrap">
               <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
             </div>
-            <div class="card border-0 align-self-center mt-0">     
+            <div class="">     
               <% if @post.attachment.attached? %>
                 <% if @post.attachment.content_type.include?("image") %>
                   <div class="card_body"> <%= image_tag @post.attachment, class: "image text-center"  %> </div>
@@ -59,8 +52,8 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="card-body border-0 pl-2 pt-3">
-            <div class="post_section border_top pt-3 border-bottom">
+            <div class="card-body border-0 pl-2">
+            <div class="post_section border_top border-bottom">
               <div class="post_section">
                 <p class="icon_text">
                   <%= show_svg('comment.svg') %>
@@ -84,7 +77,7 @@
               </div>
             </div>
             <div class="comments-container card-body border-light">
-              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
+              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 1 %>
             </div>
           </div>
           </div>

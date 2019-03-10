@@ -393,10 +393,8 @@ input[type="form-control"]::placeholder{
   box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0);
 }
 .field{
-  height: 48px;
   max-width: 700px;
   min-width:80%;
-  margin-top: 5px;
   margin-bottom: 5px;
 }
 .send{
@@ -408,11 +406,11 @@ input[type="form-control"]::placeholder{
   border: none;
   padding-left: 0.8rem;
   margin-top: 6px;
+  background: white;
 }
 .post_section{
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 0;
 }
 .fa_circle{
   font-size: 10px;
@@ -448,7 +446,7 @@ a, .nickname_text{
   color: #0E1826;
   margin-bottom: 0;
 }
-.reply{
+.reply_comment{
   font-size: 13px;
   color: #568CD6;
 }
@@ -576,7 +574,6 @@ input[class="send" i]::-webkit-file-upload-button {
   .send{
     padding-left: 14px;
     margin-top: 0.8rem;
-    background-color: transparent;
   }
   .image {
     max-height: 1050px;
@@ -772,6 +769,9 @@ input[class="send" i]::-webkit-file-upload-button {
   .all_comments{
     font-size: 13px;
     padding-bottom: 10px;
+  }
+  .reply_comment{
+    font-size: 10px;
   }
 }
 
