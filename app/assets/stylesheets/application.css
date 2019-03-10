@@ -293,10 +293,15 @@ h6{
 .back_container{
   margin-top: 0;
   background: #F6F6F6;
+  padding-top: 20px;
 }
 .photo{
   width: 124px; 
   height: 124px;
+}
+.main-photo{
+  width: 80px; 
+  height: 80px;
 }
 .photo_mini, .photo_back{
   width: 36px; 
@@ -837,5 +842,6 @@ input[class="send" i]::-webkit-file-upload-button {
     margin-top: 50px;
   }
 }
+
 
 

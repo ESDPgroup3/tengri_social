@@ -35,14 +35,14 @@
           <% if @user.nickname.nil? %>s
               <h6> <%= @user.phone %> </h6>
           <% else %>
-              <h6> @<%= @user.nickname %> </h6>
+              <h6 > @<%= @user.nickname %> </h6>
           <% end %>
           <section class="btn-group center-position">
             <div class="text-center blocks_under_avatar"><%= link_to(followers_user_path(@user)) do %>
               <%= show_svg('friens_icon.svg') %>
                 <div class="counter">
                   <p class="count"><%= @user.followers.count %></p>
-                  <p> подписчиков </p>
+                  <p class="counter"> подписчиков </p>
                 </div>
               <% end %>
             </div>
@@ -51,7 +51,7 @@
               <%= show_svg('friens_icon_2.svg') %>
                 <div class="counter">
                   <p class="count"><%= @user.follows.count %></p>
-                  <p> подписки </p>
+                  <p class="counter"> подписки </p>
                 </div>
               <% end %>
             </div>
@@ -60,7 +60,7 @@
               <%= show_svg('tenge_icon_active.svg') %>
                 <div class="counter">
                   <p class="count"><%=  @user.liked_posts.count %></p>
-                  <p> бонусов </p>
+                  <p class="counter"> бонусов </p>
                 </div>
               <% end %>
             </div>
@@ -70,7 +70,7 @@
     </div>
   </div>
   <% if current_user == @user %>
-    <section class="container">
+    <section class="container ">
       <div class="new_post">
         <div class="avatar_mini">
           <div>
@@ -142,9 +142,9 @@
               <div class="pr-2">
                 <div class="position-relative pl-2">
                   <% if @user.avatar.attached? %>
-                    <%= image_tag @user.avatar, class: "photo_mini rounded-circle float-center" %> 
+                    <%= image_tag @user.avatar, class: "avatar_in_post rounded-circle float-center" %> 
                   <% else %>
-                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center") %>
                   <% end %>
                 </div>
               </div>
@@ -175,11 +175,13 @@
                   <div class="under_post_section border-0 align-self-center">
                     <div class="post_section mobile_post_section">
                       <div class="comments">
+                      <%= link_to(post_path(post)) do %>
                         <p class="icon_text text-center">
                           <span class="none-mobile"><%= show_svg('comment.svg') %></span>
                           <span class="none-desktop"><%= show_svg('comment _mobile.svg') %></span>
                           <%= post.comments.count %> <span class="none-mobile">комментариев</span> 
-                        </p>            
+                        </p> 
+                      <% end %>            
                       </div>
                       <div class="likes">
                         <%= link_to(likes_toggle_path(post)) do %>

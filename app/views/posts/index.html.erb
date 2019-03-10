@@ -83,32 +83,31 @@
                 <% end %>
               </div>
               <div class="card-body border-0 align-self-center">
-              <div class="post_section mobile_post_section">
-
-              <div class="comments">
-              <%= link_to(post_path(post)) do %>
-                <p class="icon_text text-center">
-                  <span class="none-mobile"><%= show_svg('comment.svg') %></span>
-                  <span class="none-desktop"><%= show_svg('comment _mobile.svg') %></span>
-                  <%= post.comments.count %> <span class="none-mobile">комментариев</span> 
-                </p> 
-                <% end %>            
-              </div>
-              <div class="likes">
-                <%= link_to(likes_toggle_path(post)) do %>
-                  <p class="icon_text  text-center"> 
-                    <% if post.likes.ids.include?(current_user.id) %>
-                    <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
-                  <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
-                    <% else %>
-                    <span class="none-mobile"><%= show_svg('tenge_grey.svg') %></span>
-                  <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                <div class="post_section mobile_post_section">
+                  <div class="comments">
+                    <%= link_to(post_path(post)) do %>
+                      <p class="icon_text text-center">
+                        <span class="none-mobile"><%= show_svg('comment.svg') %></span>
+                        <span class="none-desktop"><%= show_svg('comment _mobile.svg') %></span>
+                        <%= post.comments.count %> <span class="none-mobile">комментариев</span> 
+                      </p> 
+                    <% end %>            
+                  </div>
+                  <div class="likes">
+                    <%= link_to(likes_toggle_path(post)) do %>
+                      <p class="icon_text  text-center"> 
+                        <% if post.likes.ids.include?(current_user.id) %>
+                          <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
+                          <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
+                        <% else %>
+                          <span class="none-mobile"><%= show_svg('tenge_grey.svg') %></span>
+                          <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                        <% end %>
+                        <%= post.likes.count %> <span class="none-mobile">лайкбонусов</span>
+                      </p>
                     <% end %>
-                    <%= post.likes.count %> <span class="none-mobile">лайкбонусов</span>
-                  </p>
-                <% end %>
-              </div>
-            </div>
+                  </div>
+                </div>
               </div>
               <% if post.comments.any? %>
               <% comment = post.comments.last %>
