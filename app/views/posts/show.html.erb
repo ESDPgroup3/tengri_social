@@ -37,7 +37,7 @@
                 </p>
               <% end %>
               <p class="time post_writed">
-                <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d %m %Y %H : %M") %>
+                <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d.%m.%Y,  %H:%M") %>
               </p>
             </div>
             <div class="wrap text_wrap">
@@ -87,7 +87,7 @@
   </section> 
   <div class="container nil"></div>
   <div id="comment_form_down" class="container display_flex between fixed-bottom">
-    <div class="pt-3 pr-1">
+    <div class="pt-2 pr-1">
       <% if current_user.avatar.attached? %>
         <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center photo_input" %> 
       <% else %>

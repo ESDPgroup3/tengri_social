@@ -660,6 +660,27 @@ input[class="send" i]::-webkit-file-upload-button {
   padding-top: 8px;
   padding-bottom: 24px;
 }
+.btn-follows{
+  border: 1px solid #DEDEDE;
+  border-radius: 5px;
+  padding: 8px 31px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #0E1826;
+}
+.btn-follows:active, .btn-follows:hover, .btn-follows:focus {
+  text-decoration: none;
+  color: #0E1826;
+}
+.nickname_follows{
+  font-weight: bold;
+  font-size: 18px;
+  color: #0E1826;
+}
+.friend{
+  margin: 0 24px 16px 48px;
+}
+
 
 @media (max-width: 415px){
   .start_page {
@@ -706,7 +727,7 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   textarea.form-control {
     height: 28px;
-    padding-top: 6px;
+    padding-top: 4px;
     width: 100%;
 }
   .nickname_text{
@@ -715,6 +736,7 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .time{
     font-size: 10px;
+    margin-left: 3px;
   }
   .wrap{
     font-size: 12px;
@@ -780,7 +802,7 @@ input[class="send" i]::-webkit-file-upload-button {
     font-size: 12px;
     line-height: 0px;
     padding: 0px;
-    margin-top: 4px;
+    margin-top: 2px;
     margin-right: 0px;
     width: 36%;;
   }
@@ -796,6 +818,20 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .photo_input{
     margin-top: 5px;
+  }
+  .follows{
+    font-size: 13px;
+    padding-right: 23px;
+  }
+  .friend{
+    margin: 8px 2px;
+  }
+  .nickname_follows{
+    font-size: 12px;
+  }
+  .btn-follows{
+    padding: 3px 10px;
+    font-size: 12px;
   }
 }
 
