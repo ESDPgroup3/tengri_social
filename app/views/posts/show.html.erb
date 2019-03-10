@@ -53,25 +53,25 @@
               <% end %>
             </div>
             <div class="card-body border-0 pl-2">
-            <div class="post_section border_top border-bottom">
-              <div class="post_section">
-                <p class="icon_text">
-                  <%= show_svg('comment.svg') %>
-                  <%= @post.comments.count %> комментариев 
+            <div class="post_section mobile_post_section">
+              <div class="comments">
+                <p class="icon_text text-center">
+                  <span class="none-mobile"><%= show_svg('comment.svg') %></span>
+                  <span class="none-desktop"><%= show_svg('comment _mobile.svg') %></span>
+                  <%= @post.comments.count %> <span class="none-mobile">комментариев</span> 
                 </p>            
               </div>
-              <div class="pr-2 pl-2"> 
-               <%= show_svg('line.svg') %>
-              </div>
-              <div class="post_section">
+              <div class="likes">
                 <%= link_to(likes_toggle_path(@post)) do %>
-                  <p class="icon_text"> 
-                    <% if @post.likes.ids.include?(current_user.id) %>
-                      <%= show_svg('tenge_active.svg') %>
-                    <% else %>
-                      <%= show_svg('tenge_grey.svg') %>
-                    <% end %>
-                    <%= @post.likes.count %> лайкбонусов
+                  <p class="icon_text text-center"> 
+                  <% if @post.likes.ids.include?(current_user.id) %>
+                  <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
+                <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
+                  <% else %>
+                  <span class="none-mobile"><%= show_svg('tenge_grey.svg') %></span>
+                <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                  <% end %>
+                    <%= @post.likes.count %> <span class="none-mobile">лайкбонусов</span>
                   </p>
                 <% end %>
               </div>

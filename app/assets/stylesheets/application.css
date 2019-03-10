@@ -833,6 +833,9 @@ input[class="send" i]::-webkit-file-upload-button {
     padding: 3px 10px;
     font-size: 12px;
   }
+  .account-settings{
+    margin-top: 50px;
+  }
 }
 
 
