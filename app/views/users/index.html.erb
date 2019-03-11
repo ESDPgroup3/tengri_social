@@ -1,18 +1,35 @@
-<div class="mt-4 container"><% @users.each do |user| %> 
+<div class="mt-4 container">
+<% @users.each do |user| %> 
   <div class="d-flex align-items-center justify-content-between friend">
     <%= link_to(user_path(user)) do %>
-    <div class="d-flex align-items-center">
-      <% if user.avatar.attached? %>
-      <%= image_tag user.avatar, class: "avatar_in_post rounded-circle float-center mr-3"%> 
-      <% else %>
-      <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center  mr-3") %>
-      <% end %>
-      <div class="nickname_follows">@<%= user.nickname %></div>
-    </div>
+      <div class="d-flex align-items-center">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, class: "avatar_in_post rounded-circle float-center mr-3"%> 
+        <% else %>
+          <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center  mr-3") %>
+        <% end %>
+        <div class="nickname_follows">@<%= user.nickname %></div>
+      </div>
     <% end %>
     <% if current_user != user %>
-    <%= link_to (user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(user), class: "btn-follows" %>
+      <%= link_to (user.in?(current_user.follows) ? 'Отписаться' : 'Подписаться'), follow_toggle_path(user), class: "btn-follows", data:{toggle: "modal" ,target: "#exampleModalCenter"} %>
     <% end %>
   </div>
-  <% end %>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content"> 
+        <div class="modal-exit">
+          <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+          <span class="border-exit"></span>
+          <%= link_to 'Отписаться', follow_toggle_path(user), class: "text-primary link-exit" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 </div>
+
+    
