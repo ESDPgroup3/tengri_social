@@ -11,12 +11,21 @@
 
 
 	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
-		<%= f.text_field :description %>
+		<%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
 
 
 
 
-    <div class="container display_flex between fixed-bottom">		<%= f.file_field :attachment %>
+    <div class="container display_flex between fixed-bottom bottom-new-post">		
+
+
+
+    <%= f.file_field :attachment %>
+    <input type="file" id="file1" name="image" accept="image/*" capture style="display:none"/>
+    <%= image_tag="1.jpg", id="upfile1", style="cursor:pointer" %>
+
+
+
 		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.submit %>  </div>
+		<%= f.submit 'Опубликовать', class: 'send-information m-0' %>  </div>
   <% end %>

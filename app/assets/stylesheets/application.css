@@ -691,6 +691,20 @@ input.block-send-information, input.send-information {
 .new_post_navbar{
   font-size: 17px;
 }
+.input_description{
+  top: 60px;
+  bottom:10px;
+  width: 100%;
+  position:absolute;
+  padding: 20px;
+}
+.input_description:focus{
+  outline: none;
+}
+.bottom-new-post{
+  background: #F6F6F6;
+  height: 84px;;
+}
 
 @media (max-width: 415px){
   .start_page {
