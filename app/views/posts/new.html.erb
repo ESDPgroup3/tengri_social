@@ -17,14 +17,8 @@
 
 
     <div class="container display_flex between fixed-bottom bottom-new-post">		
-
-
-
-    <%= f.file_field :attachment %>
-    <input type="file" id="file1" name="image" accept="image/*" capture style="display:none"/>
-    <%= image_tag="1.jpg", id="upfile1", style="cursor:pointer" %>
-
-
+    <label for="uploadbtn" class="uploadButton">+</label>
+    <%= f.file_field :attachment, id: "uploadbtn", class: "d-none" %>
 
 		<%= f.hidden_field :user_id, value: current_user.id %>
 		<%= f.submit 'Опубликовать', class: 'send-information m-0' %>  </div>
