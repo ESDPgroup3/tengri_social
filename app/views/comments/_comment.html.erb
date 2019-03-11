@@ -1,13 +1,13 @@
-<% nesting = local_assigns.fetch(:nesting, 1) %>
+<% nesting = local_assigns.fetch(:nesting, 0) %>
 <% max_nesting = local_assigns[:max_nesting]%> 
-<div class="border-info pl-3 commentt">
+<div class="border-info commentt">
   <div class="pr-2">
   	<div class="post_section">
 			<div class="position-relative">
 				<% if comment.user.avatar.attached? %>
-					<%= image_tag comment.user.avatar, class: "photo_mini rounded-circle float-center" %> 
+					<%= image_tag comment.user.avatar, class: "photo_comment rounded-circle float-center" %> 
 				<% else %>
-					<%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+					<%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_comment rounded-circle float-center") %>
 				<% end %>
 			</div>
 			<div class="pl-2">
@@ -17,17 +17,18 @@
 					@<%= comment.user.nickname %>
 					</p>
 					<% end %>
-					<p class="time post_writed"> <%= show_svg('line2.svg') %> <%= comment.created_at.strftime("%d %m %Y %H : %M") %></p>
+					<p class="time post_writed none-mobile"> <%= show_svg('line2.svg') %> <%= comment.created_at.strftime("%d.%m.%Y, %H:%M") %></p>
 				</div> 
 				<div class="text_comment text_wrap">
 					<%= comment.body %>
 				</div>
 				<% reply = comment.id %>
 				<%= link_to "Ответить", "#", class: "reply_comment" %>
+				<div class="time post_writed none-desktop">| <%= comment.created_at.strftime("%d.%m.%Y, %H:%M") %></div>
 	  	</div>
 		</div>
   </div>
-  <div id="text_comment_<%= comment.id %>">
+  <div id="text_comment_<%= comment.id %>" class="pl-3">
 	  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
 	  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
   </div>
