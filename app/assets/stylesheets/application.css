@@ -863,6 +863,10 @@ input.block-send-information, input.send-information {
   .new_post_navbar{
     font-size: 13px;
   }
+  .add_post{
+    width: 20px;
+    height: 20px;
+  }
 }
 #File1 {
 position: absolute;

@@ -106,13 +106,13 @@
               <span class="none-desktop"><%= show_svg('Group-mobile.svg') %></span>
               <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
             <% end %>
-          <%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4 none-mobile" %>
-          
+              <span class="none-desktop"><%= link_to image_tag("add.png", class: "add_post ml-3" ), new_post_path %></span>
+              <span class="none-mobile pr-4"><%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4 none-mobile" %></span>
         <% else %>
           <% nil %>
         <% end %>
       <% end %>
+      
     </div>            
   </div>
 </nav>
-

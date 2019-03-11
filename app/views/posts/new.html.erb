@@ -1,25 +1,8 @@
- <% if @post.errors.any? %>
-        <div class="errors">
-          Total errors: <%= @post.errors.count %>
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
 	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
 		<%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
-
-
-
-
     <div class="container display_flex between fixed-bottom bottom-new-post">		
     <label for="uploadbtn" class="uploadButton">+</label>
     <%= f.file_field :attachment, id: "uploadbtn", class: "d-none" %>
-
 		<%= f.hidden_field :user_id, value: current_user.id %>
 		<%= f.submit 'Опубликовать', class: 'send-information m-0' %>  </div>
   <% end %>
