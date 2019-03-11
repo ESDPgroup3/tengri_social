@@ -37,9 +37,9 @@
         <% end %>
       </div>
     <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
-      <div class="h6">
+      <div class="">
         <%= link_to(posts_path, class: 'text-primary') do %> 
-          <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад </p>
+          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span> </p>
         <% end %>
       </div>
     <% else %>
@@ -70,7 +70,7 @@
       <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
         <p class="m-0 center-navbar"> Настройки </p>
       <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
-        <p class="mt-3 pt-2"> Новый пост</p>
+        <p class="m-0 new_post_navbar"> Новый пост</p>
       <% elsif params[:action] == 'follows' && params[:controller] == 'users'%>
         <p class="m-0 follows">Подписки</p>
       <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>

@@ -9,12 +9,14 @@
         </div>
     <% end %>
 
-<% if current_user  %>
+
 	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
-		<%= f.text_field :title %>
 		<%= f.text_field :description %>
-		<%= f.file_field :attachment %>
+
+
+
+
+    <div class="container display_flex between fixed-bottom">		<%= f.file_field :attachment %>
 		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.submit %> 
-	<% end %>
-<% end %>
+		<%= f.submit %>  </div>
+  <% end %>

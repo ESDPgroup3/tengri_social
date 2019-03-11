@@ -685,7 +685,12 @@ input[class="send" i]::-webkit-file-upload-button {
 .friend{
   margin: 0 24px 16px 48px;
 }
-
+input.block-send-information, input.send-information {
+  padding-top: 4px;
+}
+.new_post_navbar{
+  font-size: 17px;
+}
 
 @media (max-width: 415px){
   .start_page {
@@ -840,6 +845,9 @@ input[class="send" i]::-webkit-file-upload-button {
   }
   .account-settings{
     margin-top: 50px;
+  }
+  .new_post_navbar{
+    font-size: 13px;
   }
 }
 
