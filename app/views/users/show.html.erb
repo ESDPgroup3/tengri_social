@@ -83,7 +83,7 @@
         </div>
         <div class="post_write">
           <%= form_with url: posts_path, scope: :post, local: true do |f| %>
-            <%= f.text_area :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: 'form-control'; %>
+            <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: 'form-control', autocomplete: "off" %>
             <%f.file_field :picture %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <% f.submit %> 
@@ -186,7 +186,7 @@
                       <div class="likes">
                         <%= link_to(likes_toggle_path(post)) do %>
                           <p class="icon_text  text-center"> 
-                            <% if post.likes.ids.include?(current_user.id) %>
+                            <% if post.likes.include?(current_user.id) %>
                             <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
                           <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
                             <% else %>
