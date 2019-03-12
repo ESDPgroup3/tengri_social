@@ -12,7 +12,7 @@
       </div>
       <div class="post_write pl-2">
         <%= form_with url: posts_path, scope: :post, local: true do |f| %>
-          <%= f.text_area :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: "form-control"; %>
+          <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: "form-control", autocomplete: "off" %>
           <%f.file_field :picture %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <% f.submit %> 
@@ -41,9 +41,7 @@
             <div class="post_section">
               <div class="position-relative pr-2">
                 <div class="active_user_mini pl-2">
-                  <div>
-                    
-                  </div>
+                  
                   <div>
                   <% if post.user.online? %>
                       <i class="fa fa-circle text-success"></i>
@@ -53,13 +51,13 @@
                     <% if post.user.avatar.attached? %>
                       <%= image_tag post.user.avatar, class: "avatar_in_post rounded-circle float-center" %> 
                     <% else %>
-                      <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
+                      <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center") %>
                     <% end %>
                   </div>
                 </div>
               </div>
             </div>
-            <div>
+            <div class="w-100">
               <div class="post_section">
                 <p class="nickname_text m-0">
                   <%= link_to user_path(post.user), class: "text-body nickname_text" do %>
@@ -71,7 +69,7 @@
                 </p>
               </div>
               <div class="wrap">
-                <div class="card-text post_writed text_wrap"><%= post.description %> </div>
+                <div class="card-text post_writed text_wrap mt-3"><%= post.description %> </div>
               </div>
               <div class="border-0 align-self-center mt-2">     
                 <% if post.attachment.attached? %>

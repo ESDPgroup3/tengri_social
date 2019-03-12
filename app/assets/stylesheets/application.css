@@ -685,7 +685,26 @@ input[class="send" i]::-webkit-file-upload-button {
 .friend{
   margin: 0 24px 16px 48px;
 }
-
+input.block-send-information, input.send-information {
+  padding-top: 4px;
+}
+.new_post_navbar{
+  font-size: 17px;
+}
+.input_description{
+  top: 60px;
+  bottom:10px;
+  width: 100%;
+  position:absolute;
+  padding: 20px;
+}
+.input_description:focus{
+  outline: none;
+}
+.bottom-new-post{
+  background: #F6F6F6;
+  height: 84px;;
+}
 
 @media (max-width: 415px){
   .start_page {
@@ -841,7 +860,45 @@ input[class="send" i]::-webkit-file-upload-button {
   .account-settings{
     margin-top: 50px;
   }
+  .new_post_navbar{
+    font-size: 13px;
+  }
+  .add_post{
+    width: 20px;
+    height: 20px;
+  }
+}
+#File1 {
+position: absolute;
+}
+.customFile {
+width: 219px;
+margin-left: -140px;
+cursor: default;
+height: 21px;
+z-index: 2;
+opacity: 0;
 }
 
 
 
+.uploadButton {
+    display: block;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+    padding: 5px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Tahoma;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.uploadButton:hover {
+    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+}
+.input_description {
+  top: 85px;
+}

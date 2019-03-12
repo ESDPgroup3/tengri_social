@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       upload_attachment
-      redirect_to user_path(@post.user)
+      redirect_to  post_path(@post)
     else
       render 'new'
     end
