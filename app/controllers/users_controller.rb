@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       ask_follow_toggle
     end
   end
+
   def ask_follow_toggle
     user = User.find_by(id: params[:user_id])
     if current_user.inviters.include?(user)
@@ -52,6 +53,7 @@ class UsersController < ApplicationController
     end
     redirect_back(fallback_location: posts_path)
   end
+  
   def follows
     @user = User.find(params[:id])
     @users = @user.follows
