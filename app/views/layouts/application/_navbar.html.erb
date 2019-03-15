@@ -113,8 +113,10 @@
         <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
           <% nil %>
         <% elsif params[:action] == 'index' && params[:controller] == 'posts'%>
-            <span class="none-desktop pr-3"><%= show_svg('search-mobile.svg') %></span>
-            <span class="none-mobile pr-4"><%= show_svg('search.svg') %></span>
+            <%= link_to(searches_path) do %> 
+              <span class="none-desktop pr-3"><%= show_svg('search-mobile.svg') %></span>
+              <span class="none-mobile pr-4"><%= show_svg('search.svg') %></span>
+            <%end%>
             <%= link_to(posts_path, class: 'text-primary') do %> 
               <span class="none-desktop"><%= show_svg('Group-mobile.svg') %></span>
               <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
