@@ -1,0 +1,14 @@
+<%= form_tag searches_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<div id="users">
+<% @searches.each do |user| %>
+  <h2>
+    <%= link_to user.nickname, user_path(user.id) %>
+  </h2>
+<% end %>
+</div>
