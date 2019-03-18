@@ -1,4 +1,4 @@
-<div id="users">
+<div id="users" class="container">
   <% @searches.each do |user| %>
     <h2>
       <%= link_to user.nickname, user_path(user.id) %>
