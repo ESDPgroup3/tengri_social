@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get 'is_private/:user_id', to: 'users#is_private', as: :is_private
   get 'ask_follow_toggle/:user_id', to: 'users#ask_follow_toggle', as: :ask_follow_toggle
   get 'searches', to: 'searches#index', as: 'searches'
+  get 'phones', to: 'searches#phone_search', as: 'phone_search'
   delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end
