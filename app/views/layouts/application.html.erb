@@ -10,7 +10,9 @@
   </head>
      
   <body>
-    <%= render 'layouts/application/navbar' %>
+    <% if current_user != nil  && current_user.nickname.present?%>
+      <%= render 'layouts/application/navbar' %>
+    <% end %>
     <div class="back-navbar"></div>
     <%= yield %>
     </div>
