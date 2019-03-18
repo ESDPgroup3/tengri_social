@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_132718) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "phone"
+    t.string "phone"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
