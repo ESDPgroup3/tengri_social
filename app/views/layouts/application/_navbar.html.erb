@@ -88,6 +88,13 @@
             <%= submit_tag "Search", name: nil %>
           </p>
         <% end %>
+      <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+        <%= form_tag phone_search_path, method: :get do %>
+          <p>
+            <%= text_field_tag :query, params[:query] %>
+            <%= submit_tag "Search", name: nil %>
+          </p>
+        <% end %>
       <%end %>
     </div>
     <% if user_signed_in? %>
