@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AuthenticationController < ApplicationController
- before_action :user_signed?, except: [:add_nickname]
- layout 'application'
+  before_action :user_signed?, except: [:add_nickname]
+  layout 'application'
 
   def show_form; end
 
@@ -10,7 +12,7 @@ class AuthenticationController < ApplicationController
     @nick_exists = User.exists?(nickname: params[:nickname])
     p params[:nickname]
     respond_to do |format|
-      format.js { render :json => @nick_exists }
+      format.js { render json: @nick_exists }
     end
   end
 

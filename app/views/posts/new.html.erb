@@ -1,8 +1,21 @@
-	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
-		<%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
-    <div class="container display_flex between fixed-bottom bottom-new-post">		
-    <label for="uploadbtn" class="uploadButton">+</label>
-    <%= f.file_field :attachment, id: "uploadbtn", class: "d-none" %>
-		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.submit 'Опубликовать', class: 'send-information m-0' %>  </div>
+<div class="container">
+  <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+		 <%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
+<div class="form-row down">
+  <div class="form-group col-md-6">
+<%= fa_icon "file-image-o 2x", class: "icon-btn " %>
+   <%= f.file_field :attachment, class:"d-none", type: "file", accept:"image/x-png, image/gif, image/jpeg" %> 
+   <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="form-group col-md-6">
+    	<%= f.submit 'Опубликовать', :class => 'gradient button-send' %> 
+  </div>
+</div>
   <% end %>
+</div>
+
+<script>
+ $(".icon-btn").on('click', function() {
+   $('#post_attachment').click();
+ });
+ </script>
