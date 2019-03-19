@@ -1,118 +1,155 @@
-<nav class="navbar fixed-top bg-white navbar-expand-md mb-4">
-  <div class="container nav-justified">
-    <% if params[:action] == 'show' && params[:controller] == 'users' %>
-      <div class="">
-          <%= link_to(posts_path, class: 'text-primary') do %>
-            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад в ленту</span> </p>
-          <% end %>
-      </div>
-    <% elsif params[:action] == 'show' && params[:controller] == 'posts' %>
-      <div class="">
-        <%= link_to(posts_path, class: 'text-primary') do %> 
-          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-        <% end %>
-      </div>
-    <% elsif params[:action] == 'edit' && params[:controller] == 'posts' %>
-      <div class="h6">
-        <%= link_to(user_path(current_user), class: 'text-primary') do %> 
-          <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад в профиль </p>
-        <% end %>
-      </div>
-     <% elsif params[:action] == 'edit' && params[:controller] == 'users' %>
-      <div class="">
-        <%= link_to(user_path(current_user), class: 'text-primary') do %> 
-          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад к профилю</span> </p>
-        <% end %>
-      </div>
-    <% elsif params[:action] == 'follows' && params[:controller] == 'users' %>
-      <div class="">
-        <%= link_to(user_path(@user), class: 'text-primary') do %> 
-          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-        <% end %>
-      </div>
-    <% elsif params[:action] == 'followers' && params[:controller] == 'users' %>
-      <div class="">
-        <%= link_to(user_path(@user), class: 'text-primary') do %> 
-          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-        <% end %>
-      </div>
-    <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
-      <div class="">
-        <%= link_to(posts_path, class: 'text-primary') do %> 
-          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span> </p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="h6 m-0">
-        <%= link_to(user_path(current_user)) do %> 
-          <div class="post_section">
-            <% if current_user.avatar.attached? %>
-              <%= image_tag current_user.avatar, class: "photo_back rounded-circle float-center"%> 
-            <% else %>
-              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
-            <% end %>
-            <div class="nav_nick pl-1 none-mobile">
-              Привет, 
-              <% if current_user.nickname.nil? %>
-                <%= current_user.phone %>
-              <% else %>
-                <%= current_user.nickname.capitalize %>!
-              <% end %>
-            </div>
-          </div> 
-        <% end %>
-      </div>
-    <%end %>  
-    
-    <div class="h6 m-0">
+<nav class="navbar fixed-top top_nav">
+  <div class="container">
+    <div class="bg-white navbar-expand-md nav-justified">
       <% if params[:action] == 'show' && params[:controller] == 'users' %>
-        <p class="m-0 center-navbar"> Профиль </p>
-      <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
-        <p class="m-0 center-navbar"> Настройки </p>
-      <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
-        <p class="m-0 new_post_navbar"> Новый пост</p>
-      <% elsif params[:action] == 'follows' && params[:controller] == 'users'%>
-        <p class="m-0 follows">Подписки</p>
-      <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>
-        <p class="m-0 follows">Подписчики</p>
-      <%end %>
-    </div>
-    <% if user_signed_in? %>
-      <div>
-        <% if params[:action] == 'show' && params[:controller] == 'users' && current_user == @user%>
+        <div class="">
+            <%= link_to(posts_path, class: 'text-primary') do %>
+              <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад в ленту</span> </p>
+            <% end %>
+        </div>
+      <% elsif params[:action] == 'show' && params[:controller] == 'posts' %>
+        <div class="">
           <%= link_to(posts_path, class: 'text-primary') do %> 
-            <span class="none-desktop pr-3"><%= show_svg('Group-mobile.svg') %></span>
-            <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
-          <%= link_to(edit_user_path(current_user), class: 'text-primary') do %>
-            <span class="none-mobile"><%= show_svg('shape.svg') %></span>
-            <span class="none-desktop"><%= show_svg('settings-mobile.svg') %></span>
+        </div>
+      <% elsif params[:action] == 'edit' && params[:controller] == 'posts' %>
+        <div class="h6">
+          <%= link_to(user_path(current_user), class: 'text-primary') do %> 
+            <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад в профиль </p>
           <% end %>
-        <% elsif params[:action] == 'show' && params[:controller] == 'users' && current_user != @user %>
-          <span class="none-desktop pl-5"><%= show_svg('menu-mobile.svg') %></span>
-          <span class="none-mobile pl-4"><%= show_svg('menu.svg') %></span>
+        </div>
+      <% elsif params[:action] == 'edit' && params[:controller] == 'users' %>
+        <div class="">
+          <%= link_to(user_path(current_user), class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад к профилю</span> </p>
+          <% end %>
+        </div>
+      <% elsif params[:action] == 'follows' && params[:controller] == 'users' %>
+        <div class="">
+          <%= link_to(user_path(@user), class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+        </div>
+      <% elsif params[:action] == 'followers' && params[:controller] == 'users' %>
+        <div class="">
+          <%= link_to(user_path(@user), class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+        </div>
+      <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
+        <div class="">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span> </p>
+          <% end %>
+        </div>
+      <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
+        <div class="">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+        </div>
+        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+          <%= link_to(searches_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+      <% else %>
+        <div class="h6 m-0">
+          <%= link_to(user_path(current_user)) do %> 
+            <div class="post_section">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar, class: "photo_back rounded-circle float-center"%> 
+              <% else %>
+                <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
+              <% end %>
+              <div class="nav_nick pl-1 none-mobile">
+                Привет, 
+                <% if current_user.nickname.nil? %>
+                  <%= current_user.phone %>
+                <% else %>
+                  <%= current_user.nickname.capitalize %>!
+                <% end %>
+              </div>
+            </div> 
+          <% end %>
+        </div>
+      <%end %>  
+      
+      <div class="h6 m-0">
+        <% if params[:action] == 'show' && params[:controller] == 'users' %>
+          <p class="m-0 center-navbar"> Профиль </p>
         <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
-          <%= link_to '#', class: 'navbar-nav h6 pl-1 sort', "data-toggle" => "modal", 'data-target' => '#exampleModalCenter' do %>
-            <div class="sign-out">
-              Выйти <%= show_svg('logout.svg') %>
-            </div>
-          <% end %>
+          <p class="m-0 center-navbar"> Настройки </p>
         <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
-          <% nil %>
-        <% elsif params[:action] == 'index' && params[:controller] == 'posts'%>
-            <span class="none-desktop pr-3"><%= show_svg('search-mobile.svg') %></span>
-            <span class="none-mobile pr-4"><%= show_svg('search.svg') %></span>
+          <p class="m-0 new_post_navbar"> Новый пост</p>
+        <% elsif params[:action] == 'follows' && params[:controller] == 'users'%>
+          <p class="m-0 follows">Подписки</p>
+        <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>
+          <p class="m-0 follows">Подписчики</p>
+        <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
+          <%= form_tag searches_path, method: :get do %>
+            <p>
+              <%= text_field_tag :query, params[:query] %>
+              <%= submit_tag "Search", name: nil %>
+            </p>
+          <% end %>
+        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+          <%= form_tag phone_search_path, method: :get do %>
+            <p>
+              <%= text_field_tag :query, params[:query] %>
+              <%= submit_tag "Search", name: nil %>
+            </p>
+          <% end %>
+        <%end %>
+      </div>
+      <% if user_signed_in? %>
+        <div>
+          <% if params[:action] == 'show' && params[:controller] == 'users' && current_user == @user%>
             <%= link_to(posts_path, class: 'text-primary') do %> 
-              <span class="none-desktop"><%= show_svg('Group-mobile.svg') %></span>
+              <span class="none-desktop pr-3"><%= show_svg('Group-mobile.svg') %></span>
               <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
             <% end %>
-              <span class="none-desktop"><%= link_to image_tag("add.png", class: "add_post ml-3" ), new_post_path %></span>
-              <span class="none-mobile pr-4"><%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4 none-mobile" %></span>
-        <% else %>
-          <% nil %>
-        <% end %>
-      <% end %>
-      
-    </div>            
+            <%= link_to(edit_user_path(current_user), class: 'text-primary') do %>
+              <span class="none-mobile"><%= show_svg('shape.svg') %></span>
+              <span class="none-desktop"><%= show_svg('settings-mobile.svg') %></span>
+            <% end %>
+          <% elsif params[:action] == 'show' && params[:controller] == 'users' && current_user != @user %>
+            <span class="none-desktop pl-5"><%= show_svg('menu-mobile.svg') %></span>
+            <span class="none-mobile pl-4"><%= show_svg('menu.svg') %></span>
+          <% elsif params[:action] == 'edit' && params[:controller] == 'users'%>
+            <%= link_to '#', class: 'navbar-nav h6 pl-1 sort', "data-toggle" => "modal", 'data-target' => '#exampleModalCenter' do %>
+              <div class="sign-out">
+                Выйти <%= show_svg('logout.svg') %>
+              </div>
+            <% end %>
+          <% elsif params[:action] == 'new' && params[:controller] == 'posts'%>
+            <% nil %>
+          <% elsif params[:action] == 'index' && params[:controller] == 'posts'%>
+              <%= link_to(searches_path) do %> 
+                <span class="none-desktop pr-3"><%= show_svg('search-mobile.svg') %></span>
+                <span class="none-mobile pr-4"><%= show_svg('search.svg') %></span>
+              <%end%>
+              <%= link_to(posts_path, class: 'text-primary') do %> 
+                <span class="none-desktop"><%= show_svg('Group-mobile.svg') %></span>
+                <span class="none-mobile pr-4"><%= show_svg('Group.svg') %></span>
+              <% end %>
+                <span class="none-desktop"><%= link_to image_tag("add.png", class: "add_post ml-3" ), new_post_path %></span>
+                <span class="none-mobile pr-4"><%= link_to 'Написать пост', new_post_path, class: "btn btn-primary btn-md mb-1 ml-1 gradient pl-4 pr-4 none-mobile" %></span>
+          <% else %>
+            <% nil %>
+          <% end %>
+        <% end %> 
+      </div>            
+    </div>
+    <% if (params[:action] == 'index' && params[:controller] == 'searches') || (params[:action] == 'phone_search' && params[:controller] == 'searches') %>
+      <div class="">  
+        <ul class="navbar-nav navbar-expand-sm btm_search mt-2">
+          <li class="nav-item p-2"> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
+          <li class="nav-item p-2"> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
+          <li class="nav-item active p-2"> <%= link_to 'Люди', searches_path, class: "nav-link"; %> </li>
+          <li class="nav-item p-2"> <%= link_to 'Хэштеги', '#', class: "nav-link"; %> </li>
+        </ul> 
+      </div>
+    <% end %>
   </div>
 </nav>

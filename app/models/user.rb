@@ -47,6 +47,30 @@ class User < ApplicationRecord
     false
   end
 
+  include PgSearch
+
+  pg_search_scope :search, 
+    against: [:nickname, :phone],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: { users: [:nickname, :phone]},
+    ignoring: :accents
+
+  def self.text_search(query)
+    if query.present?
+      where("nickname ilike :q", q: "%#{query}%")
+    else
+      where(nil)
+    end
+  end
+
+  def self.phone_search(query)
+    if query.present?
+      where("phone ilike :q", q: "%#{query}%")
+    else
+      where(nil)
+    end
+  end
+
   def online?
     updated_at > 30.minutes.ago
   end
