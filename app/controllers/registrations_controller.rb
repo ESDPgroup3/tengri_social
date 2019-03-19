@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class RegistrationsController < Devise::RegistrationsController
   layout 'application'
+
   protected
 
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
 
-  def after_sign_up_path_for(resources)
+  def after_sign_up_path_for(_resources)
     nickname_path
   end
 

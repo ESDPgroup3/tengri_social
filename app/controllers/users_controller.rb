@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   layout 'authentication'
   before_action :user_log_in?
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render layout: "user"
+    render layout: 'user'
   end
 
   def update
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
     end
     redirect_back(fallback_location: posts_path)
   end
-  
+
   def follows
     @user = User.find(params[:id])
     @users = @user.follows
@@ -76,7 +78,7 @@ class UsersController < ApplicationController
     if @current_user.is_private
       current_user.update(is_private: false)
     else
-      current_user.update(is_private: true) 
+      current_user.update(is_private: true)
     end
     redirect_back(fallback_location: edit_user_path(current_user))
   end

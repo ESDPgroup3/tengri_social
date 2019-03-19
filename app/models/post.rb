@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   validates :description, presence: true, length: { in: 5..500 }
   # validate :correct_image_type

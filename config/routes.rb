@@ -1,7 +1,9 @@
-Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+# frozen_string_literal: true
 
-  resources :users, :except => [:destroy, :create] do
+Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'registrations' },
+                     controllers: { sessions: 'sessions' }
+  resources :users, except: %i[destroy create] do
     member do
       get 'follows'
       get 'followers'
