@@ -10,7 +10,7 @@
       </p>
       <%= f.text_field :nickname, :value => current_user.nickname, :class => "input_information" %>
     </div>
-    <%= f.submit 'Сохранить изменения', class: 'block-send-information' %>
+    <%= f.submit 'Сохранить изменения', class: 'block-send-information pt-1' %>
     <% end %>
     <div class="account-settings">
       <h3 class="names-sectors">
@@ -26,19 +26,23 @@
       </div>
       <% end %>
       <hr class="line-sector">
-      <%= link_to user_path(current_user), class: 'links-in-setting' do %>
-      <div class="flex-between">
-        <span class="d-flex justify-content-start">
-          <div class="d-inline-block">
-            <%= image_tag 'icons/lock.png', class: 'imgtag-png' %>
+      <%= link_to is_private_path(current_user), class: 'links-in-setting' do %>
+        <div class="flex-between">
+          <span class="d-flex justify-content-start">
+            <div class="d-inline-block">
+              <%= image_tag 'icons/lock.png', class: 'imgtag-png' %>
+            </div>
+            <div class="d-inline-block ml-2">Сделать профиль приватным 
+            <p class='hint-settings'> Просматривать ваш профиль и посты <br> могут только одобренный вами люди </p>
           </div>
-          <div class="d-inline-block ml-2">Сделать профиль приватным 
-           <p class='hint-settings'> Просматривать ваш профиль и посты <br> могут только одобренный вами люди </p>
-         </div>
-       </span>
-       <%= image_tag 'icons/off.png' %>
-     </div>
-     <% end %>
+        </span>
+        <% if current_user.is_private == false %>
+            <%= show_svg('off.svg') %>
+          <% else %>
+            <%= show_svg('on.svg') %>
+          <% end %>
+      </div>
+    <% end %>
    </div>
    <div>
     <h3 class="names-sectors">Конфиденциальность <br> и безопасность</h3>

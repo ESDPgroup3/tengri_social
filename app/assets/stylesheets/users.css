@@ -82,6 +82,7 @@
   background: #F6F6F6;
   border-radius: 6px;
   height: 50px;
+  justify-content: space-around;
 }
 .link-exit{
   font-weight: bold;
@@ -107,7 +108,11 @@
   border: 1px solid #E0E0E0;
   height: 40px;
 }
-
+@media (max-width: 415px){
+  .link-exit{
+    width: 100%;
+  }
+}
 
 
 

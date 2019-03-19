@@ -1,20 +1,21 @@
- <% if @post.errors.any? %>
-        <div class="errors">
-          Total errors: <%= @post.errors.count %>
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+<div class="container">
+  <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+		 <%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
+<div class="form-row down">
+  <div class="form-group col-md-6">
+<%= fa_icon "file-image-o 2x", class: "icon-btn " %>
+   <%= f.file_field :attachment, class:"d-none", type: "file", accept:"image/x-png, image/gif, image/jpeg" %> 
+   <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="form-group col-md-6">
+    	<%= f.submit 'Опубликовать', :class => 'gradient button-send' %> 
+  </div>
+</div>
+  <% end %>
+</div>
 
-<% if current_user  %>
-	<%= form_with url: posts_path, scope: :post, local: true do |f| %>
-		<%= f.text_field :title %>
-		<%= f.text_field :description %>
-		<%= f.file_field :attachment %>
-		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.submit %> 
-	<% end %>
-<% end %>
+<script>
+ $(".icon-btn").on('click', function() {
+   $('#post_attachment').click();
+ });
+ </script>

@@ -1,7 +1,9 @@
-Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+# frozen_string_literal: true
 
-  resources :users, :except => [:destroy, :create] do
+Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'registrations' },
+                     controllers: { sessions: 'sessions' }
+  resources :users, except: %i[destroy create] do
     member do
       get 'follows'
       get 'followers'
@@ -18,5 +20,9 @@ Rails.application.routes.draw do
   end
   get 'likes_toggle/:post_id', to: 'users#likes_toggle', as: :likes_toggle
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
+  get 'is_private/:user_id', to: 'users#is_private', as: :is_private
+  get 'ask_follow_toggle/:user_id', to: 'users#ask_follow_toggle', as: :ask_follow_toggle
+  get 'searches', to: 'searches#index', as: 'searches'
+  get 'phones', to: 'searches#phone_search', as: 'phone_search'
   delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end
