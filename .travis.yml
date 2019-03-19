@@ -12,5 +12,4 @@ script:
   - bundle exec rake
 
 before_script:
-  - cp config/database.yml.travis config/database.yml
   - psql -c 'create tengri_social_test;' -U postgres
