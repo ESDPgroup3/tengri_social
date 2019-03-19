@@ -50,7 +50,7 @@
           <% end %>
         </div>
         <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-          <%= link_to(:back, class: 'text-primary') do %> 
+          <%= link_to(searches_path, class: 'text-primary') do %> 
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
       <% else %>
