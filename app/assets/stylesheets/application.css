@@ -183,9 +183,9 @@ body{
   padding-top: 40px;
 }
 .decoration{
-  color: black;
-  background: blue;
-  border-radius: 5px;
+	color: black;
+	background: blue;
+	border-radius: 5px;
 }
 .password_creation{
   font-size: 20px;
@@ -245,6 +245,7 @@ h6{
 }
 .user{
   right: 19px;
+  bottom: 20px;
   z-index: 100;
 }
 .text_wrap { 
@@ -321,10 +322,6 @@ h6{
 .nav_nick{
   line-height: 30px;
   padding-top: 6px;
-  font-weight: bold;
-font-size: 18px;
-color: #0E1826;
-text-decoration: none;
 }
 .active_user_mini {
   font-size: 5px;
@@ -332,18 +329,6 @@ text-decoration: none;
 .avatar_mini{
   padding: 4px;
   padding-right: 14px
-}
-.links-under-avatar{
-  text-decoration: none;
-font-size: 16px;
-color: #0E1826;
-}
-.links-under-avatar:active, .links-under-avatar:hover, .links-under-avatar:focus {
-  text-decoration: none;
-color: #0E1826;
-}
-.width-follows{
-  min-width: 90px;
 }
 .post_write{
   width: 90%; 
@@ -437,7 +422,7 @@ input[type="form-control"]::placeholder{
 .fa_circle{
   font-size: 10px;
 }
-.nickname_text{
+a, .nickname_text{
   font-size: 17px;
   color: #0E1826;
   font-weight: 500;
@@ -450,18 +435,6 @@ input[type="form-control"]::placeholder{
   padding-right: 3px;
   margin-bottom: 0;
   padding-top: 3px;
-}
-.btn-follows{
-  border: 1px solid #DEDEDE;
-  border-radius: 5px;
-  padding: 8px 31px;
-  font-weight: 500;
-  font-size: 14px;
-  color: #0E1826;
-}
-.btn-follows:active, .btn-follows:hover, .btn-follows:focus {
-  outline: 0;
-  outline-offset: 0
 }
 .all_comments{
   color: #568CD6;

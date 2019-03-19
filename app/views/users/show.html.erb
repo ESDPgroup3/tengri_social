@@ -12,9 +12,9 @@
             <% end %>
           </div>
             <% if @user.avatar.attached? %>
-              <%= image_tag @user.avatar, class: "main-photo rounded-circle float-center"%> 
+              <%= image_tag @user.avatar, class: "photo rounded-circle float-center"%> 
             <% else %>
-              <%= image_tag("no-foto.png", :alt => "no avatar", class: "main-photo rounded-circle float-center") %>
+              <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
             <% end %>
           </div>
           <% if current_user == @user %> 
@@ -91,7 +91,8 @@
         </div>          
       </div>
     </section>
-  <% else %>
+  <% end %>
+  <% if current_user != @user %>
     <div class="container padding_bot flex-container">
       <% if @user.in?(current_user.follows) %>
         <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="unsubscribe">
