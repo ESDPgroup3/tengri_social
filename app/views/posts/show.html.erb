@@ -1,6 +1,6 @@
-<div class="back_container shadow-sm"> 
-  <section class='container mt-2 mb-2'>
-    <div class="card">
+<div class=""> 
+  <section class=''>
+    <div class="">
       <div>
         <% if current_user.id == @post.user.id %>
           <div class="dropdown">
@@ -14,21 +14,14 @@
           </div>
         <% end %>
       </div> 
-      <div class="card-body">
+      <div class="card-body container">
         <div class="post_section">
           <div class="post_section">
             <div class="position-relative pl-2 pr-2">
               <div class="active_user_mini">
                 <div>
-                  <% if current_user.online? %>
-                    <i class="fa fa-circle text-success"></i>
-                    <% else %>
-                    <i class="fa fa-circle text-danger"></i>
-                  <% end %>
-                </div>
-                <div>
                   <% if @post.user.avatar.attached? %>
-                    <%= image_tag @post.user.avatar, class: "photo rounded-circle float-center" %> 
+                    <%= image_tag @post.user.avatar, class: "avatar_in_post rounded-circle float-center" %> 
                   <% else %>
                     <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo rounded-circle float-center") %>
                   <% end %>
@@ -36,21 +29,21 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="w-100">
             <div class="post_section"> 
               <%= link_to(user_path(@post.user)) do %>
-                <p class="nickname_text">
+                <p class="nickname_text mb-1">
                   @<%= @post.user.nickname %>
                 </p>
               <% end %>
               <p class="time post_writed">
-                <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d %m %Y %H : %M") %>
-              <p>
+                <%= show_svg('line2.svg') %> <%= @post.created_at.strftime("%d.%m.%Y,  %H:%M") %>
+              </p>
             </div>
             <div class="wrap text_wrap">
               <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
             </div>
-            <div class="card border-0 align-self-center mt-0">     
+            <div class="">     
               <% if @post.attachment.attached? %>
                 <% if @post.attachment.content_type.include?("image") %>
                   <div class="card_body"> <%= image_tag @post.attachment, class: "image text-center"  %> </div>
@@ -59,32 +52,32 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="card-body border-0 pl-2 pt-3">
-            <div class="post_section border_top pt-3 border-bottom">
-              <div class="post_section">
-                <p class="icon_text">
-                  <%= show_svg('comment.svg') %>
-                  <%= @post.comments.count %> комментариев 
+            <div class="card-body border-0 pl-2">
+            <div class="post_section mobile_post_section">
+              <div class="comments">
+                <p class="icon_text text-center">
+                  <span class="none-mobile"><%= show_svg('comment.svg') %></span>
+                  <span class="none-desktop"><%= show_svg('comment _mobile.svg') %></span>
+                  <%= @post.comments.count %> <span class="none-mobile">комментариев</span> 
                 </p>            
               </div>
-              <div class="pr-2 pl-2"> 
-               <%= show_svg('line.svg') %>
-              </div>
-              <div class="post_section">
+              <div class="likes">
                 <%= link_to(likes_toggle_path(@post)) do %>
-                  <p class="icon_text"> 
-                    <% if @post.likes.ids.include?(current_user.id) %>
-                      <%= show_svg('tenge_active.svg') %>
-                    <% else %>
-                      <%= show_svg('tenge_grey.svg') %>
-                    <% end %>
-                    <%= @post.likes.count %> лайкбонусов
+                  <p class="icon_text text-center"> 
+                  <% if @post.likes.ids.include?(current_user.id) %>
+                  <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
+                <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
+                  <% else %>
+                  <span class="none-mobile"><%= show_svg('tenge_grey.svg') %></span>
+                <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                  <% end %>
+                    <%= @post.likes.count %> <span class="none-mobile">лайкбонусов</span>
                   </p>
                 <% end %>
               </div>
             </div>
             <div class="comments-container card-body border-light">
-              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 5 %>
+              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 1 %>
             </div>
           </div>
           </div>
@@ -96,7 +89,7 @@
   <div id="comment_form_down" class="container display_flex between fixed-bottom">
     <div class="pt-2 pr-1">
       <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center" %> 
+        <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center photo_input" %> 
       <% else %>
         <%= image_tag("no-foto.png", :alt => "no avatar", class: "photo_mini rounded-circle float-center") %>
       <% end %>
