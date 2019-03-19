@@ -126,15 +126,18 @@ body{
   line-height: normal;
   font-size: 14px;
   color: #FFFFFF;
+  border: 1px soli
+  
+  d rgba(255, 255, 255, 1);
   text-align: center;
   padding-top: 13px;
 }
 .block-send-information{
-  background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 0.480663) 99.99%, #DDEAFD 100%);
+  background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 1) 99.99%, #DDEAFD 100%);
 }
 .send-information{
   background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
-  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0);
 }
 .registration-agreement{
   margin-top: 63px;
@@ -892,6 +895,7 @@ opacity: 0;
     font-weight: bold;
     font-family: Tahoma;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 1);
     border-radius: 10px;
     cursor: pointer;
 }
@@ -899,5 +903,36 @@ opacity: 0;
     background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
 }
 .input_description {
-  top: 85px;
+  display: block;
+  width: 60rem;
+  height: 500px;
+  margin-top: 20pt;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #010101s;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 0.25rem;
 }
+.down{
+  margin-top:500px;
+}
+.button-send {
+  font-family: Roboto;
+  border-radius: 5px;
+  width: 320px;
+  height: 44px;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 1);
+  text-align: center;
+  padding-top: 5px;
+}
+
+.icon-btn{
+  cursor: pointer;
+}
+.input_description:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.6s ease;}
