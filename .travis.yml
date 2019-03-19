@@ -1,1 +1,16 @@
 language: ruby
+
+env:
+  - DB=pgsql
+
+services:
+  - postgresql
+
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create tengri_social_test;' -U postgres
