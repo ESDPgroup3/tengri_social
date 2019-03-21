@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthenticationController < ApplicationController
-  before_action :user_signed?, except: [:add_nickname]
+  before_action :user_log_in?, only: [:add_nickname, :nickname_exists]
   layout 'application'
 
   def show_form; end
