@@ -2,6 +2,7 @@
 
 class AuthenticationController < ApplicationController
   before_action :user_log_in?, only: [:add_nickname, :nickname_exists]
+  before_action :log_in?, only: [:show_form, :look_for]
   layout 'application'
 
   def show_form; end
