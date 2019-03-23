@@ -43,6 +43,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @posts = tag.posts
+  end
+
   def destroy
     @post = Post.destroy(params[:id])
     redirect_back(fallback_location: root_path)

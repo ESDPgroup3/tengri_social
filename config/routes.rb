@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'authentication/look_for'
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/nickname_exists'
+  get '/posts/hashtag/:name', to: 'posts#hashtags'
 
   resources :posts do
     resources :comments, module: :posts

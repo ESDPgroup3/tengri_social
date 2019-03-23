@@ -13,6 +13,12 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
         </div>
+      <% elsif params[:action] == 'hashtags' && params[:controller] == 'posts' %>
+        <div class="">
+          <%= link_to(:back, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+        </div>
       <% elsif params[:action] == 'edit' && params[:controller] == 'posts' %>
         <div class="h6">
           <%= link_to(user_path(current_user), class: 'text-primary') do %> 
