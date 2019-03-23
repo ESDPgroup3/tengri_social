@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'authentication/look_for'
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/nickname_exists'
+  get '/posts/hashtag/:name', to: 'posts#hashtags', as: :hashtag
 
   resources :posts do
     resources :comments, module: :posts
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   get 'ask_follow_toggle/:user_id', to: 'users#ask_follow_toggle', as: :ask_follow_toggle
   get 'searches', to: 'searches#index', as: 'searches'
   get 'phones', to: 'searches#phone_search', as: 'phone_search'
+  get 'hashtags', to: 'searches#hashtag_search', as: 'hashtag_search'
   delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end

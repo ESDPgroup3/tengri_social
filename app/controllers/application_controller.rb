@@ -16,17 +16,29 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless user_signed_in?
   end
 
-  def after_inactive_sign_up_path_for(_resources)
-    user_path
+  def log_in?
+    if user_signed_in?
+      redirect_to posts_path
+    end
   end
 
   def after_sign_in_path_for(_resources)
-    posts_path
+    if current_user.nickname
+      posts_path
+    else
+      nickname_path
+    end
+  end
+  
+  def after_sign_up_path_for(resource)
+    nickname_path
   end
 
-  def user_signed?
-    nickname_path(current_user) if user_signed_in?
+  def after_inactive_sign_up_path_for(resource)
+    nickname_path
   end
+
+
 
   private
 
