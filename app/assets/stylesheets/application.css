@@ -941,3 +941,6 @@ opacity: 0;
   color: #568CD6;
   font-weight: normal;
 }
+.rounded-circle{
+  background-size: cover;
+}
