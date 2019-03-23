@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 
   def hashtags
     tag = Tag.find_by(name: params[:name])
-    @posts = tag.posts
+    @posts = tag.posts.order('created_at DESC')
   end
 
   def destroy
