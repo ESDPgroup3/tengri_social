@@ -22,6 +22,6 @@
   end
   
   То("юзер переходит на свою страницу и может посмотреть ленту") do
-    visit("users/#{User.last.id}")
-    visit("posts")
+    # visit("users/#{User.last.id}")
+    visit("/posts")
   end
