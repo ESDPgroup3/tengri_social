@@ -12,7 +12,7 @@
   end
   
   Если("прошло успешло - добавляем никнейм {string}") do |nickname|
-    visit("/authentication/add_nickname")
+
     within("#nickname") do
         fill_in('user_nickname', with: nickname)
         find('#create_nickname').click
@@ -20,5 +20,5 @@
   end
   
   То("юзер переходит на свою страницу") do
-    visit("users/#{User.last.id}")
+    visit("/#{User.last.id}")
   end
