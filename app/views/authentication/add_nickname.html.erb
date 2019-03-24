@@ -2,7 +2,7 @@
   <div class="form-in-authentication">
   <h3 class="names-sectors">Придумайте никнейм</h3>
   <div class="password_explanation">Как Вас величать?</div>
-  <%= form_with scope: :user,  url: user_path(current_user), method: :put, local: true do |f| %>
+  <%= form_with scope: :user,  url: user_path(current_user), :id => "nickname", method: :put, local: true do |f| %>
     <%= f.hidden_field :phone, value: params[:phone] %>
   <div id = "nick_field" class="input_for_new_password input_valide">
     <p class="hint-input">Никнейм</p>

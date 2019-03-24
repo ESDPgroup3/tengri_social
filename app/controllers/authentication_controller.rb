@@ -24,7 +24,7 @@ class AuthenticationController < ApplicationController
     if @user
       redirect_to new_user_session_path
     else
-      redirect_to new_user_registration_path(phone: @phone)
+      redirect_to new_user_registration_path
     end
   end
 end

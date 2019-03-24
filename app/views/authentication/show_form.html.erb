@@ -1,7 +1,7 @@
 <div class="start_page">
-  <div class="form-in-authentication">
+  <div class="form-in-authentication" id='look_for'>
     <h3 class="names-sectors">Добро пожаловать в <br>Tengri social!</h3>
-    <%= form_with url: authentication_look_for_path(@phone), local: true do |f| %>
+    <%= form_with url: authentication_look_for_path(@phone) , local: true do |f| %>
     <div class="input_for_form input_valide">
       <p class="hint-input">Номер телефона</p>
       <p class="phone-mask">+7 <%= f.telephone_field :phone, :class => "input_information", autofocus: true, :data=> {:mask=> '9999999999'} %></p>
