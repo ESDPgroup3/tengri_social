@@ -2,12 +2,12 @@
     visit("/")
     within("#show_form") do
         fill_in('phone', with: phone)
-        click_on('Продолжить')
+        find('#submit').click
     end
 
     within("#new_user") do
         fill_in('user_password', with: password)
-        click_on('Продолжить')
+        find('#create_password').click
     end
   end
   
@@ -15,7 +15,7 @@
     visit("/authentication/add_nickname")
     within("#nickname") do
         fill_in('user_nickname', with: nickname)
-        click_on('Продолжить')
+        find('#create_nickname').click
     end
   end
   
