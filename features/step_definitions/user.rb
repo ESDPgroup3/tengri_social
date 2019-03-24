@@ -20,5 +20,5 @@
   end
   
   То("юзер переходит на свою страницу") do
-    visit("users/'#{User.last.id}'")
+    visit("users/#{User.last.id}")
   end
