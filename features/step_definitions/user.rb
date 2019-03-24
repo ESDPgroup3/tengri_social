@@ -1,6 +1,6 @@
 Допустим("я регистрируюсь с номером телефона {string} и паролем {string}") do |phone, password|
     visit("/")
-    within("div#look_for") do
+    within("#show_form") do
         fill_in('phone', with: phone)
         click_on('Продолжить')
     end
