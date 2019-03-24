@@ -17,8 +17,11 @@
         fill_in('user_nickname', with: nickname)
         find('#create_nickname').click
     end
+   
+
   end
   
-  То("юзер переходит на свою страницу") do
-    visit("/#{User.last.id}")
+  То("юзер переходит на свою страницу и может посмотреть ленту") do
+    visit("users/#{User.last.id}")
+    visit("posts")
   end
