@@ -43,16 +43,6 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span> </p>
           <% end %>
         </div>
-      <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
-        <div class="">
-          <%= link_to(posts_path, class: 'text-primary') do %> 
-            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-          <% end %>
-        </div>
-        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-          <%= link_to(searches_path, class: 'text-primary') do %> 
-            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-          <% end %>
       <% else %>
         <div class="h6 m-0">
           <%= link_to(user_path(current_user)) do %> 
@@ -94,23 +84,6 @@
       <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>
         <div class="h6 m-0">
           <p class="m-0 follows">Подписчики</p>
-        </div>
-      <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
-        <div class="h6 m-0 search_div">
-          <%= form_tag searches_path, method: :get do %>
-            <%= text_field_tag :query, params[:query], autofocus: true, placeholder: "Поиск по аккаунтам", class: 'search_control' %>
-            <% submit_tag "Search", name: nil %>
-          <% end %>
-        </div>
-      <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-        <div class="h6 m-0 search_div">
-          <%= form_tag phone_search_path, method: :get do %>
-            <div class="inline"> 
-              <div class="cod_country">+7(</div>
-              <%= text_field_tag :query, params[:query], autofocus: true, class: 'search_control phone_mask' %>
-            </div>
-            <%submit_tag "Search", name: nil %>
-          <% end %>
         </div>
       <%end %>
       <% if user_signed_in? %>

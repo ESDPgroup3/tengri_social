@@ -1,0 +1,46 @@
+<nav class="navbar fixed-top top_nav nav_app">
+  <div class="container">
+    <div class="bg-white navbar-expand-md nav-justified">
+      <% if params[:action] == 'index' && params[:controller] == 'searches' %>
+        <div class="">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+        </div>
+        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+          <%= link_to(searches_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+          <% end %>
+      <%end %>  
+      <% if params[:action] == 'index' && params[:controller] == 'searches' %>
+        <div class="h6 m-0 search_div">
+          <%= form_tag searches_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], autofocus: true, placeholder: "Поиск по аккаунтам", class: 'search_control' %>
+            <% submit_tag "Search", name: nil %>
+          <% end %>
+        </div>
+      <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+        <div class="h6 m-0 search_div">
+          <%= form_tag phone_search_path, method: :get do %>
+            <div class="inline"> 
+              <div class="cod_country">+7(</div>
+              <%= text_field_tag :query, params[:query], autofocus: true, class: 'search_control phone_mask' %>
+            </div>
+            <%submit_tag "Search", name: nil %>
+          <% end %>
+        </div>
+      <%end %>
+          
+    </div>
+    <% if (params[:action] == 'index' && params[:controller] == 'searches') || (params[:action] == 'phone_search' && params[:controller] == 'searches') %>
+      <div class="m-0 search_link">  
+        <ul class="navbar-nav navbar-expand-sm btm_search between">
+          <li class="nav-item p-2"> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
+          <li class="nav-item p-2"> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
+          <li class="nav-item active p-2"> <%= link_to 'Люди', searches_path, class: "nav-link active"; %> </li>
+          <li class="nav-item p-2"> <%= link_to 'Хэштеги', '#', class: "nav-link"; %> </li>
+        </ul> 
+      </div>
+    <% end %>
+  </div>
+</nav>
