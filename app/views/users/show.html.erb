@@ -186,12 +186,12 @@
                       <div class="likes">
                         <%= link_to(likes_toggle_path(post)) do %>
                           <p class="icon_text  text-center"> 
-                            <% if post.likes.include?(current_user.id) %>
+                            <% if post.likes.ids.include?(current_user.id) %>
                             <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
-                          <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
+                            <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
                             <% else %>
                             <span class="none-mobile"><%= show_svg('tenge_mobile.svg') %></span>
-                          <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                            <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
                             <% end %>
                             <%= post.likes.count %> <span class="none-mobile">лайкбонусов</span>
                           </p>
