@@ -30,7 +30,7 @@ function checkUsernameExists() {
   const nickname = $('#user_nickname').val();
   const submitnick = document.getElementById("create_nickname");
   submitnick.disabled = (nickname.length <= 4 && nickname.length >= 15);
-  if (nickname.length >= 4 && nickname.length <= 15) {
+  if (nickname.length >= 5 && nickname.length <= 15) {
     makeServerCallNickname();
   } else {
     disableSubmit();

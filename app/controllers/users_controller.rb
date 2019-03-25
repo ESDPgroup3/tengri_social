@@ -68,6 +68,10 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def liked_posts
+    @posts = current_user.liked_posts.all.uniq
+  end
+
   def delete_avatar
     @avatar = ActiveStorage::Attachment.find_by(id: params[:upload_id])
     @avatar.purge

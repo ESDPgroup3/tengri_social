@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'users/liked_posts', to: 'users#liked_posts'
   devise_for :users, controllers: { registrations: 'registrations' },
                      controllers: { sessions: 'sessions' }
   resources :users, except: %i[destroy create] do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/nickname_exists'
   get '/posts/hashtag/:name', to: 'posts#hashtags', as: :hashtag
+
 
   resources :posts do
     resources :comments, module: :posts
