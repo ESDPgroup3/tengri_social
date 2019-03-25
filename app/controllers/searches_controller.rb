@@ -4,6 +4,18 @@ class SearchesController < ApplicationController
   end
 
   def phone_search
-    @phones = User.phone_search(params[:query])
+    mask_delete
+    @phones = User.phone_search(@query)
+  end
+  private
+
+  def mask_delete
+    if params[:query] != nil
+      arr = []
+      arr = params[:query].split(') ')
+      arr[1] = arr[1].split(' ')
+      @query = arr.join('')
+    end
+    return @query
   end
 end
