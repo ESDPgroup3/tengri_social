@@ -13,6 +13,12 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
         </div>
+      <% elsif params[:action] == 'hashtags' && params[:controller] == 'posts' %>
+        <div class="">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад в ленту</span>  </p>
+          <% end %>
+        </div>
       <% elsif params[:action] == 'edit' && params[:controller] == 'posts' %>
         <div class="h6">
           <%= link_to(user_path(current_user), class: 'text-primary') do %> 
@@ -43,7 +49,7 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span> </p>
           <% end %>
         </div>
-      <% else %>
+<% else %>
         <div class="h6 m-0">
           <%= link_to(user_path(current_user)) do %> 
             <div class="post_section">
@@ -64,7 +70,6 @@
           <% end %>
         </div>
       <%end %>  
-      
       <% if params[:action] == 'show' && params[:controller] == 'users' %>
         <div class="h6 m-0">
           <p class="m-0 center-navbar"> Профиль </p>
@@ -125,15 +130,5 @@
         <% end %> 
       </div>            
     </div>
-    <% if (params[:action] == 'index' && params[:controller] == 'searches') || (params[:action] == 'phone_search' && params[:controller] == 'searches') %>
-      <div class="m-0 search_link">  
-        <ul class="navbar-nav navbar-expand-sm btm_search between">
-          <li class="nav-item p-2"> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
-          <li class="nav-item p-2"> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
-          <li class="nav-item active p-2"> <%= link_to 'Люди', searches_path, class: "nav-link active"; %> </li>
-          <li class="nav-item p-2"> <%= link_to 'Хэштеги', '#', class: "nav-link"; %> </li>
-        </ul> 
-      </div>
-    <% end %>
   </div>
 </nav>

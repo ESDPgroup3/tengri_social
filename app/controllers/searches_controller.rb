@@ -18,4 +18,8 @@ class SearchesController < ApplicationController
     end
     return @query
   end
+
+  def hashtag_search
+    @hashtags = Tag.hashtag_search(params[:query])
+  end
 end
