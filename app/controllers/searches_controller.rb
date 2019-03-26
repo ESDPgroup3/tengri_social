@@ -10,13 +10,15 @@ class SearchesController < ApplicationController
   private
 
   def mask_delete
-    if params[:query] != nil
+    if params[:query] != nil && params[:query].length >= 5
       arr = []
       arr = params[:query].split(') ')
       arr[1] = arr[1].split(' ')
       @query = arr.join('')
+    elsif params[:query] != nil && params[:query].length < 4
+      @query = params[:query]
     end
-    return @query
+    return @query 
   end
 
   def hashtag_search
