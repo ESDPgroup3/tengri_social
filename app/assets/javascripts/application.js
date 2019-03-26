@@ -51,6 +51,12 @@ $(document).on('turbolinks:load', function() {
       $("#create_password").addClass('block-send-information');
     }
   });
+  var loc = window.location.pathname;
+
+   $('.navbar-nav').find('a').each(function() {
+     $(this).toggleClass('active', $(this).attr('href') == loc);
+     $(this).parent().toggleClass('active_link', $(this).attr('href') == loc);
+  });
 });
 
 function togglePassClick() {
