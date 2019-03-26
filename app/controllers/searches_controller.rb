@@ -7,6 +7,11 @@ class SearchesController < ApplicationController
     mask_delete
     @phones = User.phone_search(@query)
   end
+
+  def hashtag_search
+    @hashtags = Tag.hashtag_search(params[:query])
+  end
+  
   private
 
   def mask_delete
@@ -19,9 +24,5 @@ class SearchesController < ApplicationController
       @query = params[:query]
     end
     return @query 
-  end
-
-  def hashtag_search
-    @hashtags = Tag.hashtag_search(params[:query])
   end
 end
