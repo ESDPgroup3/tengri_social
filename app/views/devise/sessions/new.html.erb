@@ -15,7 +15,7 @@
     <%= f.submit 'Продолжить', class: 'send-information'  %>
     <% end %>
     <div class="forgot-password">
-      <%= link_to "Забыли пароль?", new_password_path(resource_name), :class => "link-forgot-password" %>
+      <%= link_to "Забыли пароль?", authentication_code_confirmation_path(resource_name), :class => "link-forgot-password" %>
     </div>
   </div>
 </div>
