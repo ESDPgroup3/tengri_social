@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations' },
+                    controllers: { password: 'passwords'}
 
   resources :users, :except => [:destroy, :create] do
     member do
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
   post 'authentication/look_for'
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/nickname_exists'
+  get 'authentication/code_confirmation'
+  post 'authentication/confirmation'
+  post 'new_user_password/edit'
 
   resources :posts do
     resources :comments, module: :posts
