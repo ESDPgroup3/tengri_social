@@ -936,11 +936,3 @@ opacity: 0;
   cursor: pointer;
 }
 .input_description:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.6s ease;}
-
-.hashtag{
-  color: #568CD6;
-  font-weight: normal;
-}
-.rounded-circle{
-  background-size: cover;
-}
