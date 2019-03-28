@@ -49,8 +49,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara'
+  gem 'coveralls', require: false
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'geckodriver-helper'
+  gem 'launchy'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
 end
 
 group :development do
@@ -63,11 +74,12 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
+  gem 'cucumber-rails', require: false
+  # gem 'database_cleaner'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
+  gem 'rspec'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
