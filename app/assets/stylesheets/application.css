@@ -549,7 +549,38 @@ input[class="send" i]::-webkit-file-upload-button {
   align-items: center;
   width: 100%;;
 }
+.comments-container{
+  padding-top: 15px;
+}
+.card-body {
+  padding: 16px 8px 30px 20px;
+}
 @media (min-width: 770px){
+  .form_for_comment{
+    position: absolute;
+    top: 210px;
+    border-radius: 5px;
+  }
+  .count_likes_comments{
+    padding-bottom: 105px;
+  }
+  /* .about_user{
+    position: absolute;
+    top: 210px;
+  }
+  .users_posts, .form_in_users_show{
+    margin-left: 500px;
+  } */
+  .user_show{
+    display: flex;
+    max-width: 770px;
+  }
+  .post_write{
+    width: 500px;
+  }
+  .center-navbar{
+    font-size: 17px;
+  }
   .password_creation{
     width: 500px;
   }
