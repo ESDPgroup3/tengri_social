@@ -1,3 +1,168 @@
 body{
-    background: white;
-  }
+  font-family: Roboto, sans-serif;
+  margin: 0 auto;
+  background: white;
+ }
+ .start_page{
+  display: flex;
+  justify-content: center;
+  margin-top: 264px;
+}
+.settings{
+  display: flex;
+  justify-content: center;
+  margin-top: 49px;
+}
+.password_page{
+  display: flex;
+  justify-content: center;
+  margin-top: 186px;
+
+}
+.incorrect-password{
+  height: 32px;
+  margin-bottom: 46px;
+  background: #D93067;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-family: Roboto;
+  font-size: 16px;
+  padding-top: 4px;
+}
+.correct-password{
+  height: 32px;
+  margin-bottom: 46px;
+  color: white;
+}
+.form-in-authentication{
+  width: 358px;
+}
+.names-sectors{
+  font-weight: bold;
+  line-height: normal;
+  font-size: 24px;
+  color: #0E1826;
+}
+.input_valide{
+  border: 0.5px solid #568CD6;
+}
+.input_invalide{
+  border: 0.5px solid #D93067;
+}
+.nick_invalide{
+  color: #D93067;
+}
+.input_for_form, .input_for_password, .input_for_new_password{
+  box-sizing: border-box;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.120697);
+  border-radius: 5px;
+  height: 56px;
+  padding: 6px 12px 10px 12px;
+}
+.input_for_form{
+  margin-top: 58px;
+}
+.input_for_new_password{
+  margin-top: 37px;
+}
+.edit-nickname{
+  margin-top: 24px;
+  background: #FFFFFF;
+  border: 0.5px solid #838487;
+  border-radius: 5px;
+  height: 56px;
+  padding: 6px 12px 10px 12px;
+}
+.field{
+  height: 24px;
+  margin-top: 51px;
+  margin-bottom: 10px;
+}
+.hint-input{
+  font-size: 12px;
+  color: #838487;
+  margin: 0;
+}
+.hint-settings{
+  font-size: 13px;
+  color: #838487;
+  margin: 0;
+}
+.input_information, .phone-mask{
+  border: none;
+  font-size: 14px;
+  width: 85%;
+}
+.input_information:active, .input_information:hover, .input_information:focus {
+  outline: 0;
+  outline-offset: 0
+}
+.gradient {
+  background: #1613CC; /* Для старых браузров */
+  background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
+  border-radius: 5px;
+}
+.block-send-information, .send-information{
+  font-family: Roboto;
+  border-radius: 5px;
+  width: 358px;
+  height: 44px;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.block-send-information{
+  background: linear-gradient(90deg, #DDEAFD 0%, rgba(122, 177, 255, 0.480663) 99.99%, #DDEAFD 100%);
+  margin-top: 52px;
+}
+.send-information{
+  background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.631878);
+  margin-top: 52px;
+}
+.registration-agreement{
+  margin-top: 63px;
+  font-size: 12px;
+  text-align: center;
+  color: #838487;
+}
+.link-in_agreement{
+  font-size: 12px;
+  color: #4e87dc;
+}
+.forgot-password{
+  margin-top: 42px;
+  text-align: center;
+  font-size: 13px;
+}
+.link-forgot-password{
+  font-weight: bold;
+  font-size: 13px;
+  color: #568CD6;
+}
+.toggle-password{
+  color: #DADADA;
+}
+.password_explanation{
+  font-size: 14px;
+  color: #0E1826;
+  margin-top: 16px;
+}
+.password_check{
+  font-size: 14px;
+  color: #838487;
+  margin-top: 8px;
+  height: 17px;
+}
+.account-settings{
+  margin-top: 126px;
+  margin-bottom: 81px;
+}
+.links-in-setting{
+  font-weight: 500;
+font-size: 17px;
+color: #333333;
+}

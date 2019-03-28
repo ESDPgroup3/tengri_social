@@ -6,8 +6,4 @@ class SearchesController < ApplicationController
   def phone_search
     @phones = User.phone_search(params[:query])
   end
-
-  def hashtag_search
-    @hashtags = Tag.hashtag_search(params[:query])
-  end
 end
