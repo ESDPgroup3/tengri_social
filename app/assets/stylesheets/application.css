@@ -330,9 +330,7 @@ h6{
   padding: 4px;
   padding-right: 14px
 }
-.post_write{
-  width: 90%; 
-}
+
 .post_writed{
   padding-right: 8px;
   margin-bottom: 0;
@@ -555,29 +553,10 @@ input[class="send" i]::-webkit-file-upload-button {
 .card-body {
   padding: 16px 8px 30px 20px;
 }
+.post_write {
+  width: 770px;
+} 
 @media (min-width: 770px){
-  .form_for_comment{
-    position: absolute;
-    top: 210px;
-    border-radius: 5px;
-  }
-  .count_likes_comments{
-    padding-bottom: 105px;
-  }
-  /* .about_user{
-    position: absolute;
-    top: 210px;
-  }
-  .users_posts, .form_in_users_show{
-    margin-left: 500px;
-  } */
-  .user_show{
-    display: flex;
-    max-width: 770px;
-  }
-  .post_write{
-    width: 500px;
-  }
   .center-navbar{
     font-size: 17px;
   }
@@ -600,9 +579,6 @@ input[class="send" i]::-webkit-file-upload-button {
   .h5{
     left: -2px;
     top: -7px;
-  }
-  .post_write{
-    width: 930px; 
   }
   .comment_field{
     max-width: 700px;
@@ -678,9 +654,6 @@ input[class="send" i]::-webkit-file-upload-button {
 }
 .under_post_section{
   padding: 11px 5px 8px 5px;
-}
-.post_write {
-  width: 770px;
 }
 .avatar_in_post{
   width: 62px; 
@@ -940,7 +913,7 @@ opacity: 0;
   margin-top: 20pt;
   font-size: 1rem;
   line-height: 1.5;
-  color: #010101s;
+  color: #010101;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(255, 255, 255, 1);
