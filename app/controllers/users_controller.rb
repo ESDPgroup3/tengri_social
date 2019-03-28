@@ -34,16 +34,16 @@ class UsersController < ApplicationController
 
   def follow_toggle
     user = User.find_by(id: params[:user_id])
-    if user.is_private == false
+    # if user.is_private == false
       if current_user.follows.include?(user)
         current_user.follows.delete(user)
       else
         current_user.follows << user
       end
       redirect_back(fallback_location: posts_path)
-    else
-      ask_follow_toggle
-    end
+    # else
+    #   ask_follow_toggle
+    # end
   end
 
   def ask_follow_toggle
@@ -66,6 +66,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers
     render :index
+  end
+
+  def liked_posts
+    @posts = current_user.liked_posts.all.uniq
   end
 
   def delete_avatar
