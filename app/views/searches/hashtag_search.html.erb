@@ -1,9 +1,0 @@
-<div id="users" class="container">
-  <% if @hashtags.present? %>
-    <% @hashtags.each do |hashtag| %>
-      <h2>
-        <%= link_to hashtag.name, hashtag_path(hashtag.name) %>
-      </h2>
-    <% end %>
-  <%end%>
-</div>

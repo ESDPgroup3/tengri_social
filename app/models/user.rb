@@ -76,6 +76,7 @@ class User < ApplicationRecord
   end
 
   private
+
   symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ':', ';', '<', '>', '-', '_']
   def error_messages
     puts 'your nickname has to be more symbols' if nickname.length < 5
