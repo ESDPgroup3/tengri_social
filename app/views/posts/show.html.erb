@@ -41,7 +41,7 @@
               </p>
             </div>
             <div class="wrap text_wrap">
-              <div class="card-text post_writed text_wrap"><%= render_with_hashtags(@post.description)  %> </div>
+              <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
             </div>
             <div class="">     
               <% if @post.attachment.attached? %>

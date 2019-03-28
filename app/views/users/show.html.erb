@@ -160,7 +160,7 @@
                   <p class="time post_writed"><span class="pr-2 pl-2"><%= show_svg('line2.svg') %></span> <%= post.created_at.strftime("%d.%m.%Y, %H:%M") %></p>
                 </div>
                 <div class="wrap">
-                  <div class="card-text post_writed text_wrap"><%= render_with_hashtags(post.description) %> </div>
+                  <div class="card-text post_writed text_wrap"><%= post.description %> </div>
                 </div>
                 <div>
                   <div class="">     
