@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class AuthenticationController < ApplicationController
-  before_action :user_signed?, except: [:add_nickname]
+  before_action :user_log_in?, only: [:add_nickname, :nickname_exists]
+  before_action :log_in?, only: [:show_form, :look_for]
   layout 'application'
 
   def show_form; end
@@ -23,7 +24,7 @@ class AuthenticationController < ApplicationController
     if @user
       redirect_to new_user_session_path
     else
-      redirect_to new_user_registration_path(phone: @phone)
+      redirect_to new_user_registration_path
     end
   end
 end
