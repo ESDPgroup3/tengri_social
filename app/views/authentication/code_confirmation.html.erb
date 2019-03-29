@@ -3,8 +3,8 @@
 <div class="start_page">
     <div class="form-in-authentication">
         <h3 class="names-sectors">Код подтверждения</h3>
-        <div class="password_explanation">Введите СМС код отправленый на номер </div>
-         <%= form_with scope: :user,  url: authentication_confirmation_path, method: :post, local: true do |f| %>
+        <div class="password_explanation">Введите СМС код отправленый на номер  </div>
+         <%= form_with  url: authentication_confirmation_path, method: :post, local: true do |f| %>
           <div id="form_for_code_confirmation">
             <input type="text" name="1" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" autofocus/>
             <input type="text" name="2" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
@@ -15,7 +15,7 @@
             <input type="text" name="6" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" /> 
             </div>
           <div class="mt-5"><%= link_to 'Запросить код повторно', root_path%></div>
-        <%= f.submit 'Продолжить',  class: 'send-information' %>
+        <%= f.submit 'Продолжить', class: 'send-information' %>
           <% end %>
         
     </div>
