@@ -885,27 +885,6 @@ height: 21px;
 z-index: 2;
 opacity: 0;
 }
-
-
-
-.uploadButton {
-    display: block;
-    width: 35px;
-    height: 35px;
-    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
-    padding: 5px;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Tahoma;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 1);
-    border-radius: 10px;
-    cursor: pointer;
-}
-.uploadButton:hover {
-    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
-}
 .input_description {
   display: block;
   width: 60rem;
@@ -948,3 +927,5 @@ opacity: 0;
 .rounded-circle{
   background-size: cover;
 }
+
+
