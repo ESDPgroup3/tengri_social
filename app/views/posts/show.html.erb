@@ -1,5 +1,5 @@
 <div class=""> 
-  <section class=''>
+  <section class='pb-5'>
     <div class="">
       <div>
         <% if current_user.id == @post.user.id %>
@@ -32,7 +32,7 @@
           <div class="w-100">
             <div class="post_section"> 
               <%= link_to(user_path(@post.user)) do %>
-                <p class="nickname_text mb-1">
+                <p class="nickname_text mb-1 pr-1">
                   @<%= @post.user.nickname %>
                 </p>
               <% end %>
@@ -41,7 +41,7 @@
               </p>
             </div>
             <div class="wrap text_wrap">
-              <div class="card-text post_writed text_wrap"><%= @post.description %> </div>
+              <div class="card-text post_writed text_wrap"><%= render_with_hashtags(@post.description)  %> </div>
             </div>
             <div class="">     
               <% if @post.attachment.attached? %>
@@ -52,8 +52,8 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="card-body border-0 pl-2">
-            <div class="post_section mobile_post_section">
+            <div class="card-body border-0">
+            <div class="post_section mobile_post_section count_likes_comments">
               <div class="comments">
                 <p class="icon_text text-center">
                   <span class="none-mobile"><%= show_svg('comment.svg') %></span>
@@ -76,8 +76,8 @@
                 <% end %>
               </div>
             </div>
-            <div class="comments-container card-body border-light">
-              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 1 %>
+            <div class="comments-container border-light">
+              <%= render @post.comments.where(parent_id: [nil, ""]), max_nesting: 2 %>
             </div>
           </div>
           </div>
@@ -86,7 +86,7 @@
     </div>
   </section> 
   <div class="container nil"></div>
-  <div id="comment_form_down" class="container display_flex between fixed-bottom">
+  <div id="comment_form_down" class="container display_flex between fixed-bottom form_for_comment">
     <div class="pt-2 pr-1">
       <% if current_user.avatar.attached? %>
         <%= image_tag current_user.avatar, class: "photo_mini rounded-circle float-center photo_input" %> 

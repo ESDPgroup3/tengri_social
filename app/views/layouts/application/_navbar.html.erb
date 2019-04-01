@@ -13,6 +13,12 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
         </div>
+      <% elsif params[:action] == 'hashtags' && params[:controller] == 'posts' %>
+        <div class="">
+          <%= link_to(posts_path, class: 'text-primary') do %> 
+            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад в ленту</span>  </p>
+          <% end %>
+        </div>
       <% elsif params[:action] == 'edit' && params[:controller] == 'posts' %>
         <div class="h6">
           <%= link_to(user_path(current_user), class: 'text-primary') do %> 
@@ -49,10 +55,10 @@
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
         </div>
-        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-          <%= link_to(searches_path, class: 'text-primary') do %> 
-            <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
-          <% end %>
+      <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
+        <%= link_to(searches_path, class: 'text-primary') do %> 
+          <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
+        <% end %>
       <% else %>
         <div class="h6 m-0">
           <%= link_to(user_path(current_user)) do %> 
@@ -86,20 +92,6 @@
           <p class="m-0 follows">Подписки</p>
         <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>
           <p class="m-0 follows">Подписчики</p>
-        <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
-          <%= form_tag searches_path, method: :get do %>
-            <p>
-              <%= text_field_tag :query, params[:query] %>
-              <%= submit_tag "Search", name: nil %>
-            </p>
-          <% end %>
-        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-          <%= form_tag phone_search_path, method: :get do %>
-            <p>
-              <%= text_field_tag :query, params[:query] %>
-              <%= submit_tag "Search", name: nil %>
-            </p>
-          <% end %>
         <%end %>
       </div>
       <% if user_signed_in? %>
@@ -141,15 +133,5 @@
         <% end %> 
       </div>            
     </div>
-    <% if (params[:action] == 'index' && params[:controller] == 'searches') || (params[:action] == 'phone_search' && params[:controller] == 'searches') %>
-      <div class="">  
-        <ul class="navbar-nav navbar-expand-sm btm_search mt-2">
-          <li class="nav-item p-2"> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
-          <li class="nav-item p-2"> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
-          <li class="nav-item active p-2"> <%= link_to 'Люди', searches_path, class: "nav-link"; %> </li>
-          <li class="nav-item p-2"> <%= link_to 'Хэштеги', '#', class: "nav-link"; %> </li>
-        </ul> 
-      </div>
-    <% end %>
   </div>
 </nav>
