@@ -229,6 +229,13 @@ h6{
   color: #568CD6;
   line-height: 20.4px;
 }
+.nav_app{
+  background: #FFFFFF;
+  height: 130px;
+  font-size: 0.9em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09);
+  margin: 0 auto;
+}
 .h6{
   font-size: 17px;
   color: #0E1826;
@@ -547,8 +554,85 @@ input[class="send" i]::-webkit-file-upload-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;;
+  width: 100%;
 }
+.search_control {
+  padding: 1rem;
+  padding-left: 0;
+  border-width: 0;
+  border-color: transparent;
+  overflow: hidden;
+  display: inline;
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #0E1826;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
+  box-sizing: content-box;
+}
+.search_control::-webkit-input-placeholder { 
+  color: #DEDEDE; 
+  font-size: 24px;
+}
+:focus {
+  outline: -webkit-focus-ring-color auto 1px;
+  outline-color: #fff ;
+  outline-style: auto;
+  outline-width: 5px;
+}
+.search_div {
+  width: 80%;
+}
+.inline {
+  display: flex;
+  justify-content: flex-start;
+}
+.cod_country{
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 1rem;
+  padding-right: 0;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav-link {
+  color: #838487;
+  display: block;
+  padding: 0.3rem 1rem;
+}
+.active {
+  font-weight: bold;
+  color: #000000;
+}
+.active_link {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border-bottom: 2px solid #2F80ED;
+}
+.search_link{
+  width: 100%;
+}
+a.btn-search{
+  background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+  text-decoration: none;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.recomendation{
+  font-size: 18px;
+  color: #838487;
+  padding-left: 5%;
+  padding-bottom: 1.5rem;
+}
+
 @media (min-width: 770px){
   .password_creation{
     width: 500px;
@@ -755,7 +839,7 @@ input.block-send-information, input.send-information {
     height: 28px;
     padding-top: 4px;
     width: 100%;
-}
+ }
   .nickname_text{
     font-size: 12px;
     font-weight: 500;
@@ -869,6 +953,44 @@ input.block-send-information, input.send-information {
     width: 20px;
     height: 20px;
   }
+  .nav-justified{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .search_control {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .search_control::-webkit-input-placeholder { 
+    font-size: 16px;
+  }
+  .active_link {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    border-bottom: 1px solid #2F80ED;
+  }
+  a.btn-search{
+    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
+    text-decoration: none;
+    font-size: 12px;
+    color: #FFFFFF;
+  }
+  a.nav-link {
+    font-size: 12px;
+  }
+  .nav_app{
+    height: 90px;
+    font-size: 0.9em;
+  }
+  .cod_country{
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 1rem;
+    padding-right: 0;
+}
 }
 #File1 {
 position: absolute;

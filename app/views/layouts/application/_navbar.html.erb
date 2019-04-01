@@ -92,27 +92,6 @@
           <p class="m-0 follows">Подписки</p>
         <% elsif params[:action] == 'followers' && params[:controller] == 'users'%>
           <p class="m-0 follows">Подписчики</p>
-        <% elsif params[:action] == 'index' && params[:controller] == 'searches' %>
-          <%= form_tag searches_path, method: :get do %>
-            <p>
-              <%= text_field_tag :query, params[:query] %>
-              <%= submit_tag "Search", name: nil %>
-            </p>
-          <% end %>
-        <% elsif params[:action] == 'phone_search' && params[:controller] == 'searches' %>
-          <%= form_tag phone_search_path, method: :get do %>
-            <p>
-              <%= text_field_tag :query, params[:query] %>
-              <%= submit_tag "Search", name: nil %>
-            </p>
-          <% end %>
-        <% elsif params[:action] == 'hashtag_search' && params[:controller] == 'searches' %>
-          <%= form_tag hashtag_search_path, method: :get do %>
-            <p>
-              <%= text_field_tag :query, params[:query] %>
-              <%= submit_tag "Search", name: nil %>
-            </p>
-          <% end %>
         <%end %>
       </div>
       <% if user_signed_in? %>
@@ -154,15 +133,5 @@
         <% end %> 
       </div>            
     </div>
-    <% if (params[:action] == 'index' && params[:controller] == 'searches') || (params[:action] == 'phone_search' && params[:controller] == 'searches')|| (params[:action] == 'hashtag_search' && params[:controller] == 'searches') %>
-      <div class="m-auto">  
-        <ul class="navbar-nav navbar-expand-sm btm_search">
-          <li class="nav-item pr-5"> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
-          <li class="nav-item pr-5"> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
-          <li class="nav-item active pr-5"> <%= link_to 'Люди', searches_path, class: "nav-link"; %> </li>
-          <li class="nav-item pr-5"> <%= link_to 'Хэштеги', hashtag_search_path, class: "nav-link"; %> </li>
-        </ul> 
-      </div>
-    <% end %>
   </div>
 </nav>
