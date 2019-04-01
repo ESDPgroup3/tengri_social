@@ -929,3 +929,43 @@ opacity: 0;
 }
 
 
+#form_for_code_confirmation {
+  max-width: 260px;
+  margin: 25px auto 0;
+}
+
+#form_for_code_confirmation input {
+  margin: 0 5px;
+  text-align: center;
+  line-height: 20pt;
+  font-size: 16pt;
+  border: none;
+  border-bottom: solid 3px #000;
+  
+  outline: none;
+  transition: all .2s ease-in-out;
+  border-radius: 3px;
+}
+
+#form_for_code_confirmation blank {
+  font-size: 16pt;
+}
+
+#form_for_code_confirmation input:focus {
+  border-color: purple;
+  border-bottom: solid 3px blue;
+}
+
+#form_for_code_confirmation input::selection {
+  background: transparent;
+}
+
+#form_for_code_confirmation button {
+  margin:  30px 0 50px;
+  width: 100%;
+  padding: 6px;
+  background-color: #B85FC6;
+  border: none;
+  text-transform: uppercase;
+}
+
