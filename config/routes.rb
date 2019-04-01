@@ -2,8 +2,7 @@
 
 Rails.application.routes.draw do
   get 'users/liked_posts', to: 'users#liked_posts'
-  devise_for :users, controllers: { registrations: 'registrations' },
-                     controllers: { sessions: 'sessions' }
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   resources :users, except: %i[destroy create] do
     member do
       get 'follows'
