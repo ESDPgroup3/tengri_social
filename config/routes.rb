@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   post 'authentication/look_for'
   get 'authentication/add_nickname', as: :nickname
   post 'authentication/nickname_exists'
+  get 'authentication/code_confirmation'
+  post 'authentication/confirmation'
+  get 'authentication/open_sess', to: 'authentication#open_sess', as: "open_sess"
   get '/posts/hashtag/:name', to: 'posts#hashtags', as: :hashtag
-
 
   resources :posts do
     resources :comments, module: :posts

@@ -337,9 +337,7 @@ h6{
   padding: 4px;
   padding-right: 14px
 }
-.post_write{
-  width: 90%; 
-}
+
 .post_writed{
   padding-right: 8px;
   margin-bottom: 0;
@@ -577,6 +575,7 @@ input[class="send" i]::-webkit-file-upload-button {
   color: #DEDEDE; 
   font-size: 24px;
 }
+
 :focus {
   outline: -webkit-focus-ring-color auto 1px;
   outline-color: #fff ;
@@ -633,7 +632,21 @@ a.btn-search{
   padding-bottom: 1.5rem;
 }
 
+
+.comments-container{
+  padding-top: 15px;
+}
+.card-body {
+  padding: 16px 8px 30px 20px;
+}
+.post_write {
+  width: 770px;
+} 
+
 @media (min-width: 770px){
+  .center-navbar{
+    font-size: 17px;
+  }
   .password_creation{
     width: 500px;
   }
@@ -653,9 +666,6 @@ a.btn-search{
   .h5{
     left: -2px;
     top: -7px;
-  }
-  .post_write{
-    width: 930px; 
   }
   .comment_field{
     max-width: 700px;
@@ -731,9 +741,6 @@ a.btn-search{
 }
 .under_post_section{
   padding: 11px 5px 8px 5px;
-}
-.post_write {
-  width: 770px;
 }
 .avatar_in_post{
   width: 62px; 
@@ -1003,27 +1010,6 @@ height: 21px;
 z-index: 2;
 opacity: 0;
 }
-
-
-
-.uploadButton {
-    display: block;
-    width: 35px;
-    height: 35px;
-    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
-    padding: 5px;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Tahoma;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 1);
-    border-radius: 10px;
-    cursor: pointer;
-}
-.uploadButton:hover {
-    background: linear-gradient(90deg, #568CD6 0%, #0F3794 97.64%);
-}
 .input_description {
   display: block;
   width: 60rem;
@@ -1031,7 +1017,7 @@ opacity: 0;
   margin-top: 20pt;
   font-size: 1rem;
   line-height: 1.5;
-  color: #010101s;
+  color: #010101;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(255, 255, 255, 1);
@@ -1066,3 +1052,45 @@ opacity: 0;
 .rounded-circle{
   background-size: cover;
 }
+
+
+#form_for_code_confirmation {
+  max-width: 260px;
+  margin: 25px auto 0;
+}
+
+#form_for_code_confirmation input {
+  margin: 0 5px;
+  text-align: center;
+  line-height: 20pt;
+  font-size: 16pt;
+  border: none;
+  border-bottom: solid 3px #000;
+  
+  outline: none;
+  transition: all .2s ease-in-out;
+  border-radius: 3px;
+}
+
+#form_for_code_confirmation blank {
+  font-size: 16pt;
+}
+
+#form_for_code_confirmation input:focus {
+  border-color: purple;
+  border-bottom: solid 3px blue;
+}
+
+#form_for_code_confirmation input::selection {
+  background: transparent;
+}
+
+#form_for_code_confirmation button {
+  margin:  30px 0 50px;
+  width: 100%;
+  padding: 6px;
+  background-color: #B85FC6;
+  border: none;
+  text-transform: uppercase;
+}
+
