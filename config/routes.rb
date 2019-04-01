@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, module: :posts
   end
+  
   get 'likes_toggle/:post_id', to: 'users#likes_toggle', as: :likes_toggle
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
   get 'is_private/:user_id', to: 'users#is_private', as: :is_private
