@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   validates :description, presence: true, length: { in: 5..500 }
   # validate :correct_image_type
@@ -12,8 +14,29 @@ class Post < ApplicationRecord
                                   join_table: :likes,
                                   class_name: 'User'
 
-  scope :of_followed_users, ->(following_users) { where user_id: following_users }
+  has_and_belongs_to_many :tags
+  
+  after_create do
+    post = Post.find_by(id: self.id)
+    hashtags = self.description.scan(/#\w+/)
+    hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete("#"))
+      post.tags << tag
+    end
+  end
 
+  before_update do
+    post = Post.find_by(id: self.id)
+    post.tags.clear
+    hashtags = self.description.scan(/#\w+/)
+    hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete("#"))
+      post.tags << tag
+    end
+  end
+
+  scope :of_followed_users, ->(following_users) { where user_id: following_users }
+  
   has_many :comments, as: :commentable, dependent: :destroy
 
   private

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class AuthenticationController < ApplicationController
- before_action :user_signed?, except: [:add_nickname]
- 
- layout 'application'
+  before_action :user_log_in?, only: [:add_nickname, :nickname_exists]
+  before_action :log_in?, only: [:show_form, :look_for]
+  layout 'application'
 
   def show_form; end
 
@@ -24,7 +26,7 @@ class AuthenticationController < ApplicationController
     @nick_exists = User.exists?(nickname: params[:nickname])
     p params[:nickname]
     respond_to do |format|
-      format.js { render :json => @nick_exists }
+      format.js { render json: @nick_exists }
     end
   end
 
@@ -35,7 +37,7 @@ class AuthenticationController < ApplicationController
     if @user
       redirect_to new_user_session_path
     else
-      redirect_to new_user_registration_path(phone: @phone)
+      redirect_to new_user_registration_path
     end
   end
 

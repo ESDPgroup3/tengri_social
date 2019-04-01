@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   layout 'authentication'
 
   before_action :user_log_in?
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def show
     @post = Post.find(params[:id])
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       upload_attachment
-      redirect_to  post_path(@post)
+      redirect_to post_path(@post)
     else
       render 'new'
     end
@@ -27,11 +29,10 @@ class PostsController < ApplicationController
     posts_of_friends = Post.of_followed_users(id)
     my_posts = current_user.posts
     @posts = posts_of_friends + my_posts
-    @posts.sort! { |a,b|  b[:created_at] <=> a[:created_at] }
+    @posts.sort! { |a, b| b[:created_at] <=> a[:created_at] }
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
@@ -40,6 +41,11 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @posts = tag.posts.order('created_at DESC')
   end
 
   def destroy

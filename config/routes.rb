@@ -1,7 +1,10 @@
-Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+# frozen_string_literal: true
 
-  resources :users, :except => [:destroy, :create] do
+Rails.application.routes.draw do
+  get 'users/liked_posts', to: 'users#liked_posts'
+  devise_for :users, controllers: { registrations: 'registrations' },
+                     controllers: { sessions: 'sessions' }
+  resources :users, except: %i[destroy create] do
     member do
       get 'follows'
       get 'followers'
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
   get 'authentication/code_confirmation'
   post 'authentication/confirmation'
   get 'authentication/open_sess', to: 'authentication#open_sess', as: "open_sess"
+  get '/posts/hashtag/:name', to: 'posts#hashtags', as: :hashtag
 
   resources :posts do
     resources :comments, module: :posts
@@ -23,5 +27,8 @@ Rails.application.routes.draw do
   get 'follow_toggle/:user_id', to: 'users#follow_toggle', as: :follow_toggle
   get 'is_private/:user_id', to: 'users#is_private', as: :is_private
   get 'ask_follow_toggle/:user_id', to: 'users#ask_follow_toggle', as: :ask_follow_toggle
+  get 'searches', to: 'searches#index', as: 'searches'
+  get 'phones', to: 'searches#phone_search', as: 'phone_search'
+  get 'hashtags', to: 'searches#hashtag_search', as: 'hashtag_search'
   delete 'delete_avatar/:upload_id', to: 'users#delete_avatar', as: :delete_avatar
 end

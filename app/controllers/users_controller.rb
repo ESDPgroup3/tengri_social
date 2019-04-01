@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   layout 'authentication'
   before_action :user_log_in?
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render layout: "user"
+    render layout: 'user'
   end
 
   def update
@@ -32,16 +34,16 @@ class UsersController < ApplicationController
 
   def follow_toggle
     user = User.find_by(id: params[:user_id])
-    if user.is_private == false
+    # if user.is_private == false
       if current_user.follows.include?(user)
         current_user.follows.delete(user)
       else
         current_user.follows << user
       end
       redirect_back(fallback_location: posts_path)
-    else
-      ask_follow_toggle
-    end
+    # else
+    #   ask_follow_toggle
+    # end
   end
 
   def ask_follow_toggle
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
     end
     redirect_back(fallback_location: posts_path)
   end
-  
+
   def follows
     @user = User.find(params[:id])
     @users = @user.follows
@@ -66,6 +68,10 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def liked_posts
+    @posts = current_user.liked_posts.all.uniq
+  end
+
   def delete_avatar
     @avatar = ActiveStorage::Attachment.find_by(id: params[:upload_id])
     @avatar.purge
@@ -76,7 +82,7 @@ class UsersController < ApplicationController
     if @current_user.is_private
       current_user.update(is_private: false)
     else
-      current_user.update(is_private: true) 
+      current_user.update(is_private: true)
     end
     redirect_back(fallback_location: edit_user_path(current_user))
   end
