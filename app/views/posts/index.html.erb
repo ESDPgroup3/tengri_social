@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="post_write pl-2">
-        <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+        <%= form_with url: posts_path, scope: :post, id: "new_post_index", local: true do |f| %>
           <%= f.text_field :description, placeholder: 'Расскажите что-нибудь народу. Напишите пост;)', type: "text", class: "form-control", autocomplete: "off" %>
           <%f.file_field :picture %>
           <%= f.hidden_field :user_id, value: current_user.id %>

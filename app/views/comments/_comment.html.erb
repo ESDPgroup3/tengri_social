@@ -12,7 +12,7 @@
 			</div>
 			<div class="pl-2">
 				<div class="post_section">                
-					<%= link_to(user_path(@post.user)) do %>
+					<%= link_to(user_path(comment.user)) do %>
 					<p class="nickname_text_comment">
 					@<%= comment.user.nickname %>
 					</p>
