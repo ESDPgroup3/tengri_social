@@ -59,7 +59,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 # Capybara.default_driver = :selenium_chrome
 # Capybara.default_max_wait_time = 15
 # Capybara.app_host = 'http://localhost:3000/'
-# Capybara.page.driver.browser.manage.window.resize_to(1920, 1080)
+# Capybara.page.driver.browser.manage.window.resize_to(900, 1080)
 
 # Capybara.register_driver :chrome do |app|
 # Capybara::Selenium::Driver.new(app, browser: :chrome)

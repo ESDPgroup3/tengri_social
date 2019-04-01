@@ -47,7 +47,7 @@
    <div>
     <h3 class="names-sectors">Конфиденциальность <br> и безопасность</h3>
     <hr class="line-sector">
-    <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+    <%= link_to "#", class: 'links-in-setting' do %>
     <div class="flex-between">
       <span class="d-flex justify-content-start">
         <div class="d-inline-block"><%= image_tag 'icons/visibility.png', class: 'imgtag-png' %></div>
@@ -59,21 +59,21 @@
     </div>
     <% end %>
     <hr class="line-sector">
-    <%= link_to user_path(current_user), class: 'links-in-setting' do %>
+    <%= link_to "#", class: 'links-in-setting' do %>
     <div class="flex-between">
       <span><%= image_tag 'icons/user.png', class: 'imgtag-png' %> Черный список</span>
       <i class="fa fa-chevron-right text-right"></i>
     </div>
     <% end %>
     <hr class="line-sector">
-    <%= link_to edit_user_registration_path(current_user), class: 'links-in-setting reset-password' do %>
+    <%= link_to "#", class: 'links-in-setting reset-password' do %>
     <div class="flex-between">
       <span><%= image_tag 'icons/PIN.png', class: 'imgtag-png' %> Сбросить пароль</span>
       <i class="fa fa-chevron-right text-right"></i>
     </div>
     <% end %>
     <hr class="line-sector">
-    <%= link_to registration_path(current_user), class: 'links-in-setting delete-accaunt' do %>
+    <%= link_to registration_path(current_user), data: { confirm: "Вы уверены, что хотите удалить Ваш аккаунт?" }, method: :delete, class: 'links-in-setting delete-accaunt' do %>
     <div class="flex-between  mb-5">
       <span><%= image_tag 'icons/cross.png', class: 'imgtag-png' %> Удалить аккаунт</span>
       <i class="fa fa-chevron-right text-right"></i>
