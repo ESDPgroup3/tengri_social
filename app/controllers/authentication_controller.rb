@@ -9,6 +9,19 @@ class AuthenticationController < ApplicationController
 
   def add_nickname; end
 
+  def code_confirmation; end
+
+  def confirmation
+    @user = User.find_by_phone(cookies[:phone])
+    arr = []
+    6.times do |n|
+     arr << params["#{n+1}"]
+    end
+    if arr.join('') == '111111'
+      redirect_to open_sess_path
+    end
+  end
+
   def nickname_exists
     @nick_exists = User.exists?(nickname: params[:nickname])
     p params[:nickname]
@@ -26,5 +39,11 @@ class AuthenticationController < ApplicationController
     else
       redirect_to new_user_registration_path
     end
+  end
+
+  def open_sess
+    @user = User.find_by_phone(cookies[:phone])
+    sign_in @user, :bypass => true
+    redirect_to user_path(@user.id)
   end
 end

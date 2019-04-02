@@ -1,6 +1,6 @@
-<% nesting = local_assigns.fetch(:nesting, 0) %>
+<% nesting = local_assigns.fetch(:nesting, 1) %>
 <% max_nesting = local_assigns[:max_nesting]%> 
-<div class="border-info commentt">
+<div class="border-info commentt pl-3">
   <div class="pr-2">
   	<div class="post_section">
 			<div class="position-relative">
@@ -12,7 +12,7 @@
 			</div>
 			<div class="pl-2">
 				<div class="post_section">                
-					<%= link_to(user_path(@post.user)) do %>
+					<%= link_to(user_path(comment.user)) do %>
 					<p class="nickname_text_comment">
 					@<%= comment.user.nickname %>
 					</p>
@@ -28,7 +28,7 @@
 	  	</div>
 		</div>
   </div>
-  <div id="text_comment_<%= comment.id %>" class="pl-3">
+  <div id="text_comment_<%= comment.id %>" class="">
 	  <%= render partial: "comments/form", locals: {commentable: comment.commentable, parent_id: reply_comment_to_id(comment, nesting, max_nesting), class: "d-none form-reply #{reply}", @submit_text =>"Ответить на коментарий" }  %>
 	  <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting], class: reply %>
   </div>

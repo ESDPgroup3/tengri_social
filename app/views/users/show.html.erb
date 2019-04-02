@@ -1,6 +1,7 @@
 <div class="back_container shadow-sm">
-  <div class="container  center-position">
-    <div class="container">
+<div class="user_show container">
+  <div class="center-position about_user">
+    <div class="">
       <div class="media-body flex-container"> 
         <div class="card-body position">
           <div class="position-relative">
@@ -69,9 +70,10 @@
       </div>
     </div>
   </div>
+  <div>
   <% if current_user == @user %>
     <section class="container ">
-      <div class="new_post">
+      <div class="new_post form_in_users_show">
         <div class="avatar_mini">
           <div>
             <% if @user.avatar.attached? %>
@@ -120,6 +122,7 @@
       </div>
     </div>
   <% end %>  
+  <div class="users_posts">
   <% if current_user ==@user || current_user != @user && @user.is_private == false || (@user.is_private == true && @user.followers.include?(current_user) == true)%>
     <% @posts.each do |post| %>
       <section class='container mt-2 mb-2'>
@@ -150,7 +153,7 @@
               </div>
               <div>
                 <div class="post_section">
-                  <p class="nickname_text mb-1">
+                  <p class="nickname_text mb-1 pr-1">
                     <% if @user.nickname.nil? %>
                       <%= @user.phone %>
                     <% else %>
@@ -186,12 +189,12 @@
                       <div class="likes">
                         <%= link_to(likes_toggle_path(post)) do %>
                           <p class="icon_text  text-center"> 
-                            <% if post.likes.include?(current_user.id) %>
+                            <% if post.likes.ids.include?(current_user.id) %>
                             <span class="none-mobile"><%= show_svg('tenge_active.svg') %></span>
-                          <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
+                            <span class="none-desktop"><%= show_svg('tenge_acktive_mobile.svg') %></span>
                             <% else %>
                             <span class="none-mobile"><%= show_svg('tenge_mobile.svg') %></span>
-                          <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
+                            <span class="none-desktop"><%= show_svg('tenge_mobile.svg') %></span>
                             <% end %>
                             <%= post.likes.count %> <span class="none-mobile">лайкбонусов</span>
                           </p>
@@ -215,4 +218,7 @@
   <% elsif current_user != @user && (@user.is_private == true && @user.followers.include?(current_user) == false ) %>
     <% nil %>
   <% end %>
+  </div>
+  </div>
+  </div>
 </div>
