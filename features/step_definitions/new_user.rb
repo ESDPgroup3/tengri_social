@@ -13,7 +13,7 @@ end
 Если("прошло успешло - добавляем никнейм {string}") do |nickname|
   within("#nickname") do
   fill_in('user_nickname', with: nickname)
-  find(".send-information").click
+  find(".block-send-information").click
   end
 end
 
