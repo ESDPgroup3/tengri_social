@@ -13,8 +13,7 @@ end
 Если("прошло успешло - добавляем никнейм {string}") do |nickname|
   within("#nickname") do
   fill_in('user_nickname', with: nickname)
-  wait_for_ajax
-  # expect(page).to have_css('.send-information')
+  page.has_content?(nickname)
   find('input[name="commit"]').click
   end
 end
