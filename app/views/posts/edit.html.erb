@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+  <%= form_with url: posts_path, scope: :put, local: true do |f| %>
 		 <%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
 <div class="form-row down">
   <div class="form-group col-md-6">
