@@ -13,8 +13,7 @@ end
 Если("прошло успешло - добавляем никнейм {string}") do |nickname|
   within("#nickname") do
   fill_in('user_nickname', with: nickname)
-  page.has_content?(nickname)
-  find('input[name="commit"]').click
+  find(".send-information").click
   end
 end
 

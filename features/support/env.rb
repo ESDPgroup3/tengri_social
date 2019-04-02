@@ -56,11 +56,11 @@ ActionController::Base.allow_rescue = false
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-# Capybara.ignore_hidden_elements = false
-# Capybara.default_driver = :selenium_chrome
-# Capybara.default_max_wait_time = 15
-# Capybara.app_host = 'http://localhost:3000/'
-# Capybara.page.driver.browser.manage.window.resize_to(1920, 1080)
+Capybara.ignore_hidden_elements = false
+Capybara.default_driver = :selenium_chrome
+Capybara.default_max_wait_time = 15
+Capybara.app_host = 'http://localhost:3000/'
+Capybara.page.driver.browser.manage.window.resize_to(1520, 1080)
 
 # Capybara.register_driver :chrome do |app|
 # Capybara::Selenium::Driver.new(app, browser: :chrome)
