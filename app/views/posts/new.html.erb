@@ -1,9 +1,9 @@
 <div class="container">
-  <%= form_with url: posts_path, scope: :post, local: true do |f| %>
+  <%= form_with url: posts_path, scope: :post, id: "new_post", local: true do |f| %>
 		 <%= f.text_area :description, placeholder: 'Начните писать тут', :class => "input_description" %>
 <div class="form-row down">
   <div class="form-group col-md-6">
-<%= fa_icon "file-image-o 2x", class: "icon-btn " %>
+   <%= fa_icon "file-image-o 2x", class: "icon-btn " %>
    <%= f.file_field :attachment, class:"d-none", type: "file", accept:"image/x-png, image/gif, image/jpeg" %> 
    <%= f.hidden_field :user_id, value: current_user.id %>
   </div>

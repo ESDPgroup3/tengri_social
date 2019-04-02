@@ -4,9 +4,15 @@
   <%= devise_error_messages! %>
 
   <div class="text-center">
-    <%= f.file_field :avatar %>
-
+    <%= fa_icon "file-image-o 2x", class: "icon-btn " %>
+    <%= f.file_field :avatar, class:"d-none", type: "file", accept:"image/x-png, image/gif, image/jpeg" %>
     <%= f.submit "Загрузить", class: 'send-information pt-1 '  %>
   </div>
 <% end %>
 </div>
+
+<script>
+ $(".icon-btn").on('click', function() {
+   $('#user_avatar').click();
+ });
+ </script>

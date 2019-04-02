@@ -11,6 +11,10 @@
           <%= link_to(searches_path, class: 'text-primary') do %> 
             <p class="nav_link m-0"><%= show_svg('union.svg') %> <span class="none-mobile">Назад</span>  </p>
           <% end %>
+        <% elsif params[:action] == 'edit' && params[:controller] == 'registrations' %>
+            <%= link_to(user_path(current_user), class: 'text-primary') do %> 
+            <p class="nav_link pt-4"><%= show_svg('union.svg') %> Назад в профиль </p>
+          <% end %>
       <%end %>  
       <% if params[:action] == 'index' && params[:controller] == 'searches' %>
         <div class="h6 m-0 search_div">
@@ -38,13 +42,17 @@
           </div>
       <%end %>     
     </div>
-    <div class="m-0 search_link">  
-      <ul class="navbar-nav navbar-expand-sm between">
-        <li class="nav-item "> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
-        <li class="nav-item "> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
-        <li class="nav-item active_link"> <%= link_to 'Люди', searches_path, class: "nav-link active"; %> </li>
-        <li class="nav-item "> <%= link_to 'Хэштеги', hashtag_search_path, class: "nav-link"; %> </li>
-      </ul> 
-    </div>
+    <% if params[:action] == 'edit' && params[:controller] == 'registrations' %>
+            <% nil %>
+    <% else %>
+      <div class="m-0 search_link">  
+        <ul class="navbar-nav navbar-expand-sm between">
+          <li class="nav-item "> <%= link_to 'Популярное', '#', class: "nav-link"; %> </li>
+          <li class="nav-item "> <%= link_to 'Номера', phone_search_path, class: "nav-link"; %> </li>
+          <li class="nav-item active_link"> <%= link_to 'Люди', searches_path, class: "nav-link active"; %> </li>
+          <li class="nav-item "> <%= link_to 'Хэштеги', hashtag_search_path, class: "nav-link"; %> </li>
+        </ul> 
+      </div>
+    <% end %>
   </div>
 </nav>
