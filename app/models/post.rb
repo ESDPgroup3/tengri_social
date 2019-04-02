@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   before_update do
     post = Post.find_by(id: self.id)
     post.tags.clear
-    hashtags = self.description.scan(/#\w+/)
+    hashtags = self.description.scan(/#[A-Za-z0-9А-Яа-я]*/)
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete("#"))
       post.tags << tag
