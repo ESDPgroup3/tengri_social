@@ -1,11 +1,13 @@
 class SearchesController < ApplicationController
   def index
     @searches = User.text_search(params[:query])
+    sort_users
   end
 
   def phone_search
     mask_delete
     @phones = User.phone_search(@query)
+    sort_users
   end
 
   def hashtag_search
@@ -23,5 +25,9 @@ class SearchesController < ApplicationController
       @query = params[:query]
     end
     return @query 
+  end
+  def sort_users
+    @followers_uniq = current_user.follows
+  
   end
 end

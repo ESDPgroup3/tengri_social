@@ -3,51 +3,48 @@
     <div class="recomendation">
       Рекомендации
     </div>
-    <% if current_user.follows.present? %>
-      <% current_user.follows.each do |user| %>
-        <% if user.followers.present? %>
-          <% user.followers.each do |user| %>
-            <% unless current_user == user %>  
-              <div class="d-flex align-items-center justify-content-between friend">
-                <%= link_to(user_path(user.id)) do %>
-                  <div class="d-flex align-items-center">
-                    <% if user.avatar.attached? %>
-                      <%= image_tag user.avatar, class: "avatar_in_post rounded-circle float-center mr-3"%> 
-                    <% else %>
-                      <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center  mr-3") %>
-                    <% end %>
-                    <div class="nickname_follows">@<%= user.nickname %></div>
-                  </div>
-                <% end %>
-                <% if current_user != user %>  
-                  <% if user.in?(current_user.follows) %>
-                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter<%= user.id %>" class="btn-follows btn-search">
-                      Отписаться
-                    </a>
-                    <div class="modal fade" id="exampleModalCenter<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content"> 
-                          <div class="modal-exit">
-                            <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
-                          </div>
-                          <div class="modal-footer">
-                            <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
-                            <span class="border-exit"></span>
-                            <%= link_to 'Отписаться', follow_toggle_path(user), class: "text-primary link-exit" %>
-                          </div>
+      <% if @followers_uniq.present? %>
+        <% @followers_uniq.each do |user| %>
+          <% unless current_user == user %>  
+            <div class="d-flex align-items-center justify-content-between friend">
+              <%= link_to(user_path(user.id)) do %>
+                <div class="d-flex align-items-center">
+                  <% if user.avatar.attached? %>
+                    <%= image_tag user.avatar, class: "avatar_in_post rounded-circle float-center mr-3"%> 
+                  <% else %>
+                    <%= image_tag("no-foto.png", :alt => "no avatar", class: "avatar_in_post rounded-circle float-center  mr-3") %>
+                  <% end %>
+                  <div class="nickname_follows">@<%= user.nickname %></div>
+                </div>
+              <% end %>
+              <% if current_user != user %>  
+                <% if user.in?(current_user.follows) %>
+                  <a href="#" data-toggle="modal" data-target="#exampleModalCenter<%= user.id %>" class="btn-follows btn-search">
+                    Отписаться
+                  </a>
+                  <div class="modal fade" id="exampleModalCenter<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content"> 
+                        <div class="modal-exit">
+                          <p class="text-center m-0">Вы точно хотите отписаться от пользователя?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <%= link_to "Отмена", "#", class: 'link-exit no-exit', "data-dismiss" => "modal" %>
+                          <span class="border-exit"></span>
+                          <%= link_to 'Отписаться', follow_toggle_path(user), class: "text-primary link-exit" %>
                         </div>
                       </div>
                     </div>
-                  <% else %>
-                    <%= link_to 'Подписаться', follow_toggle_path(user), class: "btn-follows btn-search" %>
-                  <% end %>
+                  </div>
+                <% else %>
+                  <%= link_to 'Подписаться', follow_toggle_path(user), class: "btn-follows btn-search" %>
                 <% end %>
-              </div>
-            <%end%>  
-          <%end%>
+              <% end %>
+            </div>
+          <%end%>  
         <%end%>
       <%end%>
-    <%end%>
+      
   <%else%>
     <% @searches.each do |user| %>
       <div class="d-flex align-items-center justify-content-between friend">
