@@ -15,12 +15,12 @@ class Post < ApplicationRecord
                                   class_name: 'User'
 
   has_and_belongs_to_many :tags
-  
+
   after_commit :create_tag, :on => :create
 
   def create_tag
     post = Post.find_by(id: self.id)
-    hashtags = self.description.scan(/#\w+/)
+    hashtags = self.description.scan(/#[A-Za-z0-9А-Яа-я]*/)
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete("#"))
       post.tags << tag
