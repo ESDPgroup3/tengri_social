@@ -1,5 +1,5 @@
 Допустим("я регистрируюсь с номером телефона {string} и паролем {string}") do |phone, password|
-    visit("/")
+    visit("")
     within("#show_form") do
         fill_in('phone', with: phone)
         find('#submit').click
@@ -15,13 +15,11 @@
 
     within("#nickname") do
         fill_in('user_nickname', with: nickname)
-        find('#create_nickname').click
+        expect(page).to have_css('.send-information')
+        find('input[name="commit"]').click
     end
-   
-
   end
   
   То("юзер переходит на свою страницу и может посмотреть ленту") do
-    # visit("users/#{User.last.id}")
     visit("/posts")
   end
