@@ -16,7 +16,9 @@ class Post < ApplicationRecord
 
   has_and_belongs_to_many :tags
   
-  after_commit on: :create do
+  after_commit :create_tag, :on => :create
+
+  def create_tag
     post = Post.find_by(id: self.id)
     hashtags = self.description.scan(/#\w+/)
     hashtags.uniq.map do |hashtag|
