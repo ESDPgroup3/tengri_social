@@ -44,7 +44,8 @@ class PostsController < ApplicationController
   end
 
   def hashtags
-    tag = Tag.find_by(name: params[:name])
+    tag = Tag.find_by(name: params[:name].downcase)
+
     @posts = tag.posts.order('created_at DESC')
   end
 
