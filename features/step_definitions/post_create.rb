@@ -1,4 +1,4 @@
-Допустим("я вхожу в приложение {string} и паролем {string}") do |phone, password|
+Допустим("я вхожу в приложение с телефоном {string} и паролем {string}") do |phone, password|
     visit("/")
     within("#show_form") do
         fill_in('phone', with: phone)
